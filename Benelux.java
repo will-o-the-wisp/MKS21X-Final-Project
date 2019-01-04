@@ -16,7 +16,7 @@ import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
 
-public class Benelux {
+public class Benelux{
 
 	public static void putString(int r, int c,Terminal t, String s){
 		t.moveCursor(r,c);
