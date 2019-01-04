@@ -6,7 +6,14 @@ public class Player extends Creature{
   private List<Item> inventory;
   private int experience;
 
+	public Player(){
+		equipment.clear();
+		inventory.clear();
+		experience = 0;
+	}
+
   public boolean useConsumable(Consumable selected) {
+    List<int> newStatsToAdd = selected.stats;
     return false;
   }
 
