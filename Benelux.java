@@ -24,8 +24,12 @@ public class Benelux{
 			t.putCharacter(s.charAt(i));
 		}
 	}
+  public static void drawRoom(Room r, Terminal t){
+
+  }
 	public static void main(String[] args) {
 
+    Room r = new Room(5, 5, 10, 4);
 
 		int x = 10;
 		int y = 10;

@@ -5,13 +5,26 @@ public static class Room{
   private int botLeftCornerY;
   private int width;
   private int height;
-  Room(int blcX, int blcY, int _width, int _height){
+  //private entities List<Entity>;
+  public Room(int blcX, int blcY, int _width, int _height){
     botLeftCornerX=blcX;
     botLeftCornerY=blcY;
     width=_width;
     height=_height;
   }
-  Room(int depth){
+  public Room(int depth, int difficulty){
 
+  }
+  public int getBLCX(){
+    return botLeftCornerX;
+  }
+  public int getBLCY(){
+    return botLeftCornerY;
+  }
+  public int getWidth(){
+    return width;
+  }
+  public int getHeight(){
+    return height;
   }
 }
