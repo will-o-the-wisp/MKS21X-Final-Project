@@ -1,6 +1,6 @@
 import java.util.List;
 
-public static class Floor{
+public class Floor{
   //private List<Room> rooms;
   //private List<Path> paths;
   private int entranceX;
@@ -8,6 +8,6 @@ public static class Floor{
   private int exitX;
   private int exitY;
   Floor(int depth){
-    
+
   }
 }

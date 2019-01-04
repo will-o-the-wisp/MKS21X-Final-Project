@@ -34,7 +34,7 @@ public class Benelux{
     for(int i=1;i<r.getHeight()-1;i++){
       t.moveCursor(x,y+i);
       t.putCharacter('#');
-      t.moveCursor(x+r.getWidth()-1;i++);
+      t.moveCursor(x+r.getWidth()-1,y+i);
       t.putCharacter('#');
     }
     t.moveCursor(x,y+r.getHeight());
@@ -89,7 +89,7 @@ public class Benelux{
 			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 
-      drawRoom(r);
+      drawRoom(r,terminal);
 
 			Key key = terminal.readInput();
 
