@@ -25,7 +25,22 @@ public class Benelux{
 		}
 	}
   public static void drawRoom(Room r, Terminal t){
-
+    int x = r.getBLCX();
+    int y = r.getBLCY();
+    t.moveCursor(x,y);
+    for(int i=0;i<r.getWidth();i++){
+      t.putCharacter('#');
+    }
+    for(int i=1;i<r.getHeight()-1;i++){
+      t.moveCursor(x,y+i);
+      t.putCharacter('#');
+      t.moveCursor(x+r.getWidth()-1;i++);
+      t.putCharacter('#');
+    }
+    t.moveCursor(x,y+r.getHeight());
+    for(int i=0;i<r.getWidth();i++){
+      t.putCharacter('#');
+    }
   }
 	public static void main(String[] args) {
 
@@ -58,7 +73,6 @@ public class Benelux{
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 			terminal.applySGR(Terminal.SGR.RESET_ALL);
 
-
 			terminal.moveCursor(size.getColumns()-5,5);
 			terminal.applyBackgroundColor(Terminal.Color.RED);
 			terminal.applyForegroundColor(Terminal.Color.YELLOW);
@@ -74,6 +88,8 @@ public class Benelux{
 			terminal.putCharacter(' ');
 			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+
+      drawRoom(r);
 
 			Key key = terminal.readInput();
 
