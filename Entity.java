@@ -25,4 +25,24 @@ public class Entity {
   public int getY(){
     return y;
   }
+
+  /**
+    *Function to set the x value of the Entity
+    *
+    *@return nothing (mutator)
+    *@param xcor a valid x coordinate positive integer
+  */
+  public void setX(int xcor){
+    x = xcor;
+  }
+
+  /**
+    *Function to set the y value of the Entity
+    *
+    *@return nothing (mutator)
+    *@param ycor a valid y coordinate positive integer
+  */
+  public void setY(int ycor){
+    y = ycor;
+  }
 }
