@@ -1,10 +1,6 @@
 public class Item extends Interactive{
 
-  private boolean onTheGround(){
-    return false;
-  }
-
-  private String type(){
-    return "";
-  }
+  private boolean onTheGround;
+  private String type;
+  
 }
