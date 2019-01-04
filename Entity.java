@@ -8,9 +8,15 @@ public class Entity {
   private int x;
   private int y;
 
-
+  /**
+    *Constructor for entities, has only coordinates.
+    *
+    *@param xcor X-coordinate
+    *@param ycor Y-coordinate
+  */
   public Entity(int xcor, int ycor){
-
+    x = xcor;
+    y = ycor;
   }
   /**
     *Function to acquire the x value of the Entity.
