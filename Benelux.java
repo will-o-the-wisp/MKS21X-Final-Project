@@ -90,6 +90,7 @@ public class Benelux{
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 
       drawRoom(r,terminal);
+			//r.drawRoom(terminal);
 
 			Key key = terminal.readInput();
 
