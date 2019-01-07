@@ -25,8 +25,8 @@ public class Benelux{
 		}
 	}
   public static void drawRoom(Room r, Terminal t){
-    int x = r.getBLCX();
-    int y = r.getBLCY();
+    int x = r.getTLCX();
+    int y = r.getTLCY();
     t.moveCursor(x,y);
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');

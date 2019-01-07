@@ -1,25 +1,25 @@
 import java.util.List;
 
 public class Room{
-  private int botLeftCornerX;
-  private int botLeftCornerY;
+  private int topLeftCornerX;
+  private int topLeftCornerY;
   private int width;
   private int height;
   //private entities List<Entity>;
-  public Room(int blcX, int blcY, int _width, int _height){
-    botLeftCornerX=blcX;
-    botLeftCornerY=blcY;
+  public Room(int tlcX, int tlcY, int _width, int _height){
+    topLeftCornerX=tlcX;
+    topLeftCornerY=tlcY;
     width=_width;
     height=_height;
   }
   public Room(int depth, int difficulty){
 
   }
-  public int getBLCX(){
-    return botLeftCornerX;
+  public int getTLCX(){
+    return topLeftCornerX;
   }
-  public int getBLCY(){
-    return botLeftCornerY;
+  public int getTLCY(){
+    return topLeftCornerY;
   }
   public int getWidth(){
     return width;
