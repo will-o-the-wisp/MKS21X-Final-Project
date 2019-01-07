@@ -63,9 +63,13 @@ public class Menu {
         //only for the game mode.
         if(mode.equals("Pause Menu")){
           putString(1,3,terminal, "Press Escape to Close");
+          putString(1,4,terminal, "Inventory");
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
             running = false;
+          }
+          if (key.getKind() == Key.Kind.UpArrow) {
+            t.moveCursor();
           }
         }
 
