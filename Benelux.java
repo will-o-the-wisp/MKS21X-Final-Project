@@ -31,7 +31,7 @@ public class Benelux{
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');
     }
-    for(int i=1;i<r.getHeight()-1;i++){
+    for(int i=1;i<r.getHeight();i++){
       t.moveCursor(x,y+i);
       t.putCharacter('#');
       t.moveCursor(x+r.getWidth()-1,y+i);
@@ -44,7 +44,7 @@ public class Benelux{
   }
 	public static void main(String[] args) {
 
-    Room r = new Room(5, 5, 10, 4);
+    Room r = new Room(9, 5, 10, 4);
 
 		int x = 10;
 		int y = 10;
