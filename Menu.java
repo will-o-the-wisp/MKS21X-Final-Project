@@ -16,7 +16,7 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Menu {
 
-  public static void putString(int r, int c,Terminal t, String s){
+  public static void putString(int r, int c, Terminal t, String s){
     t.moveCursor(r,c);
     for(int i = 0; i < s.length();i++){
       t.putCharacter(s.charAt(i));
@@ -53,11 +53,17 @@ public class Menu {
     while(running){
       Key key = terminal.readInput();
       while (mode.equals("Start Menu")) {
-        putString(1,3,terminal, "Start Menu \n -------- \n 1.Start Game \n 2. Exit Game");        //save game, also how to select specfic things?
+        putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");        //save game?
+          if (key.getKind() == Key.Kind.One) {
+            mode = "Game Mode";
+          }
+          if (key.getKind() == Key.Kind.Two) {
+            terminal.exitPrivateMode();
+            running = false;
+          }
       }
-      if (key != null)
-      {
 
+      if (key != null){
         //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
 
         //only for the game mode.
@@ -74,14 +80,11 @@ public class Menu {
         //for all modes
         if (key.getCharacter() == 'P' && mode.equals("Game Mode")) {
           mode = "Pause Menu";
-
           terminal.clearScreen();
           lastTime = System.currentTimeMillis();
           currentTime = System.currentTimeMillis();
         }
-
       }
-
 
       if(mode.equals("Game Mode")){
         lastTime = currentTime;
@@ -98,9 +101,6 @@ public class Menu {
         putString(1,3,terminal, "Press Escape to Close");
         putString(1,4,terminal, "1. Inventory");
       }
-
     }
-
-
   }
 }
