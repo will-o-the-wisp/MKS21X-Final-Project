@@ -75,6 +75,9 @@ public class Menu {
           if (key.getKind() == Key.Kind.One) {
             mode = "Inventory Mode";
           }
+          if (key.getCharacter() == 'P') {
+            mode = "Game Mode";
+          }
         }
 
         //for all modes
@@ -91,15 +94,18 @@ public class Menu {
         currentTime = System.currentTimeMillis();
         timer += (currentTime -lastTime);//add the amount of time since the last frame.
         //DO GAME STUFF HERE
+        //draw everything, have everything move etc.
         putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
         putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
+        //also how do you exactly pause the game?
 
       }else if (mode.equals("Inventory Mode")) {
-        putString(1,3,terminal, ""); //put player inventory in here
-      }else if(mode.equals("Pause Menu")){
+        putString(1,3,terminal, ""); //put player inventory in here and somehow make it selectable?
+      }else if (mode.equals("Pause Menu")) {
         putString(1,3,terminal, "Press Escape to Close");
         putString(1,4,terminal, "1. Inventory");
+        putString(1,5,terminal, "Press P to return to the Game");
       }
     }
   }
