@@ -7,6 +7,11 @@ public class Room{
   private int height;
   private char[][] grid;
   //private entities List<Entity>;
+  public static void main (String[] args){
+    Room r = new Room(1,1,5,5);
+    r.printGrid();
+  }
+
   public Room(int tlcX, int tlcY, int _width, int _height){
     topLeftCornerX=tlcX;
     topLeftCornerY=tlcY;
@@ -20,15 +25,16 @@ public class Room{
         grid[i][j]='.';
       }
     }
-    for(int i=x;i<width;i++){
+  /*  for(int i=x;i<width;i++){
         grid[y][i]='#';
     }
+    */
   }
   public void printGrid(){
     String ans="";
     for(int i=0;i<height;i++){
-      for(int j=0;i<width;i++){
-        ans+=grid[j][i]+" ";
+      for(int j=0;i<width;j++){
+        ans+=grid[i][j]+" ";
       }
       ans+="\n";
     }
