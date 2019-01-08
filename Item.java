@@ -1,7 +1,10 @@
+import java.util.List;
+
 public class Item extends Interactive{
 
   private boolean onTheGround;
   private String type;
+  private List<String> typesOfItems;    //this needs to be defined and stored to be selected randomly to place?
 
   public Item(){
     onTheGround = true;
@@ -12,6 +15,7 @@ public class Item extends Interactive{
     onTheGround = status;
     type = use;
   }
+
   public String getType(){
     return type;
   }
