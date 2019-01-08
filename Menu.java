@@ -66,7 +66,7 @@ public class Menu {
       if (key != null){
         //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
 
-        //only for the game mode.
+        //pause mode
         if(mode.equals("Pause Menu")){
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
@@ -80,12 +80,21 @@ public class Menu {
           }
         }
 
-        //for all modes
+        //pausing
         if (key.getCharacter() == 'P' && mode.equals("Game Mode")) {
           mode = "Pause Menu";
           terminal.clearScreen();
           lastTime = System.currentTimeMillis();
           currentTime = System.currentTimeMillis();
+        }
+
+        if (mode.equals("Inventory Mode")) {
+          if (key.getCharacter() == 'P') {
+            mode = "Game Mode";
+          }
+          if (key.getKind() == Key.Kind.One) {
+            //uses Item and repeat for 10 slots
+          }
         }
       }
 
@@ -101,6 +110,7 @@ public class Menu {
         //also how do you exactly pause the game?
 
       }else if (mode.equals("Inventory Mode")) {
+        putString(1,3,terminal, "Press P to return");
         putString(1,3,terminal, ""); //put player inventory in here and somehow make it selectable?
       }else if (mode.equals("Pause Menu")) {
         putString(1,3,terminal, "Press Escape to Close");
