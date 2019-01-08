@@ -74,4 +74,8 @@ public class Entity {
     //Not sure yet due to how setting up the grid might work
     return false;
   }
+
+  private void drawSelf(){
+
+  }
 }
