@@ -12,10 +12,12 @@ public class Player extends Creature{
 		equipment.clear();
 		inventory.clear();
 		experience = 0;
+    level = 1;
+    nextLvl = level * 100;
 	}
 
   public boolean useConsumable(Consumable selected) {
-    List<int> newStatsToAdd = selected.stats;
+    List<Integer> newStatsToAdd = selected.getStats();
     return false;
   }
 
@@ -27,9 +29,12 @@ public class Player extends Creature{
     return false;
   }
 
-	public boolean levelUp(experience current) {
-		if (current > nextLvl) {
+	public void levelUp() { //need to run this constantly?
+		if (experience > nextLvl) {
 			level++;
+      nextLvl = level * 100;
 		}
 	}
+
+
 }
