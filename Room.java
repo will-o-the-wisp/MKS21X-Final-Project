@@ -5,12 +5,37 @@ public class Room{
   private int topLeftCornerY;
   private int width;
   private int height;
+  private char[][] grid;
   //private entities List<Entity>;
   public Room(int tlcX, int tlcY, int _width, int _height){
     topLeftCornerX=tlcX;
     topLeftCornerY=tlcY;
     width=_width;
     height=_height;
+    int x = tlcX;
+    int y = tlcY;
+    grid=new char[height][width];
+    for(int i=0;i<height;i++){
+      for(int j=0;i<width;i++){
+        grid[i][j]='.';
+      }
+    }
+    for(int i=x;i<width;i++){
+        grid[y][i]='#';
+    }
+  }
+  public void printGrid(){
+    String ans="";
+    for(int i=0;i<height;i++){
+      for(int j=0;i<width;i++){
+        ans+=grid[j][i]+" ";
+      }
+      ans+="\n";
+    }
+    System.out.println(ans);
+  }
+  public char[][] getGrid(){
+    return grid;
   }
   public Room(int depth, int difficulty){
 
