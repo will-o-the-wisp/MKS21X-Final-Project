@@ -53,7 +53,7 @@ public class Menu {
     while(running){
       Key key = terminal.readInput();
       while (mode.equals("Start Menu")) {
-        putString(1,3,terminal, "Start Menu \n -------- \n ");
+        putString(1,3,terminal, "Start Menu \n -------- \n 1.Start Game \n 2. Exit Game");        //save game, also how to select specfic things?
       }
       if (key != null)
       {
@@ -62,14 +62,12 @@ public class Menu {
 
         //only for the game mode.
         if(mode.equals("Pause Menu")){
-          putString(1,3,terminal, "Press Escape to Close");
-          putString(1,4,terminal, "Inventory");
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
             running = false;
           }
-          if (key.getKind() == Key.Kind.UpArrow) {
-            t.moveCursor();
+          if (key.getKind() == Key.Kind.One) {
+            mode = "Inventory Mode";
           }
         }
 
@@ -92,13 +90,13 @@ public class Menu {
         //DO GAME STUFF HERE
         putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
         putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
+        //benelux stuff
 
-      }else{
-
-        terminal.applySGR(Terminal.SGR.ENTER_BOLD,Terminal.SGR.ENTER_BLINK);
-        putString(1,3,terminal, "Not game, just a pause!",Terminal.Color.RED,Terminal.Color.WHITE);
-        terminal.applySGR(Terminal.SGR.RESET_ALL);
-
+      }else if (mode.equals("Inventory Mode")) {
+        putString(1,3,terminal, ""); //put player inventory in here
+      }else if(mode.equals("Pause Menu")){
+        putString(1,3,terminal, "Press Escape to Close");
+        putString(1,4,terminal, "1. Inventory");
       }
 
     }
