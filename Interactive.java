@@ -24,4 +24,9 @@ public class Interactive extends Entity{
     stats = newStat; //might need to manually set each one for this
   }
 
+  public void addStats(List<Integer> newStat) {
+    for (int x = 0; x < stats.size(); x++ ){
+      stats.set(x,stats.get(x) + newStat.get(x));
+    }
+  }
 }
