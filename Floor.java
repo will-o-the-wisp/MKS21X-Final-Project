@@ -20,7 +20,6 @@ public class Floor{
     Floor f = new Floor(rs, 1, 1, 1, 1, 30, 20);
     f.printFloor();
   }
-
   Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height){
     rooms = _rooms;
     entranceX = enX;
@@ -54,6 +53,9 @@ public class Floor{
       ans+="\n";
     }
     System.out.println(ans);
+  }
+  public char[][] getGrid{
+    return grid;
   }
   /*
   private void addRoom(Room r){
