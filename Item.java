@@ -3,8 +3,8 @@ import java.util.List;
 public class Item extends Interactive{
 
   private boolean onTheGround;
-  private String type;
-  
+  private String type; //might not be necesasry
+
   public Item(){
     onTheGround = true;
     type = "";
