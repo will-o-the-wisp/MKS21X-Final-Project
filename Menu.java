@@ -97,15 +97,7 @@ public class Menu {
             //uses Item and repeat for 10 slots
           }
         }
-      }
-
-      if(mode.equals("Game Mode")){
-        lastTime = currentTime;
-        currentTime = System.currentTimeMillis();
-        timer += (currentTime -lastTime);//add the amount of time since the last frame.
-        //DO GAME STUFF HERE
-        //draw everything, have everything move etc.
-        if (key != null) {
+        if (mode.equals("Game Mode")) {
           if (key.getKind() == Key.Kind.ArrowDown) {
             playerM.changeDirection("South");
             playerM.moveForward();
@@ -122,8 +114,15 @@ public class Menu {
             playerM.changeDirection("East");
             playerM.moveForward();
           }
-
         }
+      }
+
+      if(mode.equals("Game Mode")){
+        lastTime = currentTime;
+        currentTime = System.currentTimeMillis();
+        timer += (currentTime -lastTime);//add the amount of time since the last frame.
+        //DO GAME STUFF HERE
+        //draw everything, have everything move etc.
         putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
         putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
