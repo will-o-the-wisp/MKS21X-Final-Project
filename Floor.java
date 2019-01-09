@@ -1,5 +1,5 @@
 import java.util.List;
-
+import java.util.ArrayList;
 
 
 public class Floor{
@@ -10,15 +10,50 @@ public class Floor{
   private int exitX;
   private int exitY;
   private char[][] grid;
-  Floor(List<Room> _rooms, int enX, int enY, int exX, int exY){
+
+  public static void main (String[] args){
+    Room r1 = new Room(1,1,7,5);
+    Room r2 = new Room(8,8,3,4);
+    ArrayList<Room> rs = new ArrayList<Room>();
+    rs.add(r1);
+    rs.add(r2);
+    Floor f = new Floor(rs, 1, 1, 1, 1, 30, 20);
+    f.printFloor();
+  }
+
+  Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height){
     rooms = _rooms;
     entranceX = enX;
     entranceY = enY;
     exitX = exX;
     exitY = exY;
+    grid = new char[height][width];
+    for(int i=0;i<height;i++){
+      for(int j=0;j<width;j++){
+        grid[i][j]='_';
+      }
+    }
+    for(int k=0;k<rooms.size();k++){
+      for(int i=0;i<rooms.get(k).getHeight();i++){
+        for(int j=0;j<rooms.get(k).getWidth();j++){
+          grid[i+rooms.get(k).getTLCY()][j+rooms.get(k).getTLCX()]=
+          rooms.get(k).getGrid()[i][j];
+        }
+      }
+    }
   }
   Floor(int depth){
 
+  }
+  public void printFloor(){
+    String ans="";
+    for(int i=0;i<grid.length;i++){
+      for(int j=0;j<grid[0].length;j++){
+        ans+=grid[i][j]+" ";
+      }
+      ans+="\n";
+    }
+    System.out.println(ans);
   }
   /*
   private void addRoom(Room r){
