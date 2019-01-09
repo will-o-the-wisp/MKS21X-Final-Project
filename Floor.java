@@ -54,7 +54,7 @@ public class Floor{
     }
     System.out.println(ans);
   }
-  public char[][] getGrid{
+  public char[][] getGrid(){
     return grid;
   }
   /*
