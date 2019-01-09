@@ -19,8 +19,14 @@ Brandon C.
   Some discussion in class about issues.
 
 1/7/19
+
 Kenson Li
   completed drawRoom, reorganizing code of the layout
 
 Brandon C.
   Attempted start to menu, various constructors and gets/sets for entity classes
+
+1/8/19
+
+Kenson Li
+  Floors can now be filled with Rooms which contain data that corresponds to that of Floor, which will be able to be sent to the terminal
