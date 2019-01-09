@@ -45,6 +45,7 @@ public class Menu {
 
     boolean running = true;
     String mode = "Start Menu";
+    Player playerM; //will update this accordingly
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
@@ -104,6 +105,25 @@ public class Menu {
         timer += (currentTime -lastTime);//add the amount of time since the last frame.
         //DO GAME STUFF HERE
         //draw everything, have everything move etc.
+        if (key != null) {
+          if (key.getKind() == Key.Kind.ArrowDown) {
+            playerM.changeDirection("South");
+            playerM.moveForward();
+          }
+          else if (key.getKind() == Key.Kind.ArrowLeft) {
+            playerM.changeDirection("West");
+            playerM.moveForward();
+          }
+          else if (key.getKind() == Key.Kind.ArrowUp) {
+            playerM.changeDirection("North");
+            playerM.moveForward();
+          }
+          else if (key.getKind() == Key.Kind.ArrowRight) {
+            playerM.changeDirection("East");
+            playerM.moveForward();
+          }
+
+        }
         putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
         putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
