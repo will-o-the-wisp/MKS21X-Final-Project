@@ -12,10 +12,10 @@ public class Equipment extends Item{
   public Equipment(){
     durability = 0;
     name = null;
+    seed = new Random();
   }
 
   public String getRandomDrop(){
-    seed = new Random();
     return types.get(seed.nextInt() % types.size());
   }
 
