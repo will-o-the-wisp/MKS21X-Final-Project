@@ -52,11 +52,12 @@ public class Floor{
     exitX = exX;
     exitY = exY;
     rng = _rng;
-    Room r1 = new Room(1,1,7,5);
-    Room r2 = new Room(8,8,3,4);
+    int x = Math.abs(rng.nextInt()%5)+2;
+    int y = Math.abs(rng.nextInt()%5)+2;
+    int w = Math.abs(rng.nextInt()%5)+2;
+    int h = Math.abs(rng.nextInt()%5)+2;
+    Room r1 = new Room(x,y,w,h);
     rooms.add(r1);
-    rooms.add(r2);
-
     grid = new char[height][width];
     for(int i=0;i<height;i++){
       for(int j=0;j<width;j++){
