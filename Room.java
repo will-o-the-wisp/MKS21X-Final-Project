@@ -1,4 +1,6 @@
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Room{
   private int topLeftCornerX;
@@ -7,7 +9,7 @@ public class Room{
   private int height;
   private char[][] grid;
   //private entities List<Entity>;
-  
+
   public static void main (String[] args){
     Room r = new Room(1,1,7,5);
     r.printGrid();

@@ -1,6 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Random;
 
 public class Floor{
   private List<Room> rooms;
@@ -10,16 +10,20 @@ public class Floor{
   private int exitX;
   private int exitY;
   private char[][] grid;
+  private Random rng; //move to Benelux later
 
   public static void main (String[] args){
-    Room r1 = new Room(1,1,7,5);
-    Room r2 = new Room(8,8,3,4);
+
+
     ArrayList<Room> rs = new ArrayList<Room>();
-    rs.add(r1);
-    rs.add(r2);
-    Floor f = new Floor(rs, 1, 1, 1, 1, 30, 20);
+    Random r = new Random();
+    Floor f = new Floor(rs, 3, 10, 20, 15, 30, 20, r);
     f.printFloor();
+
+
+
   }
+
   Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height){
     rooms = _rooms;
     entranceX = enX;
@@ -41,6 +45,35 @@ public class Floor{
       }
     }
   }
+  Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height, Random _rng){
+    rooms = _rooms;
+    entranceX = enX;
+    entranceY = enY;
+    exitX = exX;
+    exitY = exY;
+    rng = _rng;
+    Room r1 = new Room(1,1,7,5);
+    Room r2 = new Room(8,8,3,4);
+    rooms.add(r1);
+    rooms.add(r2);
+
+    grid = new char[height][width];
+    for(int i=0;i<height;i++){
+      for(int j=0;j<width;j++){
+        grid[i][j]='_';
+      }
+    }
+    for(int k=0;k<rooms.size();k++){
+      for(int i=0;i<rooms.get(k).getHeight();i++){
+        for(int j=0;j<rooms.get(k).getWidth();j++){
+          grid[i+rooms.get(k).getTLCY()][j+rooms.get(k).getTLCX()]=
+          rooms.get(k).getGrid()[i][j];
+        }
+      }
+    }
+    grid[entranceY][entranceX]='~';
+    grid[exitY][exitX]='*';
+  }
   Floor(int depth){
 
   }
@@ -54,7 +87,7 @@ public class Floor{
     }
     System.out.println(ans);
   }
-  public char[][] getGrid{
+  public char[][] getGrid(){
     return grid;
   }
   /*
