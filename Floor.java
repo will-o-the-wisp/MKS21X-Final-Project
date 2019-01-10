@@ -17,7 +17,7 @@ public class Floor{
 
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
-    Floor f = new Floor(rs, 10, 10, 20, 15, 35, 20, r);
+    Floor f = new Floor(rs, 20, 15, 35, 20, r);
     f.printFloor();
 
 
@@ -55,18 +55,19 @@ public class Floor{
       return -1;
     }
   }
-  Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height, Random _rng){
+  Floor(List<Room> _rooms, int exX, int exY, int width, int height, Random _rng){
     rooms = _rooms;
-    entranceX = enX;
-    entranceY = enY;
+
     exitX = exX;
     exitY = exY;
     rng = _rng;
-    int x = rng.nextInt(3)*randFlip(rng)+entranceX;
-    int y = rng.nextInt(3)*randFlip(rng)+entranceY;
     int w = rng.nextInt(2)+5;
     int h = rng.nextInt(2)+5;
+    int x = rng.nextInt(10)+7;
+    int y = rng.nextInt(10)+7;
     Room enroom = new Room(x,y,w,h);
+    entranceX = enroom.getTLCX()+rng.nextInt(enroom.getWidth())+1;
+    entranceY = enroom.getTLCY()+rng.nextInt(enroom.getHeight())+1;
     /*
     x = rng.nextInt(3)*randFlip(rng)+exitX;
     y = rng.nextInt(3)*randFlip(rng)+exitY;
