@@ -10,6 +10,7 @@ public class Entity {
   //Since all entities are placed onto rooms and the terminal, there needs to be distinct positions for each entity.
   private int x;
   private int y; //first thing is y
+  private boolean alive;
 
   /**
   *Default constructor for entity at (1,1)
@@ -19,7 +20,7 @@ public class Entity {
     x = 1;
     y = 1;
   }
-  
+
   /**
     *Constructor for entities, has only coordinates.
     *
@@ -82,6 +83,14 @@ public class Entity {
     return false;
   }
 
+  public boolean isAlive(){
+    return alive;
+  }
+
+  public void setAliveStatus(boolean living){
+    alive = living;
+  }
+  
   private void drawSelf(){
 
   }
