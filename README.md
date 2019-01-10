@@ -30,3 +30,8 @@ Brandon C.
 
 Kenson Li
   Floors can now be filled with Rooms which contain data that corresponds to that of Floor, which will be able to be sent to the terminal
+
+1/9/19
+
+Kenson Li
+  added Floor entrances and exits, started randomization of Floors and Rooms
