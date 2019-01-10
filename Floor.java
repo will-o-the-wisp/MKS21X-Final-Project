@@ -17,7 +17,7 @@ public class Floor{
 
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
-    Floor f = new Floor(rs, 3, 10, 20, 15, 30, 20, r);
+    Floor f = new Floor(rs, 10, 10, 20, 15, 35, 20, r);
     f.printFloor();
 
 
@@ -45,6 +45,16 @@ public class Floor{
       }
     }
   }
+
+  //move randFlip to Benelux later
+  public static int randFlip(Random r){
+    if(r.nextInt(2)==0){
+      return 1;
+    }
+    else{
+      return -1;
+    }
+  }
   Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height, Random _rng){
     rooms = _rooms;
     entranceX = enX;
@@ -52,12 +62,31 @@ public class Floor{
     exitX = exX;
     exitY = exY;
     rng = _rng;
-    int x = Math.abs(rng.nextInt()%5)+2;
-    int y = Math.abs(rng.nextInt()%5)+2;
-    int w = Math.abs(rng.nextInt()%5)+2;
-    int h = Math.abs(rng.nextInt()%5)+2;
+    int x = rng.nextInt(3)*randFlip(rng)+entranceX;
+    int y = rng.nextInt(3)*randFlip(rng)+entranceY;
+    int w = rng.nextInt(2)+5;
+    int h = rng.nextInt(2)+5;
+    Room enroom = new Room(x,y,w,h);
+    /*
+    x = rng.nextInt(3)*randFlip(rng)+exitX;
+    y = rng.nextInt(3)*randFlip(rng)+exitY;
+    w = rng.nextInt(2)+5;
+    h = rng.nextInt(2)+5;
+    Room exroom = new Room(x,y,w,h);
+    */
+    rooms.add(enroom);
+    //rooms.add(exroom);
+    /*
+    int numrooms = rng.nextInt(2)+3;
+    for(int i=0;i<numrooms;i++){
+    int x = rng.nextInt(15)+2;
+    int y = rng.nextInt(15)+2;
+    int w = rng.nextInt(7)+2;
+    int h = rng.nextInt(7)+2;
     Room r1 = new Room(x,y,w,h);
     rooms.add(r1);
+    }
+    */
     grid = new char[height][width];
     for(int i=0;i<height;i++){
       for(int j=0;j<width;j++){
