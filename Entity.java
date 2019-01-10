@@ -12,6 +12,15 @@ public class Entity {
   private int y; //first thing is y
 
   /**
+  *Default constructor for entity at (1,1)
+  *
+  */
+  public Entity(){
+    x = 1;
+    y = 1;
+  }
+  
+  /**
     *Constructor for entities, has only coordinates.
     *
     *@param xcor X-coordinate
