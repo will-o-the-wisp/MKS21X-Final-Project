@@ -61,13 +61,13 @@ public class Floor{
     exitX = exX;
     exitY = exY;
     rng = _rng;
-    int w = rng.nextInt(2)+5;
-    int h = rng.nextInt(2)+5;
-    int x = rng.nextInt(10)+7;
-    int y = rng.nextInt(10)+7;
+    int w = rng.nextInt(5)+5;
+    int h = rng.nextInt(5)+5;
+    int x = rng.nextInt(6)+7;
+    int y = rng.nextInt(6)+7;
     Room enroom = new Room(x,y,w,h);
-    entranceX = enroom.getTLCX()+rng.nextInt(enroom.getWidth())+1;
-    entranceY = enroom.getTLCY()+rng.nextInt(enroom.getHeight())+1;
+    entranceX = enroom.getTLCX()+rng.nextInt(enroom.getWidth()-2)+1;
+    entranceY = enroom.getTLCY()+rng.nextInt(enroom.getHeight()-2)+1;
     /*
     x = rng.nextInt(3)*randFlip(rng)+exitX;
     y = rng.nextInt(3)*randFlip(rng)+exitY;
