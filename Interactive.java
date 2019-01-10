@@ -16,10 +16,18 @@ public class Interactive extends Entity{
 		stats.set(2,defense);
 	}
 
-  public List<Integer> getStats() {
-    return stats;
+  public int getHP(){
+    return stats.get(0);
   }
 
+  public int getATK(){
+    return stats.get(1);
+  }
+
+  public int getDEF() {
+    return stats.get(2);
+  }
+  
   public void setHP(int newStat){
     stats.set(0, newStat); //might need to manually set each one for this
   }
