@@ -20,11 +20,19 @@ public class Interactive extends Entity{
     return stats;
   }
 
-  public void setStats(List<Integer> newStat){
-    stats = newStat; //might need to manually set each one for this
+  public void setHP(int newStat){
+    stats.set(0, newStat); //might need to manually set each one for this
   }
 
-  public void addStats(List<Integer> newStat) {
+  public void setATK(int newStat) {
+    stats.set(1, newStat);
+  }
+
+  public void setDEF(int newStat) {
+    stats.set(2, newStat);
+  }
+
+  public void addStats(List<Integer> newStat) { //to the end
     for (int x = 0; x < stats.size(); x++ ){
       stats.set(x,stats.get(x) + newStat.get(x));
     }
