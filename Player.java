@@ -34,7 +34,7 @@ public class Player extends Creature{
   }
 
   public boolean pickUp(Item other){
-    Item.setAliveStatus(false);
+    Item.setStatus(false);
     setInventory(other);
     return true;
   }
