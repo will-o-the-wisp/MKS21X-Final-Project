@@ -20,6 +20,7 @@ public class Equipment extends Item{
     seed = new Random();
     durability = seed.nextInt(100);
     name = getRandomDropName();
+    //stats set?
   }
 
   public String getRandomDropName(){
