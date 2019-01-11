@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class Player extends Creature{
 
@@ -15,7 +16,11 @@ public class Player extends Creature{
 	}
 
   public boolean useConsumable(Consumable selected) {
-    List<Integer> newStatsToAdd = selected.getStats();
+    List<Integer> newStatsToAdd = new ArrayList<Integer>();
+    newStatsToAdd.add(selected.getHP());
+    newStatsToAdd.add(selected.getATK());
+    newStatsToAdd.add(selected.getDEF());
+    //duration
     return false;
   }
 
