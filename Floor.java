@@ -141,7 +141,11 @@ public class Floor{
     return true;
   }
   private void addAllRooms(){
-
+    int tries=0;
+    int fails=0;
+    while(fails<grid.length*grid[0].length){
+      Room r = new Room();
+    }
   }
   /*
   private void addRoom(Room r){
