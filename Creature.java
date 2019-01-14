@@ -40,7 +40,7 @@ public class Creature extends Interactive{
     else if (direction.equals("South")) {
       return f.getGrid()[getY()-1][getX()]; //direction might not be correct
     }
-    else if (direction.equals("West")) {
+    else {
       return f.getGrid()[getY()][getX()-1]; //direction might not be correct
     }
   }
