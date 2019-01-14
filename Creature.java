@@ -4,24 +4,24 @@ public class Creature extends Interactive{
 
   public void moveForward(Floor f){
     if (direction.equals("North") && !(getY() <= 0)) {
-//      if (lookInFront(f) != '#'){
-        setX(getX()-1); //direction might not be correct
-//      }
+      if (lookInFront(f) != '#'){
+        setY(getY()-1); //direction might not be correct
+      }
     }
     else if (direction.equals("East") && (getX() < f.getGrid()[0].length-1)) {
-//      if (lookInFront(f) != '#'){
-          setY(getY()+1); //direction might not be correct
-//      }
+      if (lookInFront(f) != '#'){
+          setX(getX()+1); //direction might not be correct
+      }
     }
     else if (direction.equals("South") && (getY() < f.getGrid().length-1)) {
-//      if (lookInFront(f) != '#'){
-          setX(getX()+1); //direction might not be correct
-//      }
+      if (lookInFront(f) != '#'){
+          setY(getY()+1); //direction might not be correct
+      }
     }
     else if (direction.equals("West") && !(getX() <= 0)) {
-//      if (lookInFront(f) != '#'){
-          setY(getY()-1); //direction might not be correct these are based on normal x y axis
-//      }
+      if (lookInFront(f) != '#'){
+          setX(getX()-1); //direction might not be correct these are based on normal x y axis
+      }
     }
   }
 
@@ -29,7 +29,7 @@ public class Creature extends Interactive{
   public void changeDirection(String dire){
     direction = dire;
   }
-/*
+
   public char lookInFront(Floor f){
     if (direction.equals("North") && (getY() != 0)) {
       return f.getGrid()[getY()-1][getX()]; //direction might not be correct these are based on normal x y axis
@@ -45,7 +45,7 @@ public class Creature extends Interactive{
     }
     return '#';
   }
-*/
+
   public boolean meleeAttack(Creature defender){
     defender.setHP(defender.getHP() - attackCalc(defender));
     this.setHP(this.getHP() - defendCalc(defender));

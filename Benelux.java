@@ -57,25 +57,25 @@ public class Benelux{
 	public static void drawMonster(Monster m, Terminal t){
 		int x = m.getX();
 		int y = m.getY();
-		t.moveCursor(y,x);
+		t.moveCursor(x,y);
 		t.putCharacter('!');
 	}
 
 	public static void eraser(int x, int y, Terminal t){
-		t.moveCursor(y,x);
+		t.moveCursor(x,y);
 		t.putCharacter(' ');
 	}
 	public static void drawPlayer(Player p, Terminal t){
 		int x = p.getX();
 		int y = p.getY();
-		t.moveCursor(y,x);
-		t.putCharacter('@');
+		t.moveCursor(x,y);
+		t.putCharacter('$');
 	}
 
 	public static void drawItem(Item i, Terminal t){
 		int x = i.getX();
 		int y = i.getY();
-		t.moveCursor(y,x);
+		t.moveCursor(x,y);
 		t.putCharacter('?');
 	}
 
@@ -175,6 +175,8 @@ public class Benelux{
 			long millis = tEnd - tStart;
 			int currentX = playerM.getX();
 			int currentY = playerM.getY();
+			putString(40,40,terminal,currentX+"X");
+			putString(45,45,terminal,currentY+"Y");
 
 	/*
 	    while (mode.equals("Start Menu") && running == true) {
