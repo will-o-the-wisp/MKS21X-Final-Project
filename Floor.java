@@ -122,6 +122,23 @@ public class Floor{
     return grid;
   }
   private boolean addRoom(Room r, int x, int y){
+    int w = r.getWidth();
+    int h = r.getHeight();
+    if(x+w>grid[0].length||y+h>grid.length){
+      return false;
+    }
+    for(int i=0;i<h;i++){
+      for(int j=0;j<w;j++){
+        if(grid[y+i][x+j]!='_'){
+          return false;
+        }
+      }
+    }
+    for(int i=0;i<h;i++){
+      for(int j=0;j<w;j++){
+        grid[y+i][x+j]=r.getGrid()[i][j];
+      }
+    }
     return true;
   }
   private void addAllRooms(){
