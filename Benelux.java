@@ -166,7 +166,7 @@ public class Benelux{
 			drawMonster(monster3, terminal);
 			drawItem(help, terminal);
 			*/
-			drawFloor(f, terminal);
+			drawFloor(f, terminal); //this should not be in running, will seriously lag
 			drawPlayer(playerM,terminal);
 
 			//r.drawRoom(terminal);
