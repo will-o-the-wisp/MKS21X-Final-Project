@@ -34,14 +34,14 @@ public class Creature extends Interactive{
     if (direction.equals("North") && getY() != 0) {
       return f.getGrid()[getY()-1][getX()]; //direction might not be correct these are based on normal x y axis
     }
-    else if (direction.equals("East") && getX() != f.getGrid()[0].length) {
-      return f.getGrid()[getY()][getX()+1]; //direction might not be correct
-    }
-    else if (direction.equals("South") && getY() != f.getGrid().length) {
-      return f.getGrid()[getY()+1][getX()]; //direction might not be correct
-    }
     else if (getX() != 0){
       return f.getGrid()[getY()][getX()-1]; //direction might not be correct
+    }
+    else if (direction.equals("East") && getX() < f.getGrid()[0].length) {
+      return f.getGrid()[getY()][getX()+1]; //direction might not be correct
+    }
+    else if (direction.equals("South") && getY() < f.getGrid().length) {
+      return f.getGrid()[getY()+1][getX()]; //direction might not be correct
     }
     return '#';
   }
