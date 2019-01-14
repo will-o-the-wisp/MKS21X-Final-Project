@@ -35,6 +35,12 @@ public class Menu {
     t.applyBackgroundColor(Terminal.Color.DEFAULT);
     t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
+
+  public static void drawCharacter(int r, int c, Terminal t, char ca, Terminal.Color hey){
+    t.moveCursor(r,c);
+    t.applyBackgroundColor(hey);
+    t.putCharacter(ca);
+  }
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -50,20 +56,23 @@ public class Menu {
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
-
-
-    while(running){
+/*
+    while (mode.equals("Start Menu") && running == true) {
       Key key = terminal.readInput();
-      while (mode.equals("Start Menu")) {
-        putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");        //save game?
-          if (key.getKind() == Key.Kind.F1) {
+      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
+        if (key != null){
+          if (key.getCharacter() == '1') {
             mode = "Game Mode";
           }
-          if (key.getKind() == Key.Kind.F2) {
+          if (key.getCharacter() == '2') {
             terminal.exitPrivateMode();
             running = false;
           }
+        }
       }
+*/
+    while(running){
+      Key key = terminal.readInput();
 
       if (key != null){
         //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
@@ -94,7 +103,7 @@ public class Menu {
           if (key.getCharacter() == 'P') {
             mode = "Game Mode";
           }
-          if (key.getKind() == Key.Kind.F1) {
+          if (key.getCharacter() == '1') {
             //uses Item and repeat for 10 slots
           }
         }
@@ -123,9 +132,10 @@ public class Menu {
         currentTime = System.currentTimeMillis();
         timer += (currentTime -lastTime);//add the amount of time since the last frame.
         //DO GAME STUFF HERE
-        //draw everything, have everything move etc.
-        putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
-        putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
+        //putString();
+        drawCharacter(playerM.getX(),playerM.getY(),terminal,'@',Terminal.Color.WHITE);
+        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
+        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
         //also how do you exactly pause the game?
 

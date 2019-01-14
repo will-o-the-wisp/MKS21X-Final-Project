@@ -17,13 +17,11 @@ public class Creature extends Interactive{
     }
   }
 
+  
   public void changeDirection(String dire){
     direction = dire;
   }
 
-  public void drawCreature(){
-
-  }
 /*
   public Entity lookInFront(){
     if (direction.equals("North")) {
