@@ -69,7 +69,7 @@ public class Floor{
   public char[][] getGrid(){
     return grid;
   }
-  private boolean addRoom(Room r, int x, int y){
+  public boolean addRoom(Room r, int x, int y){
     int w = r.getWidth();
     int h = r.getHeight();
     if(x+w>grid[0].length||y+h>grid.length){
@@ -89,7 +89,7 @@ public class Floor{
     }
     return true;
   }
-  private boolean addPath(int x, int y, int w, int h, int xi, int yi){
+  public boolean addPath(int x, int y, int w, int h, int xi, int yi){
     if(x+w*xi>grid[0].length||
       x+w*xi<-1||
       y+h*yi>grid.length||
@@ -117,17 +117,17 @@ public class Floor{
     }
     return true;
   }
-  private void addEntrance(){
+  public void addEntrance(){
     entranceX = rooms.get(0).getTLCX()+rng.nextInt(rooms.get(0).getWidth()-2)+1;
     entranceY = rooms.get(0).getTLCY()+rng.nextInt(rooms.get(0).getHeight()-2)+1;
     grid[entranceY][entranceX]='~';
   }
-  private void addExit(){
+  public void addExit(){
     exitX = rooms.get(1).getTLCX()+rng.nextInt(rooms.get(1).getWidth()-2)+1;
     exitY = rooms.get(1).getTLCY()+rng.nextInt(rooms.get(1).getHeight()-2)+1;
     grid[exitY][exitX]='*';
   }
-  private void addAllRooms(){
+  public void addAllRooms(){
     int tries=0;
     int fails=0;
     while(fails<grid.length*grid[0].length){
