@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -49,7 +50,7 @@ public class Benelux{
 		t.moveCursor(0,0);
 		for (int i = 0; i<fr.getGrid().length;i++){
 			for (int o =0; o<fr.getGrid()[i].length;o++){
-				t.putCharacter(getGrid()[i][o]);
+				t.putCharacter(fr.getGrid()[i][o]);
 			}
 		}
 	}
