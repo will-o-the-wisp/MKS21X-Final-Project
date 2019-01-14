@@ -43,12 +43,8 @@ public class Menu {
   }
   public static void main(String[] args) {
 
-    Terminal terminal = TerminalFacade.createTextTerminal();
-    terminal.enterPrivateMode();
-
-    TerminalSize size = terminal.getTerminalSize();
-    terminal.setCursorVisible(false);
-
+    int x = 10;
+    int y = 10;
     Benelux help;
     Player playerM = new Player(); //will update this accordingly
     boolean running = true;
@@ -56,6 +52,14 @@ public class Menu {
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
+
+    Terminal terminal = TerminalFacade.createTextTerminal();
+    terminal.enterPrivateMode();
+
+    TerminalSize size = terminal.getTerminalSize();
+    terminal.setCursorVisible(false);
+
+
 /*
     while (mode.equals("Start Menu") && running == true) {
       Key key = terminal.readInput();
@@ -72,6 +76,33 @@ public class Menu {
       }
 */
     while(running){
+      terminal.moveCursor(x,y);
+			terminal.applyBackgroundColor(Terminal.Color.WHITE);
+			terminal.applyForegroundColor(Terminal.Color.BLACK);
+			//applySGR(a,b) for multiple modifiers (bold,blink) etc.
+			terminal.applySGR(Terminal.SGR.ENTER_UNDERLINE);
+			terminal.putCharacter('@');
+			//terminal.putCharacter(' ');
+			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+
+			terminal.moveCursor(size.getColumns()-5,5);
+			terminal.applyBackgroundColor(Terminal.Color.RED);
+			terminal.applyForegroundColor(Terminal.Color.YELLOW);
+			terminal.applySGR(Terminal.SGR.ENTER_BOLD);
+			terminal.putCharacter(' ');
+			terminal.putCharacter(' ');
+			terminal.putCharacter(' ');
+			terminal.moveCursor(size.getColumns()-5,6);
+			terminal.putCharacter(' ');
+			terminal.putCharacter(' ');
+			terminal.putCharacter(' ');
+			terminal.putCharacter(' ');
+			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+
       Key key = terminal.readInput();
 
       if (key != null){
