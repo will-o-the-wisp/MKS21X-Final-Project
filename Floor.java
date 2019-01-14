@@ -19,8 +19,8 @@ public class Floor{
     Room r1 = new Room(3, 5);
     Room r2 = new Room(5, 3);
     f.addRoom(r1,1,1);
-    f.addRoom(r2,8,1);
-    f.addPath(8,3,6,2,-1,1,true);
+    f.addRoom(r2,8,4);
+    f.addPath(8,3,6,2,-1,1);
     f.addAllRooms();
     f.addEntrance();
     f.addExit();
@@ -89,7 +89,7 @@ public class Floor{
     }
     return true;
   }
-  private boolean addPath(int x, int y, int w, int h, int xi, int yi, boolean o){
+  private boolean addPath(int x, int y, int w, int h, int xi, int yi){
     if(x+w*xi>grid[0].length||
       x+w*xi<-1||
       y+h*yi>grid.length||
@@ -99,23 +99,21 @@ public class Floor{
       (xi==0&&yi==0)){
       return false;
     }
-    if(o){
-      for(int i=1;i<h-1;i++){
-        if(grid[y+i*yi][x]!='_'){
-          return false;
-        }
+    for(int i=1;i<h-1;i++){
+      if(grid[y+i*yi][x]!='_'){
+        return false;
       }
-      for(int j=1;j<w-1;j++){
-        if(grid[y+yi*(h-1)][x+j*xi]!='_'){
-          return false;
-        }
+    }
+    for(int j=1;j<w-1;j++){
+      if(grid[y+yi*(h-1)][x+j*xi]!='_'){
+        return false;
       }
-      for(int i=0;i<h-1;i++){
-        grid[y+i*yi][x]='.';
-      }
-      for(int j=0;j<w;j++){
-        grid[y+yi*(h-1)][x+j*xi]='.';
-      }
+    }
+    for(int i=0;i<h-1;i++){
+      grid[y+i*yi][x]='.';
+    }
+    for(int j=0;j<w;j++){
+      grid[y+yi*(h-1)][x+j*xi]='.';
     }
     return true;
   }
