@@ -72,6 +72,7 @@ public class Benelux{
 	}
 
 	public static void main(String[] args) throws FileNotFoundException{
+		/*
 		Room r1 = new Room(1,1,7,5);
     Room r2 = new Room(8,8,3,4);
     ArrayList<Room> rs = new ArrayList<Room>();
@@ -91,6 +92,7 @@ public class Benelux{
 		Consumable help = new Consumable();
 		help.setX(40);
 		help.setY(30);
+		*/
 		Player playerM = new Player();
 		playerM.setX(10);
 		playerM.setY(10);
@@ -135,6 +137,7 @@ public class Benelux{
 			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 			*/
+			/*
       drawRoom(r,terminal);
 			drawRoom(r1, terminal);
 			drawRoom(r2, terminal);
@@ -143,6 +146,7 @@ public class Benelux{
 			drawMonster(monster3, terminal);
 			drawItem(help, terminal);
 			drawPlayer(playerM,terminal);
+			*/
 			//r.drawRoom(terminal);
 
 	    boolean updating = true;
