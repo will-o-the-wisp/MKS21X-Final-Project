@@ -77,7 +77,7 @@ public class Benelux{
 		long lastSecond = 0;
 
 		while(running){
-
+			/*
 			terminal.moveCursor(x,y);
 			terminal.applyBackgroundColor(Terminal.Color.WHITE);
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
@@ -104,7 +104,7 @@ public class Benelux{
 			terminal.putCharacter(' ');
 			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-
+			*/
       drawRoom(r,terminal);
 			drawMonster(monster1, terminal);
 			//r.drawRoom(terminal);
@@ -130,7 +130,7 @@ public class Benelux{
 	        }
 	      }
 	*/
-	    while(updating){
+	    while(millis/1000 != lastSecond + 1){ //check for one second?
 
 	      Key key = terminal.readInput();
 
@@ -141,7 +141,7 @@ public class Benelux{
 	        if(mode.equals("Pause Menu")){
 	          if (key.getKind() == Key.Kind.Escape) {
 	            terminal.exitPrivateMode();
-	            updating = false;
+	            running = false;
 	          }
 	          if (key.getCharacter() == '1') {
 	            mode = "Inventory Mode";
@@ -162,7 +162,7 @@ public class Benelux{
 	        if (mode.equals("Game Mode")) {
 	          if (key.getKind() == Key.Kind.Escape) {
 	            terminal.exitPrivateMode();
-	            updating = false;
+	            running = false;
 	          }
 	          if (key.getCharacter() == 'P'){
 	            mode = "Pause Menu";
@@ -211,53 +211,7 @@ public class Benelux{
 	        putString(1,4,terminal, "1. Inventory");
 	        putString(1,5,terminal, "Press P to return to the Game");
 	      }
-	      updating = false;
 	    }
-
-			Key key = terminal.readInput();
-
-			if (key != null)
-			{
-
-				if (key.getKind() == Key.Kind.Escape) {
-
-					terminal.exitPrivateMode();
-					running = false;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowLeft) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					x--;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowRight) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					x++;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowUp) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y--;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowDown) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y++;
-				}
-				//space moves it diagonally
-				if (key.getCharacter() == ' ') {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y++;
-					x++;
-				}
-				putString(1,4,terminal,"["+key.getCharacter() +"]");
-				putString(1,1,terminal,key+"        ");//to clear leftover letters pad withspaces
-			}
 
 			//DO EVEN WHEN NO KEY PRESSED:
 			long tEnd = System.currentTimeMillis();
