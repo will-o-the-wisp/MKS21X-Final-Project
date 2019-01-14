@@ -18,10 +18,9 @@ public class Floor{
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 35, 20, r);
-    Room r1 = new Room(1,2,3,4);
-    f.addRoom(r1,1,2);
     f.addAllRooms();
     f.addEntrance();
+    f.addExit();
     f.printFloor();
   }
   //move randFlip to Benelux later(?)
@@ -166,6 +165,11 @@ public class Floor{
     entranceX = rooms.get(0).getTLCX()+rng.nextInt(rooms.get(0).getWidth()-2)+1;
     entranceY = rooms.get(0).getTLCY()+rng.nextInt(rooms.get(0).getHeight()-2)+1;
     grid[entranceY][entranceX]='~';
+  }
+  private void addExit(){
+    exitX = rooms.get(1).getTLCX()+rng.nextInt(rooms.get(1).getWidth()-2)+1;
+    exitY = rooms.get(1).getTLCY()+rng.nextInt(rooms.get(1).getHeight()-2)+1;
+    grid[exitY][exitX]='*';
   }
   private void addAllRooms(){
     int tries=0;
