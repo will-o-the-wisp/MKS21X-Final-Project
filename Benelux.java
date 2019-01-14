@@ -1,4 +1,6 @@
 import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.terminal.Terminal.SGR;
@@ -80,7 +82,7 @@ public class Benelux{
 		Monster monster3 = new Monster("Alpha");
 		monster3.setX(30);
 		monster3.setY(50);
-		Item help = new Consumable();
+		Consumable help = new Consumable();
 		help.setX(40);
 		help.setY(30);
 		Player playerM = new Player();
