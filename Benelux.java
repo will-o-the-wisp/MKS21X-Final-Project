@@ -141,7 +141,7 @@ public class Benelux{
 	        }
 	      }
 	*/
-	    while(millis/1000 != lastSecond + 1){ //check for one second?
+	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 
 	      Key key = terminal.readInput();
 
@@ -235,6 +235,6 @@ public class Benelux{
 			}
 
 
-		}
+		//}
 	}
 }
