@@ -49,6 +49,12 @@ public class Benelux{
 		t.moveCursor(x,y);
 		t.putCharacter('!');
 	}
+
+	public static void drawCharacter(int r, int c, Terminal t, char ca, Terminal.Color hey){
+		t.moveCursor(r,c);
+		t.applyBackgroundColor(hey);
+		t.putCharacter(ca);
+	}
 	public static void main(String[] args) {
 
     Room r = new Room(9, 5, 10, 4);
@@ -102,7 +108,7 @@ public class Benelux{
       drawRoom(r,terminal);
 			drawMonster(monster1, terminal);
 			//r.drawRoom(terminal);
-			
+
 	    boolean updating = true;
 	    String mode = "Game Mode";
 	    long lastTime =  System.currentTimeMillis();
@@ -125,13 +131,6 @@ public class Benelux{
 	      }
 	*/
 	    while(updating){
-	      terminal.moveCursor(x,y);
-				terminal.applyBackgroundColor(Terminal.Color.WHITE);
-				terminal.applyForegroundColor(Terminal.Color.BLACK);
-				//applySGR(a,b) for multiple modifiers (bold,blink) etc.
-				terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-				terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-				terminal.applySGR(Terminal.SGR.RESET_ALL);
 
 	      Key key = terminal.readInput();
 
@@ -196,7 +195,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-	        monster1.changeDirection(getRandomDirection());
+	        monster1.changeDirection(monster1.getRandomDirection());
 	        //monster2.changeDirection(getRandomDirection());
 	        //monster3.changeDirection(getRandomDirection());
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
