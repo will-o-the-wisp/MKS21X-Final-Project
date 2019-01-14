@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -71,7 +72,12 @@ public class Benelux{
 	}
 
 	public static void main(String[] args) throws FileNotFoundException{
-
+		Room r1 = new Room(1,1,7,5);
+    Room r2 = new Room(8,8,3,4);
+    ArrayList<Room> rs = new ArrayList<Room>();
+    rs.add(r1);
+    rs.add(r2);
+		Floor f = new Floor(rs, 1, 1, 1, 1, 30, 20);
     Room r = new Room(9, 5, 10, 4);
 		Monster monster1 = new Monster("Alpha"); //this species needs a random gen, will work on later
 		monster1.setX(15);
@@ -130,6 +136,8 @@ public class Benelux{
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 			*/
       drawRoom(r,terminal);
+			drawRoom(r1, terminal);
+			drawRoom(r2, terminal);
 			drawMonster(monster1, terminal);
 			drawMonster(monster2, terminal);
 			drawMonster(monster3, terminal);
@@ -218,22 +226,22 @@ public class Benelux{
 	          if (key.getKind() == Key.Kind.ArrowDown) {
 	            eraser(currentX, currentY, terminal);
 	            playerM.changeDirection("South");
-	            playerM.moveForward();
+	            playerM.moveForward(f);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
 							eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("West");
-	            playerM.moveForward();
+	            playerM.moveForward(f);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
 	            eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("North");
-	            playerM.moveForward();
+	            playerM.moveForward(f);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
 	            eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("East");
-	            playerM.moveForward();
+	            playerM.moveForward(f);
 	          }
 	        }
 	      }
@@ -245,13 +253,13 @@ public class Benelux{
 	        //DO GAME STUFF HERE
 					eraser(monster1.getX(), monster1.getY(), terminal);
 					monster1.changeDirection(monster1.getRandomDirection());
-					monster1.moveForward();
+					monster1.moveForward(f);
 					eraser(monster2.getX(), monster2.getY(), terminal);
 	        monster2.changeDirection(monster2.getRandomDirection());
-					monster2.moveForward();
+					monster2.moveForward(f);
 					eraser(monster3.getX(), monster3.getY(), terminal);
 	        monster3.changeDirection(monster3.getRandomDirection());
-					monster3.moveForward();
+					monster3.moveForward(f);
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
 
