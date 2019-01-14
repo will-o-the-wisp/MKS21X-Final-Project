@@ -206,7 +206,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-					eraser(monster1.getX(), monster1.getY(), terminal);
+					//eraser(monster1.getX(), monster1.getY(), terminal);
 	        monster1.changeDirection(monster1.getRandomDirection());
 					monster1.moveForward();
 	        //monster2.changeDirection(getRandomDirection());
