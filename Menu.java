@@ -43,11 +43,10 @@ public class Menu {
   }
   public static void main(String[] args) {
 
-    int x = 10;
-    int y = 10;
-    Benelux help;
+    int x = 1;
+    int y = 1;
     Player playerM = new Player(); //will update this accordingly
-    boolean running = true;
+    boolean updating = true;
     String mode = "Game Mode";
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
@@ -75,7 +74,7 @@ public class Menu {
         }
       }
 */
-    while(running){
+    while(updating){
       terminal.moveCursor(x,y);
 			terminal.applyBackgroundColor(Terminal.Color.WHITE);
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
@@ -93,7 +92,7 @@ public class Menu {
         if(mode.equals("Pause Menu")){
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
-            running = false;
+            running = updating;
           }
           if (key.getKind() == Key.Kind.F1) {
             mode = "Inventory Mode";
@@ -122,7 +121,7 @@ public class Menu {
         if (mode.equals("Game Mode")) {
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
-            running = false;
+            updating = false;
           }
           if (key.getKind() == Key.Kind.ArrowDown) {
             drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
@@ -152,8 +151,9 @@ public class Menu {
         currentTime = System.currentTimeMillis();
         timer += (currentTime -lastTime);//add the amount of time since the last frame.
         //DO GAME STUFF HERE
-        //putString();
-        drawCharacter(playerM.getX(),playerM.getY(),terminal,'@',Terminal.Color.RED);
+        monster1.changeDirection(getRandomDirection());
+        //monster2.changeDirection(getRandomDirection());
+        //monster3.changeDirection(getRandomDirection());
         //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
         //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
