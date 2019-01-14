@@ -10,7 +10,7 @@ public class Floor{
   private int exitX;
   private int exitY;
   private char[][] grid;
-  private Random rng; //move to Benelux later
+  private Random rng; //move to Benelux later (?)
 
   public static void main (String[] args){
 
@@ -46,7 +46,7 @@ public class Floor{
     }
   }
 
-  //move randFlip to Benelux later
+  //move randFlip to Benelux later(?)
   public static int randFlip(Random r){
     if(r.nextInt(2)==0){
       return 1;
@@ -120,6 +120,9 @@ public class Floor{
   }
   public char[][] getGrid(){
     return grid;
+  }
+  private boolean addRoom(Room r, int x, int y){
+    return true;
   }
   /*
   private void addRoom(Room r){
