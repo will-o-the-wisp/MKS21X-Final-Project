@@ -47,8 +47,8 @@ public class Benelux{
     }
   }
 	public static void drawFloor(Floor fr, Terminal t){
-		t.moveCursor(0,0);
 		for (int i = 0; i<fr.getGrid().length;i++){
+			t.moveCursor(i,0);
 			for (int o =0; o<fr.getGrid()[i].length;o++){
 				t.putCharacter(fr.getGrid()[i][o]);
 			}
@@ -304,14 +304,14 @@ public class Benelux{
 
 
 			//DO EVEN WHEN NO KEY PRESSED:
+			/*
 			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
 			if(millis/1000 > lastSecond){
 				lastSecond = millis / 1000;
 				//one second has passed.
 			putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-
-
+			}
+			*/
 		}
 	}
-}
 }
