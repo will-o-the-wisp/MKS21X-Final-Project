@@ -121,7 +121,7 @@ public class Floor{
     }
     return true;
   }
-  private void addAllPaths(){
+  public void addAllPaths(){
     int tries=0;
     int fails=0;
     int paths=0;

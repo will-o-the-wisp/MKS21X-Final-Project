@@ -112,7 +112,7 @@ public class Benelux{
     f.addAllRooms();
     f.addEntrance();
     f.addExit();
-
+		f.addAllPaths();
 		Player playerM = new Player();
 		playerM.setX(10);
 		playerM.setY(10);
