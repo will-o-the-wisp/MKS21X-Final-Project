@@ -120,19 +120,27 @@ public class Menu {
           }
         }
         if (mode.equals("Game Mode")) {
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            running = false;
+          }
           if (key.getKind() == Key.Kind.ArrowDown) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("South");
             playerM.moveForward();
           }
           else if (key.getKind() == Key.Kind.ArrowLeft) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("West");
             playerM.moveForward();
           }
           else if (key.getKind() == Key.Kind.ArrowUp) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("North");
             playerM.moveForward();
           }
           else if (key.getKind() == Key.Kind.ArrowRight) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("East");
             playerM.moveForward();
           }
@@ -145,7 +153,7 @@ public class Menu {
         timer += (currentTime -lastTime);//add the amount of time since the last frame.
         //DO GAME STUFF HERE
         //putString();
-        drawCharacter(playerM.getX(),playerM.getY(),terminal,'@',Terminal.Color.WHITE);
+        drawCharacter(playerM.getX(),playerM.getY(),terminal,'@',Terminal.Color.RED);
         //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
         //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
