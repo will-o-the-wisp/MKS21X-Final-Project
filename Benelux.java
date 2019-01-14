@@ -156,15 +156,18 @@ public class Benelux{
 	          }
 	          if (key.getCharacter() == '1') {
 	            mode = "Inventory Mode";
+							terminal.clearScreen();
 	          }
 	          if (key.getCharacter() == 'P') {
 	            mode = "Game Mode";
+							terminal.clearScreen();
 	          }
 	        }
 
 	        if (mode.equals("Inventory Mode")) {
 	          if (key.getCharacter() == 'P') {
 	            mode = "Game Mode";
+							terminal.clearScreen();
 	          }
 	          if (key.getCharacter() == '1') {
 	            playerM.getInventory().get(0);
@@ -189,6 +192,7 @@ public class Benelux{
 	          }
 	          if (key.getCharacter() == 'P'){
 	            mode = "Pause Menu";
+							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
 	            eraser(currentX, currentY, terminal);
@@ -227,12 +231,12 @@ public class Benelux{
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
 
 	      }else if (mode.equals("Inventory Mode")) {
-	        putString(1,3,terminal, "Press P to return");
-	        putString(1,3,terminal, ""); //put player inventory in here and somehow make it selectable?
+	        putString(1,5,terminal, "Press P to return");
+	        putString(1,7,terminal, "1. "); 
 	      }else if (mode.equals("Pause Menu")) {
-	        putString(1,3,terminal, "Press Escape to Close");
-	        putString(1,4,terminal, "1. Inventory");
-	        putString(1,5,terminal, "Press P to return to the Game");
+	        putString(1,5,terminal, "Press Escape to Close");
+	        putString(1,6,terminal, "1. Inventory");
+	        putString(1,7,terminal, "Press P to return to the Game");
 	      }
 
 
