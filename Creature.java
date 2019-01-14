@@ -24,22 +24,22 @@ public class Creature extends Interactive{
   public void drawCreature(){
 
   }
-
+/*
   public Entity lookInFront(){
     if (direction.equals("North")) {
-      return grid[getY()+1][getX()]; //direction might not be correct these are based on normal x y axis
+      return getGrid[getY()+1][getX()]; //direction might not be correct these are based on normal x y axis
     }
     else if (direction.equals("East")) {
-      return grid[getY()][getX()+1]; //direction might not be correct
+      return getGrid[getY()][getX()+1]; //direction might not be correct
     }
     else if (direction.equals("South")) {
-      return grid[getY()-1][getX()]; //direction might not be correct
+      return getGrid[getY()-1][getX()]; //direction might not be correct
     }
     else if (direction.equals("West")) {
-      return grid[getY()][getX()-1]; //direction might not be correct
+      return getGrid[getY()][getX()-1]; //direction might not be correct
     }
   }
-
+*/
   public boolean meleeAttack(Creature defender){
     defender.setHP(defender.getHP() - attackCalc(defender));
     this.setHP(this.getHP() - defendCalc(defender));

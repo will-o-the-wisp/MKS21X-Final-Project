@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public class Player extends Creature{
 
-  private List<Equipment> equipment;
-  private List<Item> inventory;
-  private List<Integer> experiences; //current exp, current lvl, needed exp
+  private List<Equipment> equipment = new ArrayList<Equipment>();
+  private List<Item> inventory = new ArrayList<Item>();
+  private List<Integer> experiences = new ArrayList<Integer>(); //current exp, current lvl, needed exp
 
 	public Player(){
 		equipment.clear();

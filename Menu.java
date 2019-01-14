@@ -43,9 +43,10 @@ public class Menu {
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
 
+    Benelux help;
+    Player playerM = new Player(); //will update this accordingly
     boolean running = true;
     String mode = "Start Menu";
-    Player playerM; //will update this accordingly
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
