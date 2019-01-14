@@ -88,10 +88,10 @@ public class Room{
   public int getHeight(){
     return height;
   }
-  public int setTLCX(int x){
+  public void setTLCX(int x){
     topLeftCornerX=x;
   }
-  public int setTLCY(int y){
+  public void setTLCY(int y){
     topLeftCornerY=y;
   }
   /*
