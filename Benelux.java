@@ -50,6 +50,10 @@ public class Benelux{
 		t.putCharacter('!');
 	}
 
+	public static void eraser(int x, int y, Terminal t){
+		t.moveCursor(x,y);
+		t.putCharacter(' ');
+	}
 	public static void drawPlayer(Player p, Terminal t){
 		int x = p.getX();
 		int y = p.getY();
@@ -119,6 +123,8 @@ public class Benelux{
 	    long timer = 0;
 			long tEnd = System.currentTimeMillis();
 			long millis = tEnd - tStart;
+			int currentX = playerM.getX();
+			int currentY = playerM.getY();
 
 	/*
 	    while (mode.equals("Start Menu") && running == true) {
@@ -173,22 +179,22 @@ public class Benelux{
 	            mode = "Pause Menu";
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
+	            eraser(currentX, currentY, terminal);
 	            playerM.changeDirection("South");
 	            playerM.moveForward();
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-	            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
+							eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("West");
 	            playerM.moveForward();
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
+	            eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("North");
 	            playerM.moveForward();
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
+	            eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("East");
 	            playerM.moveForward();
 	          }
@@ -200,6 +206,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
+					eraser(monster1.getX(), monster1.getY(), terminal);
 	        monster1.changeDirection(monster1.getRandomDirection());
 					monster1.moveForward();
 	        //monster2.changeDirection(getRandomDirection());
