@@ -50,11 +50,13 @@ public class Benelux{
 		t.putCharacter('!');
 	}
 
-	public static void drawCharacter(int r, int c, Terminal t, char ca, Terminal.Color hey){
-		t.moveCursor(r,c);
-		t.applyBackgroundColor(hey);
-		t.putCharacter(ca);
+	public static void drawPlayer(Player p, Terminal t){
+		int x = p.getX();
+		int y = p.getY();
+		t.moveCursor(x,y);
+		t.putCharacter('@');
 	}
+
 	public static void main(String[] args) {
 
     Room r = new Room(9, 5, 10, 4);
@@ -62,8 +64,8 @@ public class Benelux{
 		monster1.setX(15);
 		monster1.setY(15);
 		Player playerM = new Player();
-		int x = 10;
-		int y = 10;
+		playerM.setX(10);
+		playerM.setY(10);
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -107,6 +109,7 @@ public class Benelux{
 			*/
       drawRoom(r,terminal);
 			drawMonster(monster1, terminal);
+			drawPlayer(playerM,terminal);
 			//r.drawRoom(terminal);
 
 	    boolean updating = true;
@@ -198,12 +201,11 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 	        monster1.changeDirection(monster1.getRandomDirection());
+					monster1.moveForward();
 	        //monster2.changeDirection(getRandomDirection());
 	        //monster3.changeDirection(getRandomDirection());
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
-	        //benelux stuff
-	        //also how do you exactly pause the game?
 
 	      }else if (mode.equals("Inventory Mode")) {
 	        putString(1,3,terminal, "Press P to return");
