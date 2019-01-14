@@ -1,6 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Random;
 
 public class Floor{
   private List<Room> rooms;
@@ -10,22 +10,34 @@ public class Floor{
   private int exitX;
   private int exitY;
   private char[][] grid;
+  private Random rng; //move to Benelux later (?)
 
   public static void main (String[] args){
-    Room r1 = new Room(1,1,7,5);
-    Room r2 = new Room(8,8,3,4);
     ArrayList<Room> rs = new ArrayList<Room>();
-    rs.add(r1);
-    rs.add(r2);
-    Floor f = new Floor(rs, 1, 1, 1, 1, 30, 20);
+    Random r = new Random();
+    Floor f = new Floor(rs, 35, 20, r);
+    Room r1 = new Room(3, 5);
+    Room r2 = new Room(5, 3);
+    f.addRoom(r1,1,1);
+    f.addRoom(r2,8,4);
+    f.addPath(8,3,6,2,-1,1);
+    f.addAllRooms();
+    f.addEntrance();
+    f.addExit();
     f.printFloor();
   }
-  Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height){
+  //move randFlip to Benelux later(?)
+  public static int randFlip(Random r){
+    if(r.nextInt(2)==0){
+      return 1;
+    }
+    else{
+      return -1;
+    }
+  }
+  Floor(List<Room> _rooms, int width, int height, Random _rng){
     rooms = _rooms;
-    entranceX = enX;
-    entranceY = enY;
-    exitX = exX;
-    exitY = exY;
+    rng = _rng;
     grid = new char[height][width];
     for(int i=0;i<height;i++){
       for(int j=0;j<width;j++){
@@ -56,6 +68,88 @@ public class Floor{
   }
   public char[][] getGrid(){
     return grid;
+  }
+  private boolean addRoom(Room r, int x, int y){
+    int w = r.getWidth();
+    int h = r.getHeight();
+    if(x+w>grid[0].length||y+h>grid.length){
+      return false;
+    }
+    for(int i=0;i<h;i++){
+      for(int j=0;j<w;j++){
+        if(grid[y+i][x+j]!='_'){
+          return false;
+        }
+      }
+    }
+    for(int i=0;i<h;i++){
+      for(int j=0;j<w;j++){
+        grid[y+i][x+j]=r.getGrid()[i][j];
+      }
+    }
+    return true;
+  }
+  private boolean addPath(int x, int y, int w, int h, int xi, int yi){
+    if(x+w*xi>grid[0].length||
+      x+w*xi<-1||
+      y+h*yi>grid.length||
+      y+h*yi<-1||
+      grid[y][x]!='#'||
+      grid[y+yi*(h-1)][x+xi*(w-1)]!='#'||
+      (xi==0&&yi==0)){
+      return false;
+    }
+    for(int i=1;i<h-1;i++){
+      if(grid[y+i*yi][x]!='_'){
+        return false;
+      }
+    }
+    for(int j=1;j<w-1;j++){
+      if(grid[y+yi*(h-1)][x+j*xi]!='_'){
+        return false;
+      }
+    }
+    for(int i=0;i<h-1;i++){
+      grid[y+i*yi][x]='.';
+    }
+    for(int j=0;j<w;j++){
+      grid[y+yi*(h-1)][x+j*xi]='.';
+    }
+    return true;
+  }
+  private void addEntrance(){
+    entranceX = rooms.get(0).getTLCX()+rng.nextInt(rooms.get(0).getWidth()-2)+1;
+    entranceY = rooms.get(0).getTLCY()+rng.nextInt(rooms.get(0).getHeight()-2)+1;
+    grid[entranceY][entranceX]='~';
+  }
+  private void addExit(){
+    exitX = rooms.get(1).getTLCX()+rng.nextInt(rooms.get(1).getWidth()-2)+1;
+    exitY = rooms.get(1).getTLCY()+rng.nextInt(rooms.get(1).getHeight()-2)+1;
+    grid[exitY][exitX]='*';
+  }
+  private void addAllRooms(){
+    int tries=0;
+    int fails=0;
+    while(fails<grid.length*grid[0].length){
+      Room r = new Room(rng.nextInt(grid[0].length*2/5)+6,
+                        rng.nextInt(grid.length*2/5)+6);
+      while(tries<grid.length*grid[0].length){
+        int x=rng.nextInt(grid[0].length);
+        int y=rng.nextInt(grid.length);
+        if(!addRoom(r,x,y)){
+          tries++;
+        }
+        else{
+          r.setTLCX(x);
+          r.setTLCY(y);
+          rooms.add(r);
+          tries=grid.length*grid[0].length;
+          fails=0;
+        }
+      }
+      tries=0;
+      fails++;
+    }
   }
   /*
   private void addRoom(Room r){
