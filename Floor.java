@@ -124,6 +124,9 @@ public class Floor{
   private boolean addRoom(Room r, int x, int y){
     return true;
   }
+  private void addAllRooms(){
+
+  }
   /*
   private void addRoom(Room r){
     int x = r.getTLCX();
