@@ -35,7 +35,21 @@ public class Menu {
     t.applyBackgroundColor(Terminal.Color.DEFAULT);
     t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
+
+  public static void drawCharacter(int r, int c, Terminal t, char ca, Terminal.Color hey){
+    t.moveCursor(r,c);
+    t.applyBackgroundColor(hey);
+    t.putCharacter(ca);
+  }
   public static void main(String[] args) {
+
+    int x = 1;
+    int y = 1;
+    boolean updating = true;
+    String mode = "Game Mode";
+    long lastTime =  System.currentTimeMillis();
+    long currentTime = lastTime;
+    long timer = 0;
 
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
@@ -43,26 +57,32 @@ public class Menu {
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
 
-    boolean running = true;
-    String mode = "Start Menu";
-    Player playerM; //will update this accordingly
-    long lastTime =  System.currentTimeMillis();
-    long currentTime = lastTime;
-    long timer = 0;
 
-
-    while(running){
+/*
+    while (mode.equals("Start Menu") && running == true) {
       Key key = terminal.readInput();
-      while (mode.equals("Start Menu")) {
-        putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");        //save game?
-          if (key.getKind() == Key.Kind.F1) {
+      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
+        if (key != null){
+          if (key.getCharacter() == '1') {
             mode = "Game Mode";
           }
-          if (key.getKind() == Key.Kind.F2) {
+          if (key.getCharacter() == '2') {
             terminal.exitPrivateMode();
             running = false;
           }
+        }
       }
+*/
+    while(updating){
+      terminal.moveCursor(x,y);
+			terminal.applyBackgroundColor(Terminal.Color.WHITE);
+			terminal.applyForegroundColor(Terminal.Color.BLACK);
+			//applySGR(a,b) for multiple modifiers (bold,blink) etc.
+			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+      Key key = terminal.readInput();
 
       if (key != null){
         //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
@@ -71,9 +91,9 @@ public class Menu {
         if(mode.equals("Pause Menu")){
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
-            running = false;
+            updating = false;
           }
-          if (key.getKind() == Key.Kind.F1) {
+          if (key.getCharacter() == '1') {
             mode = "Inventory Mode";
           }
           if (key.getCharacter() == 'P') {
@@ -81,36 +101,39 @@ public class Menu {
           }
         }
 
-        //pausing
-        if (key.getCharacter() == 'P' && mode.equals("Game Mode")) {
-          mode = "Pause Menu";
-          terminal.clearScreen();
-          lastTime = System.currentTimeMillis();
-          currentTime = System.currentTimeMillis();
-        }
-
         if (mode.equals("Inventory Mode")) {
           if (key.getCharacter() == 'P') {
             mode = "Game Mode";
           }
-          if (key.getKind() == Key.Kind.F1) {
+          if (key.getCharacter() == '1') {
             //uses Item and repeat for 10 slots
           }
         }
         if (mode.equals("Game Mode")) {
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            updating = false;
+          }
+          if (key.getCharacter() == 'P'){
+            mode = "Pause Menu";
+          }
           if (key.getKind() == Key.Kind.ArrowDown) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("South");
             playerM.moveForward();
           }
           else if (key.getKind() == Key.Kind.ArrowLeft) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("West");
             playerM.moveForward();
           }
           else if (key.getKind() == Key.Kind.ArrowUp) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("North");
             playerM.moveForward();
           }
           else if (key.getKind() == Key.Kind.ArrowRight) {
+            drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);
             playerM.changeDirection("East");
             playerM.moveForward();
           }
@@ -122,9 +145,11 @@ public class Menu {
         currentTime = System.currentTimeMillis();
         timer += (currentTime -lastTime);//add the amount of time since the last frame.
         //DO GAME STUFF HERE
-        //draw everything, have everything move etc.
-        putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
-        putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
+        monster1.changeDirection(getRandomDirection());
+        //monster2.changeDirection(getRandomDirection());
+        //monster3.changeDirection(getRandomDirection());
+        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
+        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
         //also how do you exactly pause the game?
 
@@ -136,6 +161,7 @@ public class Menu {
         putString(1,4,terminal, "1. Inventory");
         putString(1,5,terminal, "Press P to return to the Game");
       }
+      updating = false;
     }
   }
 }

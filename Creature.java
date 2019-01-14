@@ -2,44 +2,50 @@ public class Creature extends Interactive{
 
   private String direction;
 
-  public void moveForward(){
-    if (direction.equals("North")) {
-      setY(getY()+1); //direction might not be correct these are based on normal x y axis
+  public void moveForward(Floor f){
+    if (direction.equals("North") && !(getY() <= 0)) {
+//      if (lookInFront(f) != '#'){
+        setX(getX()-1); //direction might not be correct
+//      }
     }
-    else if (direction.equals("East")) {
-      setX(getX()+1); //direction might not be correct
+    else if (direction.equals("East") && (getX() < f.getGrid()[0].length-1)) {
+//      if (lookInFront(f) != '#'){
+          setY(getY()+1); //direction might not be correct
+//      }
     }
-    else if (direction.equals("South")) {
-      setY(getY()-1); //direction might not be correct
+    else if (direction.equals("South") && (getY() < f.getGrid().length-1)) {
+//      if (lookInFront(f) != '#'){
+          setX(getX()+1); //direction might not be correct
+//      }
     }
-    else if (direction.equals("West")) {
-      setX(getX()-1); //direction might not be correct
+    else if (direction.equals("West") && !(getX() <= 0)) {
+//      if (lookInFront(f) != '#'){
+          setY(getY()-1); //direction might not be correct these are based on normal x y axis
+//      }
     }
   }
+
 
   public void changeDirection(String dire){
     direction = dire;
   }
-
-  public void drawCreature(){
-
+/*
+  public char lookInFront(Floor f){
+    if (direction.equals("North") && (getY() != 0)) {
+      return f.getGrid()[getY()-1][getX()]; //direction might not be correct these are based on normal x y axis
+    }
+    else if (direction.equals("West") && (getX() != 0)){
+      return f.getGrid()[getY()][getX()-1]; //direction might not be correct
+    }
+    else if (direction.equals("East") && (getX() < f.getGrid()[0].length-1)) {
+      return f.getGrid()[getY()][getX()+1]; //direction might not be correct
+    }
+    else if (direction.equals("South") && (getY() < f.getGrid().length-1)) {
+      return f.getGrid()[getY()+1][getX()]; //direction might not be correct
+    }
+    return '#';
   }
-
-  public Entity lookInFront(){
-    if (direction.equals("North")) {
-      return grid[getY()+1][getX()]; //direction might not be correct these are based on normal x y axis
-    }
-    else if (direction.equals("East")) {
-      return grid[getY()][getX()+1]; //direction might not be correct
-    }
-    else if (direction.equals("South")) {
-      return grid[getY()-1][getX()]; //direction might not be correct
-    }
-    else if (direction.equals("West")) {
-      return grid[getY()][getX()-1]; //direction might not be correct
-    }
-  }
-
+*/
   public boolean meleeAttack(Creature defender){
     defender.setHP(defender.getHP() - attackCalc(defender));
     this.setHP(this.getHP() - defendCalc(defender));
