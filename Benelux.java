@@ -167,7 +167,19 @@ public class Benelux{
 	            mode = "Game Mode";
 	          }
 	          if (key.getCharacter() == '1') {
-	            //uses Item and repeat for 10 slots
+	            playerM.getInventory().get(0);
+	          }
+						if (key.getCharacter() == '2') {
+	            playerM.getInventory().get(1);
+	          }
+						if (key.getCharacter() == '3') {
+	            playerM.getInventory().get(2);
+	          }
+						if (key.getCharacter() == '4') {
+	            playerM.getInventory().get(3);
+	          }
+						if (key.getCharacter() == '5') {
+	            playerM.getInventory().get(4);
 	          }
 	        }
 	        if (mode.equals("Game Mode")) {
