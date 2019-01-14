@@ -91,22 +91,14 @@ public class Menu {
         if(mode.equals("Pause Menu")){
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
-            running = updating;
+            updating = false;
           }
-          if (key.getKind() == Key.Kind.F1) {
+          if (key.getCharacter() == '1') {
             mode = "Inventory Mode";
           }
           if (key.getCharacter() == 'P') {
             mode = "Game Mode";
           }
-        }
-
-        //pausing
-        if (key.getCharacter() == 'P' && mode.equals("Game Mode")) {
-          mode = "Pause Menu";
-          terminal.clearScreen();
-          lastTime = System.currentTimeMillis();
-          currentTime = System.currentTimeMillis();
         }
 
         if (mode.equals("Inventory Mode")) {
@@ -121,6 +113,9 @@ public class Menu {
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
             updating = false;
+          }
+          if (key.getCharacter() == 'P'){
+            mode = "Pause Menu";
           }
           if (key.getKind() == Key.Kind.ArrowDown) {
             drawCharacter(playerM.getX(),playerM.getY(),terminal,' ',Terminal.Color.BLACK);

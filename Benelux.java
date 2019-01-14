@@ -102,7 +102,6 @@ public class Benelux{
       drawRoom(r,terminal);
 			drawMonster(monster1, terminal);
 			//r.drawRoom(terminal);
-			Menu.main(null);
 
 			Key key = terminal.readInput();
 
