@@ -67,6 +67,12 @@ public class Room{
   public int getHeight(){
     return height;
   }
+  public int setTLCX(int x){
+    topLeftCornerX=x;
+  }
+  public int setTLCY(int y){
+    topLeftCornerY=y;
+  }
   /*
   public void drawRoom(Terminal t){
     int x = getTLCX();

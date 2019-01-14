@@ -18,10 +18,9 @@ public class Floor{
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 20, 15, 35, 20, r);
+    Room r1 = new Room(1,2,3,4);
+    f.addRoom(r1,1,2);
     f.printFloor();
-
-
-
   }
 
   Floor(List<Room> _rooms, int enX, int enY, int exX, int exY, int width, int height){
