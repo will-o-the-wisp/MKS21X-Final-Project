@@ -114,6 +114,8 @@ public class Benelux{
 	    long lastTime =  System.currentTimeMillis();
 	    long currentTime = lastTime;
 	    long timer = 0;
+			long tEnd = System.currentTimeMillis();
+			long millis = tEnd - tStart;
 
 	/*
 	    while (mode.equals("Start Menu") && running == true) {
@@ -214,8 +216,7 @@ public class Benelux{
 	    }
 
 			//DO EVEN WHEN NO KEY PRESSED:
-			long tEnd = System.currentTimeMillis();
-			long millis = tEnd - tStart;
+
 			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
 			if(millis/1000 > lastSecond){
 				lastSecond = millis / 1000;
