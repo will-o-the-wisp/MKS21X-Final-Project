@@ -21,8 +21,7 @@ public class Creature extends Interactive{
   public void changeDirection(String dire){
     direction = dire;
   }
-
-
+/*
   public Entity lookInFront(Floor f){
     if (direction.equals("North")) {
       return f.getGrid[getY()+1][getX()]; //direction might not be correct these are based on normal x y axis
@@ -37,7 +36,7 @@ public class Creature extends Interactive{
       return f.getGrid[getY()][getX()-1]; //direction might not be correct
     }
   }
-
+*/
   public boolean meleeAttack(Creature defender){
     defender.setHP(defender.getHP() - attackCalc(defender));
     this.setHP(this.getHP() - defendCalc(defender));
