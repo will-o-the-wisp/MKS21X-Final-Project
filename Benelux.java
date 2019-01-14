@@ -45,7 +45,14 @@ public class Benelux{
       t.putCharacter('#');
     }
   }
-
+	public static void drawFloor(Floor fr, Terminal t){
+		t.moveCursor(0,0);
+		for (int i = 0; i<fr.getGrid().length;i++){
+			for (int o =0; o<fr.getGrid()[i].length;o++){
+				t.putCharacter(getGrid()[i][o]);
+			}
+		}
+	}
 	public static void drawMonster(Monster m, Terminal t){
 		int x = m.getX();
 		int y = m.getY();
@@ -93,6 +100,18 @@ public class Benelux{
 		help.setX(40);
 		help.setY(30);
 		*/
+		ArrayList<Room> rs = new ArrayList<Room>();
+    Random r = new Random();
+    Floor f = new Floor(rs, 35, 20, r);
+    Room r1 = new Room(3, 5);
+    Room r2 = new Room(5, 3);
+    f.addRoom(r1,1,1);
+    f.addRoom(r2,8,4);
+    f.addPath(8,3,6,2,-1,1);
+    f.addAllRooms();
+    f.addEntrance();
+    f.addExit();
+
 		Player playerM = new Player();
 		playerM.setX(10);
 		playerM.setY(10);
@@ -145,8 +164,10 @@ public class Benelux{
 			drawMonster(monster2, terminal);
 			drawMonster(monster3, terminal);
 			drawItem(help, terminal);
-			drawPlayer(playerM,terminal);
 			*/
+			drawFloor(f, terminal);
+			drawPlayer(playerM,terminal);
+
 			//r.drawRoom(terminal);
 
 	    boolean updating = true;
