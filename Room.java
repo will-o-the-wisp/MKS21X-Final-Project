@@ -63,6 +63,10 @@ public class Room{
     for(int i=0;i<width;i++){
       grid[height-1][i]='#';
     }
+    grid[0][0]='@';
+    grid[height-1][0]='@';
+    grid[0][width-1]='@';
+    grid[height-1][width-1]='@';
   }
   public void printGrid(){
     String ans="";
