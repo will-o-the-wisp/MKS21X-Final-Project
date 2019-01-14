@@ -256,6 +256,7 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 					if (millis/1000 > lastSecond){
+						/*
 						eraser(monster1.getX(), monster1.getY(), terminal);
 						monster1.changeDirection(monster1.getRandomDirection());
 						monster1.moveForward(f);
@@ -265,6 +266,7 @@ public class Benelux{
 						eraser(monster3.getX(), monster3.getY(), terminal);
 						monster3.changeDirection(monster3.getRandomDirection());
 						monster3.moveForward(f);
+						*/
 					}
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
