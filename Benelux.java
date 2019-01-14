@@ -207,7 +207,6 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 					eraser(monster1.getX(), monster1.getY(), terminal);
-	        monster1.changeDirection(monster1.getRandomDirection());
 					monster1.moveForward();
 	        //monster2.changeDirection(getRandomDirection());
 	        //monster3.changeDirection(getRandomDirection());
@@ -225,11 +224,12 @@ public class Benelux{
 
 
 			//DO EVEN WHEN NO KEY PRESSED:
+			monster1.changeDirection(monster1.getRandomDirection());
 			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
 			if(millis/1000 > lastSecond){
 				lastSecond = millis / 1000;
 				//one second has passed.
-				putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
+			putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
 
 
 		}
