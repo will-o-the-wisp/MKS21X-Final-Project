@@ -186,12 +186,10 @@ public class Benelux{
 	          if (key.getCharacter() == '1') {
 	            mode = "Inventory Mode";
 							terminal.clearScreen();
-							terminal.exitPrivateMode();
 	          }
 	          if (key.getCharacter() == 'p') {
 	            mode = "Game Mode";
 							terminal.clearScreen();
-							terminal.exitPrivateMode();
 	          }
 	        }
 
@@ -199,7 +197,6 @@ public class Benelux{
 	          if (key.getCharacter() == 'p') {
 	            mode = "Game Mode";
 							terminal.clearScreen();
-							terminal.exitPrivateMode();
 	          }
 	          if (key.getCharacter() == '1') {
 	            playerM.getInventory().get(0);
@@ -225,7 +222,6 @@ public class Benelux{
 	          if (key.getCharacter() == 'p'){
 	            mode = "Pause Menu";
 							terminal.clearScreen();
-							terminal.exitPrivateMode();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
 	            eraser(currentX, currentY, terminal);
