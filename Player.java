@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class Player extends Creature{
 
@@ -15,16 +16,27 @@ public class Player extends Creature{
 	}
 
   public boolean useConsumable(Consumable selected) {
-    List<Integer> newStatsToAdd = selected.getStats();
+    List<Integer> newStatsToAdd = new ArrayList<Integer>();
+    newStatsToAdd.add(selected.getHP());
+    newStatsToAdd.add(selected.getATK());
+    newStatsToAdd.add(selected.getDEF());
+    //duration
     return false;
   }
 
   public boolean equip(Equipment selected){
+    List<Integer> newStatsToAdd = new ArrayList<Integer>();
+    newStatsToAdd.add(selected.getHP());
+    newStatsToAdd.add(selected.getATK());
+    newStatsToAdd.add(selected.getDEF());
+    //eliminate old equipment
     return false;
   }
 
-  public boolean pickUp(){
-    return false;
+  public boolean pickUp(Item other){
+    Item.setStatus(false);
+    setInventory(other);
+    return true;
   }
 
 	public void levelUp() { //need to run this constantly?
@@ -34,7 +46,7 @@ public class Player extends Creature{
 		}
 	}
 
-  public void setEquips(List<Equipment> gear) {
+  public void setEquips(List<Equipment> gear) { //needs to be better here
     equipment = gear;
   }
 
@@ -42,8 +54,8 @@ public class Player extends Creature{
     return equipment;
   }
 
-  public void setInventory(List<Item> itemBag){
-    inventory = itemBag;
+  public void setInventory(Item itemBag){
+    inventory.add(itemBag);
   }
 
   public List<Item> getInventory(){

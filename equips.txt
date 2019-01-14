@@ -1,0 +1,9 @@
+Sword
+Helmet
+Chestplate
+Armguards
+Gloves
+Leggings
+Boots
+Rapier
+Bow

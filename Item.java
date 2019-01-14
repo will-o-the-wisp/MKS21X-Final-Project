@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Item extends Interactive{
 
-  private boolean onTheGround;
+  private static boolean onTheGround;
   private String type; //might not be necesasry
 
   public Item(){
@@ -27,7 +27,7 @@ public class Item extends Interactive{
     return onTheGround;
   }
 
-  public void setStatus(boolean status){
+  public static void setStatus(boolean status){
     onTheGround = status;
   }
 }

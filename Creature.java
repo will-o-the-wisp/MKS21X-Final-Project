@@ -1,7 +1,6 @@
 public class Creature extends Interactive{
 
   private String direction;
-  private int level;
 
   public void moveForward(){
     if (direction.equals("North")) {
@@ -22,11 +21,46 @@ public class Creature extends Interactive{
     direction = dire;
   }
 
-  public boolean meleeAttack(){
-    return false;
+  public void drawCreature(){
+
+  }
+
+  public Entity lookInFront(){
+    if (direction.equals("North")) {
+      return grid[getY()+1][getX()]; //direction might not be correct these are based on normal x y axis
+    }
+    else if (direction.equals("East")) {
+      return grid[getY()][getX()+1]; //direction might not be correct
+    }
+    else if (direction.equals("South")) {
+      return grid[getY()-1][getX()]; //direction might not be correct
+    }
+    else if (direction.equals("West")) {
+      return grid[getY()][getX()-1]; //direction might not be correct
+    }
+  }
+
+  public boolean meleeAttack(Creature defender){
+    defender.setHP(defender.getHP() - attackCalc(defender));
+    this.setHP(this.getHP() - defendCalc(defender));
+    if (this.getHP() <= 0) {
+      this.setAliveStatus(false);
+    }
+    if (defender.getHP() <= 0) {
+      defender.setAliveStatus(false);
+    }
+    return true;
   }
 
   public boolean rangeAttack(){
     return false;
+  }
+
+  public int attackCalc(Creature defender) {
+    return this.getATK() - defender.getDEF();
+  }
+
+  public int defendCalc(Creature defender) {
+    return defender.getATK() - this.getDEF();
   }
 }

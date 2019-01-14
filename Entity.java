@@ -1,3 +1,6 @@
+import java.util.List;
+
+
 /**
   *The group of objects that fill rooms.
 */
@@ -6,16 +9,18 @@ public class Entity {
 
   //Since all entities are placed onto rooms and the terminal, there needs to be distinct positions for each entity.
   private int x;
-  private int y;
+  private int y; //first thing is y
+  private boolean alive;
 
   /**
-    *Default constructor for entity at (1,1)
-    *
+  *Default constructor for entity at (1,1)
+  *
   */
   public Entity(){
     x = 1;
     y = 1;
   }
+
   /**
     *Constructor for entities, has only coordinates.
     *
@@ -71,8 +76,19 @@ public class Entity {
     *@return true if at least one entity is detected, else false if none are detected.
   */
   public boolean checkSurroundings(){
-    //Not sure yet due to how setting up the grid might work
+    //this.getX(), this.getY() -1 //down directions wrong but need to not confuse at moment
+    //this.getX(), this.getY() +1 //up
+    //this.getY(), this.getX() -1 //left
+    //this.getY(), this.getX() +1 //right
     return false;
+  }
+
+  public boolean isAlive(){
+    return alive;
+  }
+
+  public void setAliveStatus(boolean living){
+    alive = living;
   }
 
   private void drawSelf(){
