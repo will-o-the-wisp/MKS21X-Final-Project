@@ -48,7 +48,7 @@ public class Benelux{
   }
 	public static void drawFloor(Floor fr, Terminal t){
 		for (int i = 0; i<fr.getGrid().length;i++){
-			t.moveCursor(i,0);
+			t.moveCursor(0,i);
 			for (int o =0; o<fr.getGrid()[i].length;o++){
 				t.putCharacter(fr.getGrid()[i][o]);
 			}
