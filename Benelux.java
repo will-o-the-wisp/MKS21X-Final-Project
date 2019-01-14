@@ -104,11 +104,6 @@ public class Benelux{
 		ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 35, 20, r);
-    Room r1 = new Room(3, 5);
-    Room r2 = new Room(5, 3);
-    f.addRoom(r1,1,1);
-    f.addRoom(r2,8,4);
-    f.addPath(8,3,6,2,-1,1);
     f.addAllRooms();
     f.addEntrance();
     f.addExit();
