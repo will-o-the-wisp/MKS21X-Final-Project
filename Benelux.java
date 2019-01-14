@@ -30,17 +30,17 @@ public class Benelux{
   public static void drawRoom(Room r, Terminal t){
     int x = r.getTLCX();
     int y = r.getTLCY();
-    t.moveCursor(x,y);
+    t.moveCursor(y,x);
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');
     }
     for(int i=1;i<r.getHeight();i++){
-      t.moveCursor(x,y+i);
+      t.moveCursor(y,x+i);
       t.putCharacter('#');
-      t.moveCursor(x+r.getWidth()-1,y+i);
+      t.moveCursor(y+r.getWidth()-1,x+i);
       t.putCharacter('#');
     }
-    t.moveCursor(x,y+r.getHeight());
+    t.moveCursor(y,x+r.getHeight());
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');
     }
