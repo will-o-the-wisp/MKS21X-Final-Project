@@ -24,6 +24,7 @@ public class Floor{
     f.addAllRooms();
     f.addEntrance();
     f.addExit();
+    f.addAllPaths();
     f.printFloor();
   }
   //move randFlip to Benelux later(?)
@@ -120,8 +121,27 @@ public class Floor{
   private void addAllPaths(){
     int tries=0;
     int fails=0;
-    while(fails<grid.length*grid[0].length){
-      
+    int paths=0;
+    int lim=grid.length*grid[0].length;
+    while(fails<lim&&paths<10){
+        int w=rng.nextInt(6)+2;
+        int h=rng.nextInt(6)+2;
+        int xi=rng.nextInt(3)-1;
+        int yi=rng.nextInt(3)-1;
+        while(tries<grid.length*grid[0].length){
+          int x=rng.nextInt(grid[0].length);
+          int y=rng.nextInt(grid.length);
+          if(!addPath(x,y,w,h,xi,yi)){
+            tries++;
+          }
+          else{
+            tries=lim;
+            paths++;
+            fails=0;
+          }
+        }
+        tries=0;
+        fails++;
     }
   }
   private void addEntrance(){
