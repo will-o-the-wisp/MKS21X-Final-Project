@@ -20,6 +20,7 @@ public class Floor{
     Floor f = new Floor(rs, 20, 15, 35, 20, r);
     Room r1 = new Room(1,2,3,4);
     f.addRoom(r1,1,2);
+    f.addAllRooms();
     f.printFloor();
   }
 
@@ -144,7 +145,21 @@ public class Floor{
     int tries=0;
     int fails=0;
     while(fails<grid.length*grid[0].length){
-      Room r = new Room();
+      Room r = new Room(rng.nextInt(grid[0].length*2/5)+6,
+                        rng.nextInt(grid.length*2/5)+6);
+      while(tries<grid.length*grid[0].length){
+        if(!addRoom(r,rng.nextInt(grid[0].length),
+                      rng.nextInt(grid.length)))
+        {
+          tries++;
+        }
+        else{
+          tries=grid.length*grid[0].length;
+          fails=0;
+        }
+      }
+      tries=0;
+      fails++;
     }
   }
   /*
