@@ -42,10 +42,20 @@ public class Benelux{
       t.putCharacter('#');
     }
   }
+
+	public static void drawMonster(Monster m, Terminal t){
+		int x = m.getX();
+		int y = m.getY();
+		t.moveCursor(x,y);
+		t.putCharacter('!');
+	}
 	public static void main(String[] args) {
 
     Room r = new Room(9, 5, 10, 4);
-
+		Monster monster1 = new Monster("Alpha");
+		monster1.setX(15);
+		monster1.setY(15);
+		Player playerM = new Player();
 		int x = 10;
 		int y = 10;
 
@@ -90,7 +100,9 @@ public class Benelux{
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 
       drawRoom(r,terminal);
+			drawMonster(monster1, terminal);
 			//r.drawRoom(terminal);
+			Menu.main(null);
 
 			Key key = terminal.readInput();
 

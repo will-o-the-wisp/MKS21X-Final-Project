@@ -45,7 +45,6 @@ public class Menu {
 
     int x = 1;
     int y = 1;
-    Player playerM = new Player(); //will update this accordingly
     boolean updating = true;
     String mode = "Game Mode";
     long lastTime =  System.currentTimeMillis();
@@ -167,6 +166,7 @@ public class Menu {
         putString(1,4,terminal, "1. Inventory");
         putString(1,5,terminal, "Press P to return to the Game");
       }
+      updating = false;
     }
   }
 }
