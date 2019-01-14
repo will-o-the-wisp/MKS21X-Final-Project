@@ -222,19 +222,17 @@ public class Benelux{
 	        putString(1,4,terminal, "1. Inventory");
 	        putString(1,5,terminal, "Press P to return to the Game");
 	      }
-	    }
+
 
 			//DO EVEN WHEN NO KEY PRESSED:
-
 			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
 			if(millis/1000 > lastSecond){
 				lastSecond = millis / 1000;
 				//one second has passed.
 				putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
 
-			}
 
-
-		//}
+		}
 	}
+}
 }
