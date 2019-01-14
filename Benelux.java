@@ -70,7 +70,7 @@ public class Benelux{
 		t.putCharacter('?');
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException{
 
     Room r = new Room(9, 5, 10, 4);
 		Monster monster1 = new Monster("Alpha"); //this species needs a random gen, will work on later
