@@ -117,6 +117,13 @@ public class Floor{
     }
     return true;
   }
+  private void addAllPaths(){
+    int tries=0;
+    int fails=0;
+    while(fails<grid.length*grid[0].length){
+      
+    }
+  }
   private void addEntrance(){
     entranceX = rooms.get(0).getTLCX()+rng.nextInt(rooms.get(0).getWidth()-2)+1;
     entranceY = rooms.get(0).getTLCY()+rng.nextInt(rooms.get(0).getHeight()-2)+1;
