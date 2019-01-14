@@ -49,25 +49,25 @@ public class Benelux{
 	public static void drawMonster(Monster m, Terminal t){
 		int x = m.getX();
 		int y = m.getY();
-		t.moveCursor(x,y);
+		t.moveCursor(y,x);
 		t.putCharacter('!');
 	}
 
 	public static void eraser(int x, int y, Terminal t){
-		t.moveCursor(x,y);
+		t.moveCursor(y,x);
 		t.putCharacter(' ');
 	}
 	public static void drawPlayer(Player p, Terminal t){
 		int x = p.getX();
 		int y = p.getY();
-		t.moveCursor(x,y);
+		t.moveCursor(y,x);
 		t.putCharacter('@');
 	}
 
 	public static void drawItem(Item i, Terminal t){
 		int x = i.getX();
 		int y = i.getY();
-		t.moveCursor(x,y);
+		t.moveCursor(y,x);
 		t.putCharacter('?');
 	}
 
