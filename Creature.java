@@ -31,10 +31,10 @@ public class Creature extends Interactive{
   }
 
   public char lookInFront(Floor f){
-    if (direction.equals("North") && getY() != 0) {
+    if (direction.equals("North") && getY() != 1) {
       return f.getGrid()[getY()-1][getX()]; //direction might not be correct these are based on normal x y axis
     }
-    else if (direction.equals("West") && getX() != 0){
+    else if (direction.equals("West") && getX() != 1){
       return f.getGrid()[getY()][getX()-1]; //direction might not be correct
     }
     else if (direction.equals("East") && getX() < f.getGrid()[0].length) {
