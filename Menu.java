@@ -48,7 +48,7 @@ public class Menu {
     Benelux help;
     Player playerM = new Player(); //will update this accordingly
     boolean running = true;
-    String mode = "Start Menu";
+    String mode = "Game Mode";
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
@@ -80,28 +80,9 @@ public class Menu {
 			terminal.applyBackgroundColor(Terminal.Color.WHITE);
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
 			//applySGR(a,b) for multiple modifiers (bold,blink) etc.
-			terminal.applySGR(Terminal.SGR.ENTER_UNDERLINE);
-			terminal.putCharacter('@');
-			//terminal.putCharacter(' ');
 			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
 			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 			terminal.applySGR(Terminal.SGR.RESET_ALL);
-
-
-			terminal.moveCursor(size.getColumns()-5,5);
-			terminal.applyBackgroundColor(Terminal.Color.RED);
-			terminal.applyForegroundColor(Terminal.Color.YELLOW);
-			terminal.applySGR(Terminal.SGR.ENTER_BOLD);
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.moveCursor(size.getColumns()-5,6);
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
 
       Key key = terminal.readInput();
 
