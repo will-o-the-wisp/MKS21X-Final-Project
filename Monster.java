@@ -7,10 +7,10 @@ public class Monster extends Creature{
   public Monster(String s) {
     species = s;
   }
-  
+
   public String getRandomDirection(){
     Random seed = new Random();
-    int rands = seed.nextInt() % 2;
+    int rands = seed.nextInt() % 3;
     if (rands == 0) {
       return "North";
     }
