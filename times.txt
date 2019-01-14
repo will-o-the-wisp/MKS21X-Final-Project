@@ -1,0 +1,7 @@
+Health Potion
+Defense Potion
+Attack Potion
+Steak
+Pork
+Bacon
+Cake
