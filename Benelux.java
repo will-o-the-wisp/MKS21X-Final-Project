@@ -61,18 +61,28 @@ public class Benelux{
 		t.putCharacter('@');
 	}
 
+	public static void drawItem(Item i, Terminal t){
+		int x = i.getX();
+		int y = i.getY();
+		t.moveCursor(x,y);
+		t.putCharacter('?');
+	}
+
 	public static void main(String[] args) {
 
     Room r = new Room(9, 5, 10, 4);
-		Monster monster1 = new Monster("Alpha");
+		Monster monster1 = new Monster("Alpha"); //this species needs a random gen, will work on later
 		monster1.setX(15);
 		monster1.setY(15);
 		Monster monster2 = new Monster("Alpha");
 		monster2.setX(20);
-		monster2.setY(15);
+		monster2.setY(45);
 		Monster monster3 = new Monster("Alpha");
 		monster3.setX(30);
-		monster3.setY(15);
+		monster3.setY(50);
+		Item help = new Consumable();
+		help.setX(40);
+		help.setY(30);
 		Player playerM = new Player();
 		playerM.setX(10);
 		playerM.setY(10);
@@ -121,6 +131,7 @@ public class Benelux{
 			drawMonster(monster1, terminal);
 			drawMonster(monster2, terminal);
 			drawMonster(monster3, terminal);
+			drawItem(help, terminal);
 			drawPlayer(playerM,terminal);
 			//r.drawRoom(terminal);
 
