@@ -158,14 +158,14 @@ public class Benelux{
 	            mode = "Inventory Mode";
 							terminal.clearScreen();
 	          }
-	          if (key.getCharacter() == 'P') {
+	          if (key.getCharacter() == 'p') {
 	            mode = "Game Mode";
 							terminal.clearScreen();
 	          }
 	        }
 
 	        if (mode.equals("Inventory Mode")) {
-	          if (key.getCharacter() == 'P') {
+	          if (key.getCharacter() == 'p') {
 	            mode = "Game Mode";
 							terminal.clearScreen();
 	          }
@@ -190,7 +190,7 @@ public class Benelux{
 	            terminal.exitPrivateMode();
 	            running = false;
 	          }
-	          if (key.getCharacter() == 'P'){
+	          if (key.getCharacter() == 'p'){
 	            mode = "Pause Menu";
 							terminal.clearScreen();
 	          }
@@ -232,7 +232,7 @@ public class Benelux{
 
 	      }else if (mode.equals("Inventory Mode")) {
 	        putString(1,5,terminal, "Press P to return");
-	        putString(1,7,terminal, "1. "); 
+	        putString(1,7,terminal, "1. ");
 	      }else if (mode.equals("Pause Menu")) {
 	        putString(1,5,terminal, "Press Escape to Close");
 	        putString(1,6,terminal, "1. Inventory");
