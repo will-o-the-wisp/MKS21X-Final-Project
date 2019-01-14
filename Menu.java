@@ -55,10 +55,10 @@ public class Menu {
       Key key = terminal.readInput();
       while (mode.equals("Start Menu")) {
         putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");        //save game?
-          if (key.getKind() == Key.Kind.One) {
+          if (key.getKind() == Key.Kind.F1) {
             mode = "Game Mode";
           }
-          if (key.getKind() == Key.Kind.Two) {
+          if (key.getKind() == Key.Kind.F2) {
             terminal.exitPrivateMode();
             running = false;
           }
@@ -73,7 +73,7 @@ public class Menu {
             terminal.exitPrivateMode();
             running = false;
           }
-          if (key.getKind() == Key.Kind.One) {
+          if (key.getKind() == Key.Kind.F1) {
             mode = "Inventory Mode";
           }
           if (key.getCharacter() == 'P') {
@@ -93,19 +93,11 @@ public class Menu {
           if (key.getCharacter() == 'P') {
             mode = "Game Mode";
           }
-          if (key.getKind() == Key.Kind.One) {
+          if (key.getKind() == Key.Kind.F1) {
             //uses Item and repeat for 10 slots
           }
         }
-      }
-
-      if(mode.equals("Game Mode")){
-        lastTime = currentTime;
-        currentTime = System.currentTimeMillis();
-        timer += (currentTime -lastTime);//add the amount of time since the last frame.
-        //DO GAME STUFF HERE
-        //draw everything, have everything move etc.
-        if (key != null) {
+        if (mode.equals("Game Mode")) {
           if (key.getKind() == Key.Kind.ArrowDown) {
             playerM.changeDirection("South");
             playerM.moveForward();
@@ -122,8 +114,15 @@ public class Menu {
             playerM.changeDirection("East");
             playerM.moveForward();
           }
-
         }
+      }
+
+      if(mode.equals("Game Mode")){
+        lastTime = currentTime;
+        currentTime = System.currentTimeMillis();
+        timer += (currentTime -lastTime);//add the amount of time since the last frame.
+        //DO GAME STUFF HERE
+        //draw everything, have everything move etc.
         putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
         putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
         //benelux stuff
