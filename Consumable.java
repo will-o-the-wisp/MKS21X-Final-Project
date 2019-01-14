@@ -12,7 +12,7 @@ public class Consumable extends Item{
   private List<String> types = new ArrayList<String>();
   private Random seed;
 
-  public Consumable(){
+  public Consumable() throws FileNotFoundException{
     //this.super(getRandomStats());  stat setting?
     Scanner into = new Scanner(new File("times.txt"));
     while (into.hasNext()) {

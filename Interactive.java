@@ -1,8 +1,9 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class Interactive extends Entity{
 
-  private List<Integer> stats;	//Health, Attack, Defense
+  private List<Integer> stats = new ArrayList<Integer>();	//Health, Attack, Defense
 
 	public Interactive(){				//Basic statline
 		stats.add(10);				//will loop later
@@ -33,7 +34,7 @@ public class Interactive extends Entity{
   }
 
   public void setStats(List<Integer> newStat){
-    stats = newStat; 
+    stats = newStat;
   }
 
   public void setHP(int newStat){

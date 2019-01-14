@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public class Player extends Creature{
 
-  private List<Equipment> equipment;
-  private List<Item> inventory;
-  private List<Integer> experiences; //current exp, current lvl, needed exp
+  private List<Equipment> equipment = new ArrayList<Equipment>();
+  private List<Item> inventory = new ArrayList<Item>();
+  private List<Integer> experiences = new ArrayList<Integer>(); //current exp, current lvl, needed exp
 
 	public Player(){
 		equipment.clear();
@@ -13,6 +13,8 @@ public class Player extends Creature{
 		experiences.add(0); //not sure how add all works with collection
     experiences.add(1);
     experiences.add(100);
+    setX(10);
+    setY(10);
 	}
 
   public boolean useConsumable(Consumable selected) {
@@ -68,5 +70,9 @@ public class Player extends Creature{
 
   public List<Integer> getExp() {
     return experiences;
+  }
+
+  public void drawSelf(){
+    
   }
 }

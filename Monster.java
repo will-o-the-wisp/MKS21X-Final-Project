@@ -4,9 +4,13 @@ public class Monster extends Creature{
 
   private String species;
 
+  public Monster(String s) {
+    species = s;
+  }
+
   public String getRandomDirection(){
     Random seed = new Random();
-    int rands = seed.nextInt() % 4;
+    int rands = seed.nextInt() % 3;
     if (rands == 0) {
       return "North";
     }
@@ -20,9 +24,7 @@ public class Monster extends Creature{
   }
 
   public void moveToPlayer(){
-    
-  }
-  public void setRandomMovement(){
 
   }
+
 }
