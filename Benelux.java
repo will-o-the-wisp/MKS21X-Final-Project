@@ -67,6 +67,12 @@ public class Benelux{
 		Monster monster1 = new Monster("Alpha");
 		monster1.setX(15);
 		monster1.setY(15);
+		Monster monster2 = new Monster("Alpha");
+		monster2.setX(20);
+		monster2.setY(15);
+		Monster monster3 = new Monster("Alpha");
+		monster3.setX(30);
+		monster3.setY(15);
 		Player playerM = new Player();
 		playerM.setX(10);
 		playerM.setY(10);
@@ -113,6 +119,8 @@ public class Benelux{
 			*/
       drawRoom(r,terminal);
 			drawMonster(monster1, terminal);
+			drawMonster(monster2, terminal);
+			drawMonster(monster3, terminal);
 			drawPlayer(playerM,terminal);
 			//r.drawRoom(terminal);
 
@@ -225,8 +233,12 @@ public class Benelux{
 					eraser(monster1.getX(), monster1.getY(), terminal);
 					monster1.changeDirection(monster1.getRandomDirection());
 					monster1.moveForward();
-	        //monster2.changeDirection(getRandomDirection());
-	        //monster3.changeDirection(getRandomDirection());
+					eraser(monster2.getX(), monster2.getY(), terminal);
+	        monster2.changeDirection(monster2.getRandomDirection());
+					monster2.moveForward();
+					eraser(monster3.getX(), monster3.getY(), terminal);
+	        monster3.changeDirection(monster3.getRandomDirection());
+					monster3.moveForward();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
 
