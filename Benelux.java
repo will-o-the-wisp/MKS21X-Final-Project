@@ -102,20 +102,12 @@ public class Benelux{
       drawRoom(r,terminal);
 			drawMonster(monster1, terminal);
 			//r.drawRoom(terminal);
-			int x = 1;
-	    int y = 1;
+			
 	    boolean updating = true;
 	    String mode = "Game Mode";
 	    long lastTime =  System.currentTimeMillis();
 	    long currentTime = lastTime;
 	    long timer = 0;
-
-	    Terminal terminal = TerminalFacade.createTextTerminal();
-	    terminal.enterPrivateMode();
-
-	    TerminalSize size = terminal.getTerminalSize();
-	    terminal.setCursorVisible(false);
-
 
 	/*
 	    while (mode.equals("Start Menu") && running == true) {
