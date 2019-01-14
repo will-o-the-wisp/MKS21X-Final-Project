@@ -2,18 +2,26 @@ public class Creature extends Interactive{
 
   private String direction;
 
-  public void moveForward(){
+  public void moveForward(Floor f){
     if (direction.equals("North")) {
-      setY(getY()-1); //direction might not be correct these are based on normal x y axis
+      if (lookInFront(f) != '#'){
+        setY(getY()-1); //direction might not be correct these are based on normal x y axis
+      }
     }
     else if (direction.equals("East")) {
-      setX(getX()+1); //direction might not be correct
+      if (lookInFront(f) != '#'){
+          setX(getX()+1); //direction might not be correct
+      }
     }
     else if (direction.equals("South")) {
-      setY(getY()+1); //direction might not be correct
+      if (lookInFront(f) != '#'){
+          setY(getY()+1); //direction might not be correct
+      }
     }
     else if (direction.equals("West")) {
-      setX(getX()-1); //direction might not be correct
+      if (lookInFront(f) != '#'){
+          setX(getX()-1); //direction might not be correct
+      }
     }
   }
 
@@ -21,22 +29,22 @@ public class Creature extends Interactive{
   public void changeDirection(String dire){
     direction = dire;
   }
-/*
-  public Entity lookInFront(Floor f){
+
+  public char lookInFront(Floor f){
     if (direction.equals("North")) {
-      return f.getGrid[getY()+1][getX()]; //direction might not be correct these are based on normal x y axis
+      return f.getGrid()[getY()+1][getX()]; //direction might not be correct these are based on normal x y axis
     }
     else if (direction.equals("East")) {
-      return f.getGrid[getY()][getX()+1]; //direction might not be correct
+      return f.getGrid()[getY()][getX()+1]; //direction might not be correct
     }
     else if (direction.equals("South")) {
-      return f.getGrid[getY()-1][getX()]; //direction might not be correct
+      return f.getGrid()[getY()-1][getX()]; //direction might not be correct
     }
     else if (direction.equals("West")) {
-      return f.getGrid[getY()][getX()-1]; //direction might not be correct
+      return f.getGrid()[getY()][getX()-1]; //direction might not be correct
     }
   }
-*/
+
   public boolean meleeAttack(Creature defender){
     defender.setHP(defender.getHP() - attackCalc(defender));
     this.setHP(this.getHP() - defendCalc(defender));
