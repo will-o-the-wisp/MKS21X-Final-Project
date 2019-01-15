@@ -18,30 +18,31 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
+import com.googlecode.lanterna.screen.Screen;
 
 
 public class Benelux{
 
-	public static void putString(int r, int c,Terminal t, String s){
+	public static void putString(int r, int c,Terminal t, String str){
 		t.moveCursor(r,c);
-		for(int i = 0; i < s.length();i++){
-			t.putCharacter(s.charAt(i));
+		for(int i = 0; i < str.length();i++){
+			t.putCharacter(str.charAt(i));
 		}
 	}
   public static void drawRoom(Room r, Terminal t){
     int x = r.getTLCX();
     int y = r.getTLCY();
-    t.moveCursor(y,x);
+    t.moveCursor(x,y);
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');
     }
     for(int i=1;i<r.getHeight();i++){
-      t.moveCursor(y,x+i);
+      t.moveCursor(x,y+i);
       t.putCharacter('#');
-      t.moveCursor(y+r.getWidth()-1,x+i);
+      t.moveCursor(x+r.getWidth()-1,y+i);
       t.putCharacter('#');
     }
-    t.moveCursor(y,x+r.getHeight());
+    t.moveCursor(x,y+r.getHeight());
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');
     }
@@ -54,53 +55,29 @@ public class Benelux{
 			}
 		}
 	}
-	public static void drawMonster(Monster m, Terminal t){
+	public static void drawMonster(Monster m){
 		int x = m.getX();
 		int y = m.getY();
-		t.moveCursor(x,y);
-		t.putCharacter('!');
+		s.putString(x,y,terminal," ! ");
 	}
 
-	public static void eraser(int x, int y, Terminal t){
-		t.moveCursor(x,y);
-		t.putCharacter('.');
+	public static void eraser(int x, int y){
+		s.putString(x,y,terminal, " . ");
 	}
-	public static void drawPlayer(Player p, Terminal t){
+	public static void drawPlayer(Player p){
 		int x = p.getX();
 		int y = p.getY();
-		t.moveCursor(x,y);
-		t.putCharacter('$');
+		s.putString(x, y, terminal," $ ");
 	}
 
-	public static void drawItem(Item i, Terminal t){
+	public static void drawItem(Item i){
 		int x = i.getX();
 		int y = i.getY();
-		t.moveCursor(x,y);
-		t.putCharacter('?');
+		s.putString(x,y,terminal, " ? ");
 	}
 
 	public static void main(String[] args) throws FileNotFoundException{
-		/*
-		Room r1 = new Room(1,1,7,5);
-    Room r2 = new Room(8,8,3,4);
-    ArrayList<Room> rs = new ArrayList<Room>();
-    rs.add(r1);
-    rs.add(r2);
-		Floor f = new Floor(rs, 1, 1, 1, 1, 30, 20);
-    Room r = new Room(9, 5, 10, 4);
-		Monster monster1 = new Monster("Alpha"); //this species needs a random gen, will work on later
-		monster1.setX(15);
-		monster1.setY(15);
-		Monster monster2 = new Monster("Alpha");
-		monster2.setX(20);
-		monster2.setY(45);
-		Monster monster3 = new Monster("Alpha");
-		monster3.setX(30);
-		monster3.setY(50);
-		Consumable help = new Consumable();
-		help.setX(40);
-		help.setY(30);
-		*/
+
 		ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 35, 20, r);
@@ -108,11 +85,15 @@ public class Benelux{
     f.addEntrance();
     f.addExit();
 		f.addAllPaths();
+		ArrayList<Monster> mn =new ArrayList<Monster>();
+		int numbers = r.nextInt(10);
+
 		Player playerM = new Player();
 		playerM.setX(f.getEntranceX());
 		playerM.setY(f.getEntranceY());
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
+		Screen s = new Screen(terminal);
 		terminal.enterPrivateMode();
 
 		TerminalSize size = terminal.getTerminalSize();
@@ -124,59 +105,12 @@ public class Benelux{
 		long lastSecond = 0;
 
 		drawFloor(f, terminal);
-		drawPlayer(playerM,terminal);
+		drawPlayer(playerM);
 
-
-			/*
-			terminal.moveCursor(x,y);
-			terminal.applyBackgroundColor(Terminal.Color.WHITE);
-			terminal.applyForegroundColor(Terminal.Color.BLACK);
-			//applySGR(a,b) for multiple modifiers (bold,blink) etc.
-			terminal.applySGR(Terminal.SGR.ENTER_UNDERLINE);
-			terminal.putCharacter('x');
-			//terminal.putCharacter(' ');
-			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-			terminal.applySGR(Terminal.SGR.RESET_ALL);
-
-			terminal.moveCursor(size.getColumns()-5,5);
-			terminal.applyBackgroundColor(Terminal.Color.RED);
-			terminal.applyForegroundColor(Terminal.Color.YELLOW);
-			terminal.applySGR(Terminal.SGR.ENTER_BOLD);
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter('0');
-			terminal.putCharacter(' ');
-			terminal.moveCursor(size.getColumns()-5,6);
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-			*/
-			/*
-      drawRoom(r,terminal);
-			drawRoom(r1, terminal);
-			drawRoom(r2, terminal);
-			drawMonster(monster1, terminal);
-			drawMonster(monster2, terminal);
-			drawMonster(monster3, terminal);
-			drawItem(help, terminal);
-			*/
-
-			//r.drawRoom(terminal);
-
+			int depth=0;
 	    boolean updating = true;
 	    String mode = "Game Mode";
 	    long timer = 0;
-
-
-			//putString(40,40,terminal,currentX+"X");
-			//putString(45,45,terminal,currentY+"Y");
-
-
-
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
@@ -256,28 +190,27 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            eraser(currentX, currentY, terminal);
+	            eraser(currentX, currentY);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
-							drawPlayer(playerM,terminal);
+
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							eraser(currentX,currentY, terminal);
+							eraser(currentX,currentY);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
-							drawPlayer(playerM,terminal);
+
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            eraser(currentX,currentY, terminal);
+	            eraser(currentX,currentY);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
-							drawPlayer(playerM,terminal);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            eraser(currentX,currentY, terminal);
+	            eraser(currentX,currentY);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
-							drawPlayer(playerM,terminal);
+
 	          }
 	        }
 	      }
@@ -288,17 +221,8 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 					if (millis/1000 > lastSecond){
-						/*
-						eraser(monster1.getX(), monster1.getY(), terminal);
-						monster1.changeDirection(monster1.getRandomDirection());
-						monster1.moveForward(f);
-						eraser(monster2.getX(), monster2.getY(), terminal);
-						monster2.changeDirection(monster2.getRandomDirection());
-						monster2.moveForward(f);
-						eraser(monster3.getX(), monster3.getY(), terminal);
-						monster3.changeDirection(monster3.getRandomDirection());
-						monster3.moveForward(f);
-						*/
+						drawPlayer(playerM);
+
 					}
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
@@ -322,6 +246,7 @@ public class Benelux{
 			putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
 			}
 			*/
+			s.refresh();
 		}
 	}
 }
