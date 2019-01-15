@@ -63,7 +63,7 @@ public class Benelux{
 
 	public static void eraser(int x, int y, Terminal t){
 		t.moveCursor(x,y);
-		t.putCharacter(' ');
+		t.putCharacter('.');
 	}
 	public static void drawPlayer(Player p, Terminal t){
 		int x = p.getX();
@@ -124,7 +124,7 @@ public class Benelux{
 		long lastSecond = 0;
 
 		drawFloor(f, terminal);
-		
+
 		while(running){
 			/*
 			terminal.moveCursor(x,y);
