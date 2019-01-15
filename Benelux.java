@@ -109,8 +109,8 @@ public class Benelux{
     f.addExit();
 		f.addAllPaths();
 		Player playerM = new Player();
-		playerM.setX(10);
-		playerM.setY(10);
+		playerM.setX(f.getEntranceX());
+		playerM.setY(f.getEntranceY());
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
