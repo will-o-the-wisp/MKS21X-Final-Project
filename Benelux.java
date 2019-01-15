@@ -126,7 +126,7 @@ public class Benelux{
 		drawFloor(f, terminal);
 		drawPlayer(playerM,terminal);
 
-		while(running){
+
 			/*
 			terminal.moveCursor(x,y);
 			terminal.applyBackgroundColor(Terminal.Color.WHITE);
@@ -169,15 +169,12 @@ public class Benelux{
 
 	    boolean updating = true;
 	    String mode = "Game Mode";
-	    long lastTime =  System.currentTimeMillis();
-	    long currentTime = lastTime;
+
 	    long timer = 0;
-			long tEnd = System.currentTimeMillis();
-			long millis = tEnd - tStart;
-			int currentX = playerM.getX();
-			int currentY = playerM.getY();
-			putString(40,40,terminal,currentX+"X");
-			putString(45,45,terminal,currentY+"Y");
+
+
+			//putString(40,40,terminal,currentX+"X");
+			//putString(45,45,terminal,currentY+"Y");
 
 	/*
 	    while (mode.equals("Start Menu") && running == true) {
@@ -195,7 +192,13 @@ public class Benelux{
 	      }
 	*/
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
-
+			while(running){
+				long lastTime =  System.currentTimeMillis();
+		    long currentTime = lastTime;
+				int currentX = playerM.getX();
+				int currentY = playerM.getY();
+				long tEnd = System.currentTimeMillis();
+				long millis = tEnd - tStart;
 	      Key key = terminal.readInput();
 
 	      if (key != null){
