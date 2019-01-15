@@ -168,29 +168,16 @@ public class Benelux{
 			//r.drawRoom(terminal);
 
 	    boolean updating = true;
-	    String mode = "Game Mode";
-
+	    String mode = "Start Menu";
 	    long timer = 0;
 
 
 			//putString(40,40,terminal,currentX+"X");
 			//putString(45,45,terminal,currentY+"Y");
 
-	/*
-	    while (mode.equals("Start Menu") && running == true) {
-	      Key key = terminal.readInput();
-	      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
-	        if (key != null){
-	          if (key.getCharacter() == '1') {
-	            mode = "Game Mode";
-	          }
-	          if (key.getCharacter() == '2') {
-	            terminal.exitPrivateMode();
-	            running = false;
-	          }
-	        }
-	      }
-	*/
+
+
+
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
@@ -201,6 +188,24 @@ public class Benelux{
 				long millis = tEnd - tStart;
 	      Key key = terminal.readInput();
 
+				while (mode.equals("Start Menu") && running == true) {
+		      Key key = terminal.readInput();
+		      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
+		        if (key != null){
+		          if (key.getCharacter() == '1') {
+		            mode = "Game Mode";
+								terminal.clearScreen();
+		          }
+		          if (key.getCharacter() == '2') {
+		            terminal.exitPrivateMode();
+		            running = false;
+		          }
+							if (key.getKind() == Key.Kind.Escape) {
+								terminal.exitPrivateMode();
+								running = false;
+							}
+		        }
+		      }
 	      if (key != null){
 	        //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
 
