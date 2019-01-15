@@ -20,11 +20,12 @@ public class Floor{
     Room r2 = new Room(5, 3);
     f.addRoom(r1,1,1);
     f.addRoom(r2,7,2);
+    f.addPath(3,2,5,1,1,0);
     f.addAllRooms();
     f.addEntrance();
     f.addExit();
     f.addAllPaths();
-    f.printFloor();
+    f.printFloorDebug();
   }
   //move randFlip to Benelux later(?)
   public static int randFlip(Random r){
@@ -115,7 +116,7 @@ public class Floor{
       (xi==0&&yi==0)){
       return false;
     }
-    for(int i=1;i<h-1;i++){
+    for(int i=1;i<h;i++){
       if(grid[y+i*yi][x]!='_'){
         return false;
       }
@@ -126,10 +127,10 @@ public class Floor{
       }
     }
     for(int i=0;i<h;i++){
-      grid[y+i*yi][x]='x';
+      grid[y+i*yi][x]='.';
     }
     for(int j=0;j<w;j++){
-      grid[y+yi*(h-1)][x+j*xi]='x';
+      grid[y+yi*(h-1)][x+j*xi]='.';
     }
     return true;
   }
