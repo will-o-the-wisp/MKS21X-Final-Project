@@ -123,6 +123,8 @@ public class Benelux{
 		long tStart = System.currentTimeMillis();
 		long lastSecond = 0;
 
+		drawFloor(f, terminal);
+		
 		while(running){
 			/*
 			terminal.moveCursor(x,y);
@@ -161,7 +163,7 @@ public class Benelux{
 			drawMonster(monster3, terminal);
 			drawItem(help, terminal);
 			*/
-			drawFloor(f, terminal); //this should not be in running, will seriously lag
+
 			drawPlayer(playerM,terminal);
 
 			//r.drawRoom(terminal);
