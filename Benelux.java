@@ -189,7 +189,6 @@ public class Benelux{
 	      Key key = terminal.readInput();
 
 				while (mode.equals("Start Menu") && running == true) {
-		      Key key = terminal.readInput();
 		      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
 		        if (key != null){
 		          if (key.getCharacter() == '1') {
