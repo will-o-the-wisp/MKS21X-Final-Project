@@ -35,3 +35,23 @@ Kenson Li
 
 Kenson Li
   added Floor entrances and exits, started randomization of Floors and Rooms
+
+1/10/19
+
+BC
+  various touch ups to entity classes such as making items not have "alive" boolean, adding txt files to be read from, atk + def calcs
+
+1/11/19
+
+BC
+  Test Day oops
+
+1/13/19
+
+BC
+  inputs for terminal layout, need touch ups to various modes, movement and placement of an entity is okay
+
+1/14/19
+
+BC
+  fix for wall detection, player starts at entrance, no longer flickers due to floor being drawn once, still lags for some reason probably need better screen work, also added get methods for exit and entrance
