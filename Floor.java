@@ -18,6 +18,8 @@ public class Floor{
     Floor f = new Floor(rs, 35, 20, r);
     Room r1 = new Room(3, 5);
     Room r2 = new Room(5, 3);
+    f.addRoom(r1,1,1);
+    f.addRoom(r2,7,2);
     f.addAllRooms();
     f.addEntrance();
     f.addExit();
@@ -70,6 +72,16 @@ public class Floor{
     }
     System.out.println(ans);
   }
+  private void printFloorDebug(){
+    String ans="";
+    for(int i=0;i<grid.length;i++){
+      for(int j=0;j<grid[0].length;j++){
+        ans+=grid[i][j]+" ";
+      }
+      ans+="\n";
+    }
+    System.out.println(ans);
+  }
   public char[][] getGrid(){
     return grid;
   }
@@ -114,10 +126,10 @@ public class Floor{
       }
     }
     for(int i=0;i<h;i++){
-      grid[y+i*yi][x]='.';
+      grid[y+i*yi][x]='x';
     }
     for(int j=0;j<w;j++){
-      grid[y+yi*(h-1)][x+j*xi]='.';
+      grid[y+yi*(h-1)][x+j*xi]='x';
     }
     return true;
   }
