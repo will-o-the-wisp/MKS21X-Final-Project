@@ -168,7 +168,7 @@ public class Benelux{
 			//r.drawRoom(terminal);
 
 	    boolean updating = true;
-	    String mode = "Start Menu";
+	    String mode = "Game Mode";
 	    long timer = 0;
 
 
@@ -187,7 +187,7 @@ public class Benelux{
 				long tEnd = System.currentTimeMillis();
 				long millis = tEnd - tStart;
 	      Key key = terminal.readInput();
-
+				/*
 				while (mode.equals("Start Menu") && running == true) {
 		      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
 		        if (key != null){
@@ -205,6 +205,7 @@ public class Benelux{
 							}
 		        }
 		      }
+				*/
 	      if (key != null){
 	        //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
 
