@@ -70,6 +70,19 @@ public class Floor{
     }
     System.out.println(ans);
   }
+  //get methods
+  public int getEntranceX(){
+    return entranceX;
+  }
+  public int getEntranceY(){
+    return entranceY;
+  }
+  public int getExitX(){
+    return exitX;
+  }
+  public int getExitY(){
+    return exitY;
+  }
   public char[][] getGrid(){
     return grid;
   }
