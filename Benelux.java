@@ -124,6 +124,7 @@ public class Benelux{
 		long lastSecond = 0;
 
 		drawFloor(f, terminal);
+		drawPlayer(playerM,terminal);
 
 		while(running){
 			/*
@@ -163,8 +164,6 @@ public class Benelux{
 			drawMonster(monster3, terminal);
 			drawItem(help, terminal);
 			*/
-
-			drawPlayer(playerM,terminal);
 
 			//r.drawRoom(terminal);
 
@@ -252,21 +251,25 @@ public class Benelux{
 	            eraser(currentX, currentY, terminal);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
+							drawPlayer(playerM,terminal);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
 							eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
+							drawPlayer(playerM,terminal);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
 	            eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
+							drawPlayer(playerM,terminal);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
 	            eraser(currentX,currentY, terminal);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
+							drawPlayer(playerM,terminal);
 	          }
 	        }
 	      }
