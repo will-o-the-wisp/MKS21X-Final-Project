@@ -21,7 +21,7 @@ public class Floor{
     f.addAllRooms();
     f.addEntrance();
     f.addExit();
-    //f.addAllPaths();
+    f.addAllPaths();
     f.addAllPaths();
     f.printFloor();
   }
@@ -104,7 +104,7 @@ public class Floor{
     }
     return true;
   }
-  public boolean addPath(int x, int y, int w, int h, int xi, int yi){
+  public boolean addPath(int x, int y, int w, int h, int xi, int yi, Room r){
     if(x+w*xi>grid[0].length-1||
       x+w*xi<0||
       y+h*yi>grid.length-1||
@@ -112,6 +112,8 @@ public class Floor{
       y+h*yi<0||
       grid[y][x]!='#'||
       grid[y+yi*(h-1)][x+xi*(w-1)]!='#'||
+      ((x+xi*(w-1)>=r.getTLCX()&&x+xi*(w-1)<=r.getTLCX()+r.getWidth()-1)&&
+      (y+yi*(h-1)>=r.getTLCY()&&y+yi*(h-1)<=r.getTLCY()+r.getHeight()-1))||
       (xi==0&&yi==0)){
       return false;
     }
@@ -146,7 +148,116 @@ public class Floor{
     int y;
     int xi;
     int yi;
-    while(fails<lim&&roomsToConnect.size()>0&&paths<rooms.size()*5){
+    while(fails<lim&&paths<rooms.size()/2){
+          Room r=rooms.get(0);
+          while(tries<r.getWidth()*r.getHeight()*5){
+            int rint=rng.nextInt(4);
+            int w=rng.nextInt(6)+1;
+            int h=rng.nextInt(5)+1;
+            if(h==1){
+              xi=randFlip(rng);
+            }
+            else{
+              xi=rng.nextInt(3)-1;
+            }
+            if(w==1){
+              yi=randFlip(rng);
+            }
+            else{
+              yi=rng.nextInt(3)-1;
+            }
+            if(rint==0){
+              x=r.getTLCX()+rng.nextInt(r.getWidth()-2)+1;
+              y=r.getTLCY();
+              yi=Floor.randFlip(rng);
+            }
+            else if(rint==1){
+              x=r.getTLCX()+rng.nextInt(r.getWidth()-2)+1;
+              y=r.getTLCY()+r.getHeight()-1;
+              yi=Floor.randFlip(rng);
+            }
+            else if(rint==2){
+              x=r.getTLCX();
+              y=r.getTLCY()+rng.nextInt(r.getHeight()-2)+1;
+              xi=Floor.randFlip(rng);
+            }
+            else{
+              x=r.getTLCX()+r.getWidth()-1;
+              y=r.getTLCY()+rng.nextInt(r.getHeight()-2)+1;
+              xi=Floor.randFlip(rng);
+            }
+            if(!addPath(x,y,w,h,xi,yi,r)){
+              tries++;
+            }
+            else{
+              tries=lim;
+              if(w!=1&&h!=1){
+                paths++;
+              }
+              fails=0;
+            }
+          }
+          tries=0;
+          fails++;
+  }
+  paths=0;
+  fails=0;
+  tries=0;
+  while(fails<lim&&paths<rooms.size()/2){
+        Room r=rooms.get(1);
+        while(tries<r.getWidth()*r.getHeight()*5){
+          int rint=rng.nextInt(4);
+          int w=rng.nextInt(6)+1;
+          int h=rng.nextInt(5)+1;
+          if(h==1){
+            xi=randFlip(rng);
+          }
+          else{
+            xi=rng.nextInt(3)-1;
+          }
+          if(w==1){
+            yi=randFlip(rng);
+          }
+          else{
+            yi=rng.nextInt(3)-1;
+          }
+          if(rint==0){
+            x=r.getTLCX()+rng.nextInt(r.getWidth()-2)+1;
+            y=r.getTLCY();
+            yi=Floor.randFlip(rng);
+          }
+          else if(rint==1){
+            x=r.getTLCX()+rng.nextInt(r.getWidth()-2)+1;
+            y=r.getTLCY()+r.getHeight()-1;
+            yi=Floor.randFlip(rng);
+          }
+          else if(rint==2){
+            x=r.getTLCX();
+            y=r.getTLCY()+rng.nextInt(r.getHeight()-2)+1;
+            xi=Floor.randFlip(rng);
+          }
+          else{
+            x=r.getTLCX()+r.getWidth()-1;
+            y=r.getTLCY()+rng.nextInt(r.getHeight()-2)+1;
+            xi=Floor.randFlip(rng);
+          }
+          if(!addPath(x,y,w,h,xi,yi,r)){
+            tries++;
+          }
+          else{
+            roomsToConnect.remove(r);
+            tries=lim;
+            if(w!=1&&h!=1){
+              paths++;
+            }
+            fails=0;
+          }
+        }
+        tries=0;
+        fails++;
+}
+  tries=0;
+    while(fails<lim&&roomsToConnect.size()>0&&paths<rooms.size()*2){
           Room r=roomsToConnect.get(
             rng.nextInt(roomsToConnect.size()));
           while(tries<r.getWidth()*r.getHeight()*5){
@@ -185,7 +296,7 @@ public class Floor{
               y=r.getTLCY()+rng.nextInt(r.getHeight()-2)+1;
               xi=Floor.randFlip(rng);
             }
-            if(!addPath(x,y,w,h,xi,yi)){
+            if(!addPath(x,y,w,h,xi,yi,r)){
               tries++;
             }
             else{
@@ -200,7 +311,9 @@ public class Floor{
           tries=0;
           fails++;
   }
-  while(fails<lim&&paths<rooms.size()*3/2){
+  paths=0;
+  tries=0;
+  while(fails<lim&&paths<rooms.size()){
           Room r=rooms.get(
             rng.nextInt(rooms.size()));
           while(tries<r.getWidth()*r.getHeight()*5){
@@ -229,7 +342,7 @@ public class Floor{
               y=r.getTLCY()+rng.nextInt(r.getHeight()-2)+1;
               xi=Floor.randFlip(rng);
             }
-            if(!addPath(x,y,w,h,xi,yi)){
+            if(!addPath(x,y,w,h,xi,yi,r)){
               tries++;
             }
             else{
