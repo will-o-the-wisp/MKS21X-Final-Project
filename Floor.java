@@ -15,7 +15,7 @@ public class Floor{
   public static void main (String[] args){
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
-    Floor f = new Floor(rs, 35, 20, r);
+    Floor f = new Floor(rs, 36, 20, r);
     Room r1 = new Room(3, 5);
     Room r2 = new Room(5, 3);
     f.addAllRooms();
@@ -128,10 +128,10 @@ public class Floor{
       }
     }
     for(int i=0;i<h;i++){
-      grid[y+i*yi][x]='o';
+      grid[y+i*yi][x]='.';
     }
     for(int j=1;j<w;j++){
-      grid[y+yi*(h-1)][x+j*xi]='x';
+      grid[y+yi*(h-1)][x+j*xi]='.';
     }
     return true;
   }
@@ -148,12 +148,12 @@ public class Floor{
     int y;
     int xi;
     int yi;
-    while(fails<lim&&paths<rooms.size()/2){
+    while(fails<lim&&paths<rooms.size()/3){
           Room r=rooms.get(0);
           while(tries<r.getWidth()*r.getHeight()*5){
             int rint=rng.nextInt(4);
-            int w=rng.nextInt(6)+1;
-            int h=rng.nextInt(5)+1;
+            int w=rng.nextInt(18)+1;
+            int h=rng.nextInt(10)+1;
             if(h==1){
               xi=randFlip(rng);
             }
@@ -203,12 +203,12 @@ public class Floor{
   paths=0;
   fails=0;
   tries=0;
-  while(fails<lim&&paths<rooms.size()/2){
+  while(fails<lim&&paths<rooms.size()/3){
         Room r=rooms.get(1);
         while(tries<r.getWidth()*r.getHeight()*5){
           int rint=rng.nextInt(4);
-          int w=rng.nextInt(6)+1;
-          int h=rng.nextInt(5)+1;
+          int w=rng.nextInt(18)+1;
+          int h=rng.nextInt(10)+1;
           if(h==1){
             xi=randFlip(rng);
           }
@@ -245,7 +245,6 @@ public class Floor{
             tries++;
           }
           else{
-            roomsToConnect.remove(r);
             tries=lim;
             if(w!=1&&h!=1){
               paths++;
@@ -256,14 +255,16 @@ public class Floor{
         tries=0;
         fails++;
 }
+  paths=0;
+  fails=0;
   tries=0;
     while(fails<lim&&roomsToConnect.size()>0&&paths<rooms.size()*2){
           Room r=roomsToConnect.get(
             rng.nextInt(roomsToConnect.size()));
           while(tries<r.getWidth()*r.getHeight()*5){
             int rint=rng.nextInt(4);
-            int w=rng.nextInt(6)+1;
-            int h=rng.nextInt(5)+1;
+            int w=rng.nextInt(18)+1;
+            int h=rng.nextInt(10)+1;
             if(h==1){
               xi=randFlip(rng);
             }
@@ -313,15 +314,25 @@ public class Floor{
   }
   paths=0;
   tries=0;
-  while(fails<lim&&paths<rooms.size()){
+  while(fails<lim&&paths<rooms.size()*3){
           Room r=rooms.get(
             rng.nextInt(rooms.size()));
           while(tries<r.getWidth()*r.getHeight()*5){
             int rint=rng.nextInt(4);
-            int w=rng.nextInt(6)+3;
-            int h=rng.nextInt(5)+2;
-            xi=rng.nextInt(3)-1;
-            yi=rng.nextInt(3)-1;
+            int w=rng.nextInt(18)+1;
+            int h=rng.nextInt(10)+1;
+            if(h==1){
+              xi=randFlip(rng);
+            }
+            else{
+              xi=rng.nextInt(3)-1;
+            }
+            if(w==1){
+              yi=randFlip(rng);
+            }
+            else{
+              yi=rng.nextInt(3)-1;
+            }
             if(rint==0){
               x=r.getTLCX()+rng.nextInt(r.getWidth()-2)+1;
               y=r.getTLCY();
