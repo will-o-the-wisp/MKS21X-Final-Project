@@ -16,6 +16,9 @@ public class Player extends Creature{
     setX(10);
     setY(10);
 	}
+  public boolean meleeAttack(Creature defender){
+      return true;
+  }
 
   public boolean useConsumable(Consumable selected) {
     List<Integer> newStatsToAdd = new ArrayList<Integer>();
@@ -73,6 +76,6 @@ public class Player extends Creature{
   }
 
   public void drawSelf(){
-    
+
   }
 }
