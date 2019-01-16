@@ -1,4 +1,4 @@
-public class Creature extends Interactive{
+public abstract class Creature extends Interactive{
 
   private String direction;
 
@@ -46,8 +46,8 @@ public class Creature extends Interactive{
     return '#';
   }
 */
-  public boolean meleeAttack(Creature defender){
-    defender.setHP(defender.getHP() - attackCalc(defender));
+  public abstract boolean meleeAttack(Creature defender);
+    /*defender.setHP(defender.getHP() - attackCalc(defender));
     this.setHP(this.getHP() - defendCalc(defender));
     if (this.getHP() <= 0) {
       this.setAliveStatus(false);
@@ -56,7 +56,7 @@ public class Creature extends Interactive{
       defender.setAliveStatus(false);
     }
     return true;
-  }
+    */
 
   public boolean rangeAttack(){
     return false;
