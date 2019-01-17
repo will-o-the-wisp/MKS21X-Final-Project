@@ -47,7 +47,7 @@ public class Benelux{
       t.putCharacter('#');
     }
   }
-	public static void drawFloor(Floor fr){
+	public static void drawFloor(Floor fr, Screen scre){
 		for (int i = 0; i<fr.getGrid().length;i++){
 			for (int o =0; o<fr.getGrid()[i].length;o++){
 				String row = "";
@@ -98,7 +98,7 @@ public class Benelux{
 
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
-		Screen scre = new Screen(terminal);
+		Screen s = new Screen(terminal);
 		terminal.enterPrivateMode();
 
 		TerminalSize size = terminal.getTerminalSize();
@@ -109,14 +109,12 @@ public class Benelux{
 		long tStart = System.currentTimeMillis();
 		long lastSecond = 0;
 
-		drawFloor(f);
-		//drawPlayer(playerM);
-
 			int depth=0;
 	    boolean updating = true;
 	    String mode = "Game Mode";
 	    long timer = 0;
 
+			drawFloor(f,s);
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
@@ -226,7 +224,7 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 					if (millis/1000 > lastSecond){
-						drawFloor(f);
+						drawFloor(f, s);
 						//drawPlayer(playerM);
 
 					}
