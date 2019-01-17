@@ -24,6 +24,8 @@ public class Floor{
     f.addAllPaths();
     f.addAllPaths();
     f.printFloor();
+    f.resetFloor();
+    f.printFloorDebug();
   }
   //move randFlip to Benelux later(?)
   public static int randFlip(Random r){
@@ -102,7 +104,18 @@ public class Floor{
         grid[y+i][x+j]=r.getGrid()[i][j];
       }
     }
+    r.setTLCX(x);
+    r.setTLCY(y);
     return true;
+  }
+  public void removeRoom(Room r){
+    int w = r.getWidth();
+    int h = r.getHeight();
+    for(int i=0;i<h;i++){
+      for(int j=0;j<w;j++){
+        grid[r.getTLCY()+i][r.getTLCX()+j]='_';
+      }
+    }
   }
   public void resetFloor(){
     for(int i=0;i<grid.length;i++){
@@ -114,8 +127,10 @@ public class Floor{
   public boolean fillFloor(){
     int tries=0;
     int fails=0;
+
     return true;
   }
+
   public boolean addPath(int x, int y, int w, int h, int xi, int yi, Room r){
     if(x+w*xi>grid[0].length-1||
       x+w*xi<0||
@@ -401,8 +416,6 @@ public class Floor{
           tries++;
         }
         else{
-          r.setTLCX(x);
-          r.setTLCY(y);
           rooms.add(r);
           tries=grid.length*grid[0].length;
           fails=0;
