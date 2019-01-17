@@ -53,7 +53,7 @@ public class Benelux{
 				String row = "";
 				row += fr.getGrid()[i][o];
 				if (o == fr.getGrid()[i].length -1){
-					scre.putString(0, i, row, Terminal.Color.WHITE, Terminal.Color.BLACK, null);
+					scre.putString(0, i, row, Terminal.Color.WHITE, Terminal.Color.BLACK);
 				}
 			}
 		}
@@ -228,7 +228,7 @@ public class Benelux{
 						//drawPlayer(playerM);
 
 					}
-					scre.refresh();
+					s.refresh();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
 
