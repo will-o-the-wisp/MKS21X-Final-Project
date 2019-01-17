@@ -110,12 +110,10 @@ public class Benelux{
 		long lastSecond = 0;
 
 		int depth=0;
-	   boolean updating = true;
-	    String mode = "Game Mode";
-	    long timer = 0;
+	  String mode = "Game Mode";
+	  long timer = 0;
 
-			drawFloor(f,s);
-			s.refresh();
+
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
@@ -224,11 +222,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-					if (millis/1000 > lastSecond){
-						drawFloor(f, s);
-						//drawPlayer(playerM);
-
-					}
+					drawFloor(f, s);
 					s.refresh();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
