@@ -53,7 +53,7 @@ public class Benelux{
 				String row = "";
 				row += fr.getGrid()[i][o];
 				if (o == fr.getGrid()[i].length -2){
-					scre.putString(0, i, row, Terminal.Color.WHITE, Terminal.Color.BLACK);
+					scre.putString(0, i, row, Terminal.Color.BLACK, Terminal.Color.WHITE);
 				}
 			}
 		}
