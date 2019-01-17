@@ -52,11 +52,12 @@ public class Benelux{
 			for (int o =0; o<fr.getGrid()[i].length;o++){
 				String row = "";
 				row += fr.getGrid()[i][o];
-				if (o == fr.getGrid()[i].length -2){
-					scre.putString(0, i, row, Terminal.Color.BLACK, Terminal.Color.WHITE);
+				if (o == fr.getGrid()[i].length -1){
+					row += "\n";		
 				}
 			}
 		}
+		scre.putString(0, i, row, Terminal.Color.WHITE, Terminal.Color.BLACK);
 	}
 	/*
 	public static void drawMonster(Monster m){
