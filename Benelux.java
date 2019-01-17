@@ -109,12 +109,13 @@ public class Benelux{
 		long tStart = System.currentTimeMillis();
 		long lastSecond = 0;
 
-			int depth=0;
-	    boolean updating = true;
+		int depth=0;
+	   boolean updating = true;
 	    String mode = "Game Mode";
 	    long timer = 0;
 
 			drawFloor(f,s);
+			s.refresh();
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
