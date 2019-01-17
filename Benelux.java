@@ -47,7 +47,7 @@ public class Benelux{
       t.putCharacter('#');
     }
   }
-	public static void drawFloor(Floor fr, Screen scre){
+	public static String drawFloor(Floor fr){
 		String row = "";
 		for (int i = 0; i<fr.getGrid().length-1;i++){
 			for (int o =0; o<fr.getGrid()[i].length-1;o++){
@@ -57,7 +57,7 @@ public class Benelux{
 				}
 			}
 		}
-		scre.putString(0, fr.getGrid().length, row, Terminal.Color.WHITE, Terminal.Color.BLACK);
+		return row;
 	}
 	/*
 	public static void drawMonster(Monster m){
@@ -65,16 +65,15 @@ public class Benelux{
 		int y = m.getY();
 		s.putString(x,y,terminal," ! ");
 	}
-
-	public static void eraser(int x, int y){
-		s.putString(x,y,terminal, " . ");
-	}
-	public static void drawPlayer(Player p){
-		int x = p.getX();
-		int y = p.getY();
-		s.putString(x, y, terminal," $ ");
+	*/
+	public static String eraser(int x, int y){
+		return " . ";
 	}
 
+	public static String drawPlayer(Player p){
+		return " $ ";
+	}
+/*
 	public static void drawItem(Item i){
 		int x = i.getX();
 		int y = i.getY();
@@ -114,7 +113,8 @@ public class Benelux{
 	  String mode = "Game Mode";
 	  long timer = 0;
 
-
+		putString(1,1, terminal, drawFloor(f));
+		putString(playerM.getX(),playerM.getY(),terminal, drawPlayer(playerM));
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
@@ -193,24 +193,24 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            //eraser(currentX, currentY);
+	            eraser(currentX, currentY);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							//eraser(currentX,currentY);
+							eraser(currentX,currentY);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            //eraser(currentX,currentY);
+	            eraser(currentX,currentY);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            //eraser(currentX,currentY);
+	            eraser(currentX,currentY);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
@@ -223,7 +223,8 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-					drawFloor(f, s);
+					s.putString(1,1,drawFloor(f),Terminal.Color.WHITE,Terminal.Color.BLACK);
+					s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 					s.refresh();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
