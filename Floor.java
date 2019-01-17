@@ -104,8 +104,17 @@ public class Floor{
     }
     return true;
   }
-  public void fillFloor(){
-    
+  public void resetFloor(){
+    for(int i=0;i<grid.length;i++){
+      for(int j=0;j<grid[0].length;j++){
+        grid[i][j]='_';
+      }
+    }
+  }
+  public boolean fillFloor(){
+    int tries=0;
+    int fails=0;
+    return true;
   }
   public boolean addPath(int x, int y, int w, int h, int xi, int yi, Room r){
     if(x+w*xi>grid[0].length-1||
