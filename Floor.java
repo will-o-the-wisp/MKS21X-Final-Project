@@ -104,6 +104,9 @@ public class Floor{
     }
     return true;
   }
+  public void fillFloor(){
+    
+  }
   public boolean addPath(int x, int y, int w, int h, int xi, int yi, Room r){
     if(x+w*xi>grid[0].length-1||
       x+w*xi<0||
