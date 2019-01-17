@@ -48,16 +48,16 @@ public class Benelux{
     }
   }
 	public static void drawFloor(Floor fr, Screen scre){
-		for (int i = 0; i<fr.getGrid().length;i++){
-			for (int o =0; o<fr.getGrid()[i].length;o++){
-				String row = "";
+		String row = "";
+		for (int i = 0; i<fr.getGrid().length-1;i++){
+			for (int o =0; o<fr.getGrid()[i].length-1;o++){
 				row += fr.getGrid()[i][o];
-				if (o == fr.getGrid()[i].length -1){
-					row += "\n";		
+				if (o == fr.getGrid()[i].length -2){
+					row += "\n";
 				}
 			}
 		}
-		scre.putString(0, i, row, Terminal.Color.WHITE, Terminal.Color.BLACK);
+		scre.putString(0, fr.getGrid().length, row, Terminal.Color.WHITE, Terminal.Color.BLACK);
 	}
 	/*
 	public static void drawMonster(Monster m){
