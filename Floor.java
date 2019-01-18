@@ -12,7 +12,19 @@ public class Floor{
   private char[][] grid;
   private Random rng; //move to Benelux later (?)
 
-  public static void main (String[] args){
+  public int indexOfRoom(int x, int y){
+    for(int i=0;i<rooms.size();i++){
+      Room r=rooms.get(i);
+      if(x>=r.getTLCX()&&
+         x<=r.getTLCX()+r.getWidth()-1&&
+         y>=r.getTLCY()&&
+         y<=r.getTLCY()+r.getHeight()-1){
+           return i;
+         }
+    }
+    return -1;
+  }
+  public static void main(String[] args){
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 35, 20, r);
