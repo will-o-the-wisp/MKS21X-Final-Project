@@ -113,8 +113,12 @@ public class Benelux{
 	  String mode = "Game Mode";
 	  long timer = 0;
 
+		s.putString(1,1,drawFloor(f),Terminal.Color.WHITE,Terminal.Color.BLACK);
+		s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+		/*
 		putString(1,1, terminal, drawFloor(f));
 		putString(playerM.getY(),playerM.getX(),terminal, drawPlayer(playerM));
+		*/
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
