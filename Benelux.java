@@ -113,7 +113,7 @@ public class Benelux{
 	  String mode = "Game Mode";
 	  long timer = 0;
 
-		putString(1,1, terminal, drawFloor(f));
+		putString(0,0, terminal, drawFloor(f));
 		putString(playerM.getX(),playerM.getY(),terminal, drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
