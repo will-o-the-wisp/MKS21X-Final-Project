@@ -194,25 +194,25 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            //eraser(currentX, currentY);
+	            eraser(currentX, currentY);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							//eraser(currentX,currentY);
+							eraser(currentX,currentY);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            //eraser(currentX,currentY);
+	            eraser(currentX,currentY);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            //eraser(currentX,currentY);
+	            eraser(currentX,currentY);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
@@ -239,7 +239,7 @@ public class Benelux{
 	        putString(1,6,terminal, "1. Inventory");
 	        putString(1,7,terminal, "Press P to return to the Game");
 	      }
-			s.completeRefresh();
+			s.refresh();
 
 			//DO EVEN WHEN NO KEY PRESSED:
 			/*
