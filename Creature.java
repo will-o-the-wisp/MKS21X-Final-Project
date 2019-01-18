@@ -45,23 +45,14 @@ public class Creature extends Interactive{
     }
     return '#';
   }
+
   //change this to take no inputs, and attack in the direction of facing
-  /*
-    public boolean meleeAttack(){
-      if(lookInFront(f)='monster char'){}
-        defender.setHP(defender.getHP() - attackCalc(defender));
-        if (defender.getHP() <= 0) {
-          defender.setAliveStatus(false);
-        }
-      return true;
-    }
-  */
-  public boolean meleeAttack(Creature defender){
-    defender.setHP(defender.getHP() - attackCalc(defender));
-    if (defender.getHP() <= 0) {
-      defender.setAliveStatus(false);
-    }
-    return true;
+    public boolean meleeAttack(Floor f){
+      if(isEnemy(lookInFront(f))){
+        
+        return true;
+      }
+      return false;
   }
   public boolean isEnemy(char c){
     if(this instanceof Player){
