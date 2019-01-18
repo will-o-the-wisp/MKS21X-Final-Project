@@ -239,7 +239,6 @@ public class Benelux{
 	        putString(1,6,terminal, "1. Inventory");
 	        putString(1,7,terminal, "Press P to return to the Game");
 	      }
-			s.refresh();
 
 			//DO EVEN WHEN NO KEY PRESSED:
 			/*
