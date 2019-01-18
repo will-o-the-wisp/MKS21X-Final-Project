@@ -193,24 +193,24 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            eraser(currentX, currentY);
+	            //eraser(currentX, currentY);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							eraser(currentX,currentY);
+							//eraser(currentX,currentY);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            eraser(currentX,currentY);
+	            //eraser(currentX,currentY);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            eraser(currentX,currentY);
+	            //eraser(currentX,currentY);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
