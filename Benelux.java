@@ -66,10 +66,11 @@ public class Benelux{
 		s.putString(x,y,terminal," ! ");
 	}
 	*/
+	/*
 	public static void eraser(int x, int y, Terminal t){
 		putString(x,y, t,".");
 	}
-
+	*/
 	public static String drawPlayer(Player p){
 		return " $ ";
 	}
@@ -113,9 +114,8 @@ public class Benelux{
 	  String mode = "Game Mode";
 	  long timer = 0;
 
-		putString(0,0, terminal, drawFloor(f));
-		putString(playerM.getX(),playerM.getY(),terminal, drawPlayer(playerM));
-
+		putString(0,0, terminal,drawFloor(f));
+		putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
@@ -194,25 +194,25 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            eraser(currentX, currentY,terminal);
+	            //eraser(currentX, currentY,terminal);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							eraser(currentX,currentY,terminal);
+							//eraser(currentX,currentY,terminal);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            eraser(currentX,currentY,terminal);
+	            //eraser(currentX,currentY,terminal);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            eraser(currentX,currentY,terminal);
+	            //eraser(currentX,currentY,terminal);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
@@ -226,21 +226,23 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 					//putString(1,1, terminal, drawFloor(f));
-					putString(playerM.getX(),playerM.getY(),terminal, drawPlayer(playerM));
-
-	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
-	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
+					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					s.completeRefresh();
+	        //putString(1,3,terminal, "Game here...",Terminal.Color.DEFAULT,Terminal.Color.RED);
+	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.DEFAULT,Terminal.Color.RED);
 
 	      }else if (mode.equals("Inventory Mode")) {
-	        putString(1,5,terminal, "Press P to return");
-	        putString(1,7,terminal, "1. ");
+	        s.putString(1,5, "Press P to return",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+	        s.putString(1,7, "1. ",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	      }else if (mode.equals("Pause Menu")) {
-	        putString(1,5,terminal, "Press Escape to Close");
-	        putString(1,6,terminal, "1. Inventory");
-	        putString(1,7,terminal, "Press P to return to the Game");
+	        s.putString(1,5, "Press Escape to Close",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+	        s.putString(1,6, "1. Inventory",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+	        s.putString(1,7, "Press P to return to the Game",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	      }
-			s.refresh();
 
+				putString(35,0,terminal, mode);
+				putString(35,1,terminal, ""+currentTime);
+				if(key!=null){putString(35,2,terminal, ""+key.getCharacter());}
 			//DO EVEN WHEN NO KEY PRESSED:
 			/*
 			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
@@ -254,3 +256,8 @@ public class Benelux{
 		}
 	}
 }
+
+//resize -s height getWidth
+
+//#!/bin/bash
+//run commands
