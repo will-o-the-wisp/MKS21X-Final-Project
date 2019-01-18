@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Floor{
   private ArrayList<Room> rooms;
-  //private List<Path> paths;
   private int entranceX;
   private int entranceY;
   private int exitX;
