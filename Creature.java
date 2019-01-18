@@ -45,10 +45,9 @@ public class Creature extends Interactive{
     }
     return '#';
   }
-
+  //change this to take no inputs, and attack in the direction of facing
   public boolean meleeAttack(Creature defender){
     defender.setHP(defender.getHP() - attackCalc(defender));
-    this.setHP(this.getHP() - defendCalc(defender));
     if (this.getHP() <= 0) {
       this.setAliveStatus(false);
     }
