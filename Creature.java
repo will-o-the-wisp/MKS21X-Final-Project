@@ -63,7 +63,16 @@ public class Creature extends Interactive{
     }
     return true;
   }
-
+  public boolean isEnemy(char c){
+    if(this instanceof Player){
+      return c=='%';
+      //% is temporary character representing a monster
+    }
+    if(this instanceof Monster){
+      return c=='$';
+    }
+    return false;
+  }
   public boolean rangeAttack(){
     return false;
   }
