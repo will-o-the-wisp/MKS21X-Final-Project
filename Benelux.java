@@ -113,12 +113,9 @@ public class Benelux{
 	  String mode = "Game Mode";
 	  long timer = 0;
 
-		s.putString(1,1,drawFloor(f),Terminal.Color.WHITE,Terminal.Color.BLACK);
-		s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
-		/*
 		putString(1,1, terminal, drawFloor(f));
 		putString(playerM.getY(),playerM.getX(),terminal, drawPlayer(playerM));
-		*/
+
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
@@ -200,25 +197,25 @@ public class Benelux{
 	            //eraser(currentX, currentY);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
-							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
 							//eraser(currentX,currentY);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
-							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
 	            //eraser(currentX,currentY);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
-							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
 	            //eraser(currentX,currentY);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
-							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+
 	          }
 	        }
 	      }
@@ -228,8 +225,8 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-					s.putString(1,1,drawFloor(f),Terminal.Color.WHITE,Terminal.Color.BLACK);
-
+					putString(1,1, terminal, drawFloor(f));
+					putString(playerM.getY(),playerM.getX(),terminal, drawPlayer(playerM));
 
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
