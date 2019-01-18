@@ -114,7 +114,7 @@ public class Benelux{
 	  long timer = 0;
 
 		putString(1,1, terminal, drawFloor(f));
-		putString(playerM.getX(),playerM.getY(),terminal, drawPlayer(playerM));
+		putString(playerM.getY(),playerM.getX(),terminal, drawPlayer(playerM));
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
@@ -196,25 +196,25 @@ public class Benelux{
 	            //eraser(currentX, currentY);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
-							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
 							//eraser(currentX,currentY);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
-							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
 	            //eraser(currentX,currentY);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
-							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
 	            //eraser(currentX,currentY);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
-							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+							s.putString(playerM.getY(),playerM.getX(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	        }
 	      }
