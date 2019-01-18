@@ -225,7 +225,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-					putString(1,1, terminal, drawFloor(f));
+					//putString(1,1, terminal, drawFloor(f));
 					putString(playerM.getX(),playerM.getY(),terminal, drawPlayer(playerM));
 
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
