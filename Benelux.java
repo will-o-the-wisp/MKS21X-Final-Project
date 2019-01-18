@@ -230,7 +230,7 @@ public class Benelux{
 	        //DO GAME STUFF HERE
 					s.putString(1,1,drawFloor(f),Terminal.Color.WHITE,Terminal.Color.BLACK);
 
-					s.refresh();
+
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
 
@@ -242,7 +242,7 @@ public class Benelux{
 	        putString(1,6,terminal, "1. Inventory");
 	        putString(1,7,terminal, "Press P to return to the Game");
 	      }
-
+			s.refresh();
 
 			//DO EVEN WHEN NO KEY PRESSED:
 			/*
