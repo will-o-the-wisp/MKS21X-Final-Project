@@ -196,24 +196,25 @@ public class Benelux{
 	            //eraser(currentX, currentY);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
-
+							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
 							//eraser(currentX,currentY);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
-
+							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
 	            //eraser(currentX,currentY);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
+							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
 	            //eraser(currentX,currentY);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
-
+							s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
 	          }
 	        }
 	      }
@@ -224,7 +225,7 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 					s.putString(1,1,drawFloor(f),Terminal.Color.WHITE,Terminal.Color.BLACK);
-					s.putString(playerM.getX(),playerM.getY(),drawPlayer(playerM),Terminal.Color.WHITE,Terminal.Color.BLACK);
+
 					s.refresh();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.WHITE,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.WHITE,Terminal.Color.RED);
