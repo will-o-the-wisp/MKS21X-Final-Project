@@ -67,7 +67,7 @@ public class Benelux{
 	}
 	*/
 	public static String eraser(int x, int y){
-		return " . ";
+		putString(x,y,terminal," . ");
 	}
 
 	public static String drawPlayer(Player p){
