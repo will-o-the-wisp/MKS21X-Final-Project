@@ -45,13 +45,13 @@ public class Creature extends Interactive{
     }
     return '#';
   }
-  
-  //change this to take no inputs, and attack in the direction of facing
+
+  //use findEntity, use different cases for direction faced
   public boolean meleeAttack(Floor f){
     if(isEnemy(lookInFront(f))){
-      this.setHP(this.getHP() - defendCalc(defender));
-      if (defender.getHP() <= 0) {
-        defender.setAliveStatus(false);
+      this.setHP(this.getHP() - f.findEntity(x,y));
+      if (f.findEntity(x,y) <= 0) {
+        f.findEntity.setAliveStatus(false);
       }
       return true;
     }

@@ -24,6 +24,12 @@ public class Floor{
     }
     return -1;
   }
+  public Entity findEntity(int x, int y){
+    /*
+    use indexOfRoom, set up list of entities in Room.java
+    */
+    return null;
+  }
   public static void main(String[] args){
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
