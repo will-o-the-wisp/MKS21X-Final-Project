@@ -123,7 +123,7 @@ public class Benelux{
 				int currentY = playerM.getY();
 				long tEnd = System.currentTimeMillis();
 				long millis = tEnd - tStart;
-	      Key key = terminal.readInput();
+	      Key key = s.readInput();
 				/*
 				while (mode.equals("Start Menu") && running == true) {
 		      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
