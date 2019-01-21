@@ -101,6 +101,7 @@ public class Benelux{
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		Screen s = new Screen(terminal);
 		terminal.enterPrivateMode();
+		s.startScreen();
 
 		TerminalSize size = terminal.getTerminalSize();
 		terminal.setCursorVisible(false);
