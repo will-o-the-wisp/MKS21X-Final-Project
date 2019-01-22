@@ -14,16 +14,12 @@ public class Room{
     Room r = new Room(1,1,7,5);
     r.printGrid();
   }
-<<<<<<< HEAD
-  //constructors
-=======
   public void addEntityList(){
     entities = new ArrayList<Entity>;
   }
   public void addEntity(Entity e){
     entities.add(e);
   }
->>>>>>> meleeattack
   public Room(int tlcX, int tlcY, int _width, int _height){
     topLeftCornerX=tlcX;
     topLeftCornerY=tlcY;

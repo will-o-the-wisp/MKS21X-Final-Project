@@ -12,10 +12,6 @@ public class Floor{
   private char[][] grid;
   private Random rng; //move to Benelux later (?)
 
-<<<<<<< HEAD
-  //main for testing
-  public static void main (String[] args){
-=======
   public int indexOfRoom(int x, int y){
     for(int i=0;i<rooms.size();i++){
       Room r=rooms.get(i);
@@ -42,7 +38,6 @@ public class Floor{
     return null;
   }
   public static void main(String[] args){
->>>>>>> meleeattack
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 35, 20, r);
@@ -117,6 +112,9 @@ public class Floor{
   }
   public char[][] getGrid(){
     return grid;
+  }
+  public ArrayList<Room> getRooms(){
+    return rooms;
   }
   public void setGridPos(int x, int y, char e){
     grid[y][x] = e;
