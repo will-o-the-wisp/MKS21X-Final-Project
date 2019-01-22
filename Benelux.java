@@ -279,7 +279,7 @@ public class Benelux{
 					}
 					for (int i = 0; i < hoard.size(); i++) {
 						try	{
-							Thread.sleep(1000);
+							Thread.sleep(10);
 						}
 						catch(Exception ex){}
 						eraser(hoard.get(i).currentX(),hoard.get(i).currentY(),ffs,hoard.get(i));
