@@ -165,6 +165,7 @@ public class Benelux{
 				try	{
 					Thread.sleep(1000);
 				}
+				catch(Exception ex){}
 					drawPlayer(playerM,f);
 					drawMonster(mm,f);
 					putString(0,0, terminal,drawFloor(f));
@@ -250,7 +251,7 @@ public class Benelux{
 
 	      if(mode.equals("Game Mode")){
 
-					catch(Exception ex){}
+
 	        //DO GAME STUFF HERE
 					eraser(mm.currentX(),mm.currentY(),f,mm);
 					mm.movement(f);
