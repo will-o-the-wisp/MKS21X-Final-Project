@@ -161,10 +161,10 @@ public class Benelux{
 					}
 				}
 			while(running){
-
 	      Key key = s.readInput();
-
-
+				try	{
+					Thread.sleep(1000);
+				}
 					drawPlayer(playerM,f);
 					drawMonster(mm,f);
 					putString(0,0, terminal,drawFloor(f));
@@ -249,9 +249,7 @@ public class Benelux{
 	      }
 
 	      if(mode.equals("Game Mode")){
-					try	{
-						Thread.sleep(1000);
-					}
+
 					catch(Exception ex){}
 	        //DO GAME STUFF HERE
 					eraser(mm.currentX(),mm.currentY(),f,mm);
