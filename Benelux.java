@@ -53,13 +53,18 @@ public class Benelux{
 		String row = "";
 		for (int i = 0; i<fr.getGrid().length;i++){
 			for (int o =0; o<fr.getGrid()[i].length;o++){
-				row += " " + fr.getGrid()[i][o] + " ";
-				if (o == fr.getGrid()[i].length -1){
-					row += i + "n";
+				if (fr.getGrid()[i][o] == '_') {
+					row += "   ";
 				}
-
+				else {
+					row += " " + fr.getGrid()[i][o] + " ";
+				}
+				if (o == fr.getGrid()[i].length -1){
+					row += i + "\n";
+				}
 			}
 		}
+		
 		return row;
 	}
 	/*
