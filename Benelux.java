@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.terminal.Terminal.SGR;
@@ -18,7 +19,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.*;
 
 
 public class Benelux{
@@ -81,6 +82,16 @@ public class Benelux{
 		s.putString(x,y,terminal, " ? ");
 	}
 */
+
+	public static void statusOfPlayer(Player p, Screen s) {
+		String health =  "Health Points: " + p.getHP();
+		String offense = "Attack Points: " + p.getATK();
+		String defense = "Defense Points: " + p.getDEF();
+
+		putString(0,40,s,health);
+		putString(0,41,s,offense);
+		putString(0,42,s,defense);
+	}
 	public static void main(String[] args) throws FileNotFoundException{
 
 		ArrayList<Room> rs = new ArrayList<Room>();
@@ -267,7 +278,8 @@ public class Benelux{
 			putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
 			}
 			*/
-			s.refresh();
+
+			statusOfPlayer(p,s);
 		}
 	}
 }
