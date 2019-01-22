@@ -137,8 +137,6 @@ public class Benelux{
 				drawPlayer(playerM,f);
 				drawMonster(mm,f);
 				putString(0,0, terminal,drawFloor(f));
-				int currentX = playerM.getX();
-				int currentY = playerM.getY();
 	      Key key = s.readInput();
 				/*
 				while (mode.equals("Start Menu") && running == true) {
@@ -201,7 +199,7 @@ public class Benelux{
 	          }
 	        }
 	        if (mode.equals("Game Mode")) {
-						eraser(currentX,currentY,f);
+						eraser(playerM.currentX(),playerM.currentY(),f);
 	          if (key.getKind() == Key.Kind.Escape) {
 							s.stopScreen();
 	            terminal.exitPrivateMode();
@@ -241,7 +239,7 @@ public class Benelux{
 	      if(mode.equals("Game Mode")){
 
 	        //DO GAME STUFF HERE
-
+					eraser(mm.currentX(),mm.currentY(),f);
 					mm.movement(f);
 					drawPlayer(playerM,f);
 					drawMonster(mm,f);

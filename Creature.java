@@ -73,4 +73,12 @@ public class Creature extends Interactive{
   public String directionTest(){
     return direction;
   }
+
+  public int currentX(){
+    return getX();
+  }
+
+  public int currentY(){
+    return getY();
+  }
 }
