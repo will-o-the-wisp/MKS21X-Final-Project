@@ -71,7 +71,7 @@ public class Benelux{
 		st.putString(x,y," . ", Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	}
 
-	public static String drawPlayer(Player p, Floor ff ){
+	public static void drawPlayer(Player p, Floor ff ){
 		ff.setGridPos(p.getX(),p.getY(),'$');
 	}
 /*
