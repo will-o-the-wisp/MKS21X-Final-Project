@@ -81,4 +81,9 @@ public class Creature extends Interactive{
   public int currentY(){
     return getY();
   }
+
+  public boolean onExit(int x, int y){
+    return (this.getX() == x && this.getY() == y);
+  }
+  
 }
