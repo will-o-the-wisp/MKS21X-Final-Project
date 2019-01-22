@@ -96,7 +96,8 @@ public class Benelux{
 		putString(0,41,s,offense);
 		putString(0,42,s,defense);
 	}
-	public static void main(String[] args) throws FileNotFoundException{
+
+	public static void run() throws FileNotFoundException{
 
 		ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
@@ -129,6 +130,10 @@ public class Benelux{
 		int depth=0;
 	  String mode = "Game Mode";
 
+		try	{
+			Thread.sleep(1000);
+		}
+		catch(Exception ex){}
 
 		//putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
@@ -267,6 +272,10 @@ public class Benelux{
 
 			statusOfPlayer(playerM,terminal);
 		}
+	}
+
+	public static void main(String[] args) {
+		run();
 	}
 }
 
