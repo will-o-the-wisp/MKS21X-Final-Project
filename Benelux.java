@@ -117,7 +117,7 @@ public class Benelux{
 	  long timer = 0;
 
 		s.setCursorPosition(null);
-		putString(0,0, terminal,drawFloor(f));
+		putString(1,1, terminal,drawFloor(f));
 		putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
@@ -200,25 +200,25 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            //eraser(currentX, currentY,terminal);
+	            eraser(currentX, currentY,terminal);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							//eraser(currentX,currentY,terminal);
+							eraser(currentX,currentY,terminal);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            //eraser(currentX,currentY,terminal);
+	            eraser(currentX,currentY,terminal);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            //eraser(currentX,currentY,terminal);
+	            eraser(currentX,currentY,terminal);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
@@ -232,6 +232,7 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 					//putString(1,1, terminal, drawFloor(f));
+
 					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
