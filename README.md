@@ -170,6 +170,10 @@ BC
 
 1/21/19
 
+Kenson Li
+
+  Completed melee attacks
+
 BC
 
   Screen works (after adding "screen.startScreen()") 😠, except that the 2nd row of the array gets duplicated, honestly not even sure where that comes from. Basic functionality, so not sure how the game is going to be. No one to blame except myself really, also I am incredibly dumb.
