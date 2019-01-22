@@ -96,8 +96,8 @@ public class Benelux{
 		String defense = "Defense Points: " + p.getDEF();
 
 		s.putString(0,40,health,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-		s.putString(0,41,s,offense,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-		s.putString(0,42,s,defense,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+		s.putString(0,41,offense,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+		s.putString(0,42,defense,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	}
 
 	public static Floor createFloor(){
