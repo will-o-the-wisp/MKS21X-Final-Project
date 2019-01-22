@@ -66,9 +66,9 @@ public class Benelux{
 		s.putString(x,y,terminal," ! ");
 	}
 	*/
-	
-	public static void eraser(int x, int y, Terminal t){
-		putString(x,y, t,".");
+
+	public static void eraser(int x, int y, Screen st){
+		st.putString(x,y," . ", Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	}
 
 	public static String drawPlayer(Player p){
@@ -200,25 +200,25 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            eraser(currentX, currentY,terminal);
+	            eraser(currentX, currentY,s);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							eraser(currentX,currentY,terminal);
+							eraser(currentX,currentY,s);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            eraser(currentX,currentY,terminal);
+	            eraser(currentX,currentY,s);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            eraser(currentX,currentY,terminal);
+	            eraser(currentX,currentY,s);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
