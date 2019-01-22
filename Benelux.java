@@ -256,6 +256,7 @@ public class Benelux{
 				putString(35,3,terminal, "X " + playerM.getX() + " Y " + playerM.getY());
 				putString(35,4,terminal, "direction" + playerM.directionTest());
 				putString(35,5,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
+				putString(35,6,terminal, "" +playerM.lookInFront(f));
 			//DO EVEN WHEN NO KEY PRESSED:
 			/*
 			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
