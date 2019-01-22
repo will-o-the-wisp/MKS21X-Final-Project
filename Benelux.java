@@ -119,7 +119,6 @@ public class Benelux{
 		return playerM;
 	}
 
-<<<<<<< HEAD
 	public static ArrayList<Monster> createMonsters(Floor ff, int diff){
 		ArrayList<Monster> mn =new ArrayList<Monster>();
 		Random r = new Random();
@@ -141,13 +140,6 @@ public class Benelux{
 		Floor ffs = createFloor();
 		Player playerM = createPlayer(ffs);
 		ArrayList<Monster> hoard = createMonsters(ffs,depth);
-=======
-		Monster mm = new Monster("dinosaur"); //this should be randomized
-		mm.setX(f.getExitX());
-		mm.setY(f.getExitY());
-		f.getRooms().get(1).addEntityList();
-		f.getRooms().get(1).getEntities().add(mm);
->>>>>>> c89abf27e0ee0a7c1881956488a93688282280df
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		Screen s = new Screen(terminal);
@@ -247,6 +239,9 @@ public class Benelux{
 	            mode = "Pause Menu";
 							terminal.clearScreen();
 	          }
+						if (key.getCharacter() == 'f'){
+							playerM.meleeAttack(ffs);
+						}
 	          if (key.getKind() == Key.Kind.ArrowDown) {
 
 	            playerM.changeDirection("South");
@@ -292,9 +287,14 @@ public class Benelux{
 								Thread.sleep(10);
 							}
 							catch(Exception ex){}
-								eraser(hoard.get(i).currentX(),hoard.get(i).currentY(),ffs,hoard.get(i));
-								hoard.get(i).movement(ffs);
-								drawMonster(hoard.get(i),ffs);
+								if (hoard.get(i).lookInFront(ffs) == '$'){
+									hoard.get(i).meleeAttack(ffs);
+								}
+								else {
+									eraser(hoard.get(i).currentX(),hoard.get(i).currentY(),ffs,hoard.get(i));
+									hoard.get(i).movement(ffs);
+									drawMonster(hoard.get(i),ffs);
+								}
 							}
 						}
 					s.putString(0,0,drawFloor(ffs),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
