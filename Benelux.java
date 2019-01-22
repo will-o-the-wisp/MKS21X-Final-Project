@@ -37,12 +37,12 @@ public class Benelux{
       t.putCharacter('#');
     }
     for(int i=1;i<r.getHeight();i++){
-      t.moveCursor(y,x+i);
+      t.moveCursor(x,y+i);
       t.putCharacter('#');
-      t.moveCursor(y+r.getWidth()-1,x+i);
+      t.moveCursor(x+r.getWidth()-1,y+i);
       t.putCharacter('#');
     }
-    t.moveCursor(y,x+r.getHeight());
+    t.moveCursor(x,y+r.getHeight());
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');
     }
@@ -126,8 +126,8 @@ public class Benelux{
 			while(running){
 				long lastTime =  System.currentTimeMillis();
 		    long currentTime = lastTime;
-				int currentX = playerM.getY();
-				int currentY = playerM.getX();
+				int currentX = playerM.getX();
+				int currentY = playerM.getY();
 				long tEnd = System.currentTimeMillis();
 				long millis = tEnd - tStart;
 	      Key key = s.readInput();
