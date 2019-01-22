@@ -13,8 +13,6 @@ public class Player extends Creature{
 		experiences.add(0); //not sure how add all works with collection
     experiences.add(1);
     experiences.add(100);
-    setX(10);
-    setY(10);
 	}
 
   public boolean useConsumable(Consumable selected) {
@@ -72,7 +70,4 @@ public class Player extends Creature{
     return experiences;
   }
 
-  public void drawSelf(){
-    
-  }
 }

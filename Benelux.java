@@ -76,6 +76,9 @@ public class Benelux{
 		if (e.onExit(ff.getExitX(),ff.getExitY())) {
 			ff.setGridPos(x,y,'*');
 		}
+		else if (ff.getGrid()[x][y] == '?') {
+			ff.setGridPos(x,y,'?');
+		}
 		else {
 			ff.setGridPos(x,y,'.');
 		}
@@ -134,10 +137,7 @@ public class Benelux{
 		int depth=0;
 	  String mode = "Start Menu";
 
-		try	{
-			Thread.sleep(3000);
-		}
-		catch(Exception ex){}
+
 
 		while (mode.equals("Start Menu") && running == false) {
 			Key key = s.readInput();
@@ -211,7 +211,7 @@ public class Benelux{
 	        }
 					*/
 	        if (mode.equals("Game Mode")) {
-						eraser(playerM.currentX(),playerM.currentY(),f,playerM);
+
 	          if (key.getKind() == Key.Kind.Escape) {
 							s.stopScreen();
 	            terminal.exitPrivateMode();
@@ -222,25 +222,25 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-
+							eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-
+							eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-
+							eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-
+							eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
@@ -249,7 +249,10 @@ public class Benelux{
 	      }
 
 	      if(mode.equals("Game Mode")){
-
+					try	{
+						Thread.sleep(3000);
+					}
+					catch(Exception ex){}
 	        //DO GAME STUFF HERE
 					eraser(mm.currentX(),mm.currentY(),f,mm);
 					mm.movement(f);
