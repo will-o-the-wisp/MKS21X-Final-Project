@@ -84,7 +84,7 @@ public class Benelux{
 	}
 */
 
-	public static void statusOfPlayer(Player p, Screen s) {
+	public static void statusOfPlayer(Player p, Terminal s) {
 		String health =  "Health Points: " + p.getHP();
 		String offense = "Attack Points: " + p.getATK();
 		String defense = "Defense Points: " + p.getDEF();
