@@ -69,4 +69,8 @@ public class Creature extends Interactive{
   public int defendCalc(Creature defender) {
     return defender.getATK() - this.getDEF();
   }
+
+  public String directionTest(){
+    return direction;
+  }
 }
