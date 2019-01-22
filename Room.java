@@ -8,13 +8,19 @@ public class Room{
   private int width;
   private int height;
   private char[][] grid;
-  //private entities List<Entity>;
+  private ArrayList<Entity> entities;
 
   public static void main (String[] args){
     Room r = new Room(1,1,7,5);
     r.printGrid();
   }
-  //constructors
+  public void addEntityList(){
+    ArrayList<Entity> e = new ArrayList<Entity>();
+    entities = e;
+  }
+  public void addEntity(Entity e){
+    entities.add(e);
+  }
   public Room(int tlcX, int tlcY, int _width, int _height){
     topLeftCornerX=tlcX;
     topLeftCornerY=tlcY;
@@ -95,6 +101,9 @@ public class Room{
   }
   public int getHeight(){
     return height;
+  }
+  public ArrayList<Entity> getEntities(){
+    return entities;
   }
   public void setTLCX(int x){
     topLeftCornerX=x;

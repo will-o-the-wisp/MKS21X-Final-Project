@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Floor{
   private ArrayList<Room> rooms;
-  //private List<Path> paths;
   private int entranceX;
   private int entranceY;
   private int exitX;
@@ -13,8 +12,32 @@ public class Floor{
   private char[][] grid;
   private Random rng; //move to Benelux later (?)
 
-  //main for testing
-  public static void main (String[] args){
+  public int indexOfRoom(int x, int y){
+    for(int i=0;i<rooms.size();i++){
+      Room r=rooms.get(i);
+      if(x>=r.getTLCX()&&
+         x<=r.getTLCX()+r.getWidth()-1&&
+         y>=r.getTLCY()&&
+         y<=r.getTLCY()+r.getHeight()-1){
+           return i;
+         }
+    }
+    return -1;
+  }
+  public Entity findEntity(int x, int y){
+    /*
+    use indexOfRoom, set up list of entities in Room.java
+    */
+    int r=indexOfRoom(x,y);
+    for(int i=0;i<rooms.size();i++){
+      if(rooms.get(r).getEntities().get(i).getX()==x&&
+        rooms.get(r).getEntities().get(i).getY()==y){
+          return rooms.get(r).getEntities().get(i);
+        }
+    }
+    return null;
+  }
+  public static void main(String[] args){
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 35, 20, r);
@@ -89,6 +112,9 @@ public class Floor{
   }
   public char[][] getGrid(){
     return grid;
+  }
+  public ArrayList<Room> getRooms(){
+    return rooms;
   }
   public void setGridPos(int x, int y, char e){
     grid[y][x] = e;

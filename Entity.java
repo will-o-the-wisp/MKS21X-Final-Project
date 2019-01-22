@@ -5,7 +5,7 @@ import java.util.List;
   *The group of objects that fill rooms.
 */
 
-public class Entity {
+public abstract class Entity {
 
   //Since all entities are placed onto rooms and the terminal, there needs to be distinct positions for each entity.
   private int x;
@@ -68,7 +68,9 @@ public class Entity {
   public void setY(int ycor){
     y = ycor;
   }
-
+  public abstract int getHP();
+  public abstract void setHP(int i);
+  public abstract int getDEF();
   /**
     *Function for entities to be able to see other entities in the surrounding spaces (sideways and diagonals).
     *Full functionally will need to discussed, may place found entities in a list for future references.
