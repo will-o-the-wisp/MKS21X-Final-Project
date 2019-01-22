@@ -127,6 +127,7 @@ public class Benelux{
 		//terminal.enterPrivateMode();
 		s.startScreen();
 		s.setCursorPosition(null);
+		terminal.setCursorVisible(false);
 
 		boolean running = false;
 
