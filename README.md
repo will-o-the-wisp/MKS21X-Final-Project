@@ -17,17 +17,36 @@ Features:
   -Progression
 
 ## Setting up the GAME
-Assuming it's a Linux machine:
+#### Assuming it's a Linux machine:
+
+Pull or download the repository.
 
 In the terminal, navigate to the git repository of this project.
 
-Run:
+Run by copy+paste:
 chmod +x help.sh  <br/>
 ./help.sh  <br/>
 
-Compile using javac -cp lanterna.jar:. Benelux.java
+Compile using: javac -cp lanterna.jar:. Benelux.java
 
+Run the game using: java -cp lanterna.jar:. Benelux
 
+Enjoy?
+
+#### Windows
+
+Essentially the same as Linux, except that lanterna.jar;. needs to be in quotes
+
+#### Macs
+
+I have no idea what this machine is.
+
+## Playing the GAME
+Arrow Keys are used for cardinal direction movement <br/>
+Insert Button Here used for attack                  <br/>
+P is used for Pause                                 <br/>
+Escape can be used at any point to leave the game   <br/>
+Other buttons are shown in the menus
 
 --------------------------------------------------------------------------------
 Development Diary Entries-
@@ -118,4 +137,4 @@ BC
 1/21/19
 
 BC
-  Screen works, except that the 2nd row of the array gets duplicated. Barely basic functionality, so not sure how the game is going to be.
+  Screen works, except that the 2nd row of the array gets duplicated. Barely basic functionality, so not sure how the game is going to be. No one to blame except myself really, also I am incredibly dumb.
