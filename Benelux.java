@@ -96,6 +96,7 @@ public class Benelux{
 		Player playerM = new Player();
 		playerM.setX(f.getEntranceX());
 		playerM.setY(f.getEntranceY());
+		player.changeDirection("North");
 
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
