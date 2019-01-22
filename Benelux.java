@@ -202,25 +202,25 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            eraser(currentY, currentX,s);
+
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							eraser(currentY,currentX,s);
+
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            eraser(currentY,currentX,s);
+
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            eraser(currentY,currentX,s);
+
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
@@ -233,7 +233,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-
+					eraser(currentY, currentX,s);
 					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.putString(0,0,fl,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 
