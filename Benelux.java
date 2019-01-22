@@ -114,34 +114,22 @@ public class Benelux{
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		Screen s = new Screen(terminal);
-		terminal.enterPrivateMode();
+		//terminal.enterPrivateMode();
 		s.startScreen();
-		s.setPaddingCharacter(' ', Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-
-		TerminalSize size = terminal.getTerminalSize();
-		terminal.setCursorVisible(false);
+		s.setCursorPosition(null);
 
 		boolean running = true;
 
-		long tStart = System.currentTimeMillis();
-		long lastSecond = 0;
-
 		int depth=0;
 	  String mode = "Game Mode";
-	  long timer = 0;
 
-		s.setCursorPosition(null);
 		putString(0,0, terminal,drawFloor(f));
 		//putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
-				long lastTime =  System.currentTimeMillis();
-		    long currentTime = lastTime;
 				int currentX = playerM.getX();
 				int currentY = playerM.getY();
-				long tEnd = System.currentTimeMillis();
-				long millis = tEnd - tStart;
 	      Key key = s.readInput();
 				/*
 				while (mode.equals("Start Menu") && running == true) {
@@ -241,16 +229,11 @@ public class Benelux{
 	      }
 
 	      if(mode.equals("Game Mode")){
-	        lastTime = currentTime;
-	        currentTime = System.currentTimeMillis();
-	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
+
 	        //DO GAME STUFF HERE
-					//s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					drawPlayer(playerM,f);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-					s.refresh();
-	        //putString(1,3,terminal, "Game here...",Terminal.Color.DEFAULT,Terminal.Color.RED);
-	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.DEFAULT,Terminal.Color.RED);
+					s.refresh(Screen.RefreshType.DELTA);
 
 	      }else if (mode.equals("Inventory Mode")) {
 	        s.putString(1,5, "Press P to return",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
@@ -264,21 +247,12 @@ public class Benelux{
 	      }
 
 				putString(35,0,terminal, mode);
-				putString(35,1,terminal, ""+currentTime);
 				if(key!=null){putString(35,2,terminal, ""+key.getCharacter());}
 				putString(35,3,terminal, "X " + playerM.getX() + " Y " + playerM.getY());
 				putString(35,4,terminal, "direction" + playerM.directionTest());
 				putString(35,5,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
 				putString(35,6,terminal, "" +playerM.lookInFront(f));
 			//DO EVEN WHEN NO KEY PRESSED:
-			/*
-			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
-			if(millis/1000 > lastSecond){
-				lastSecond = millis / 1000;
-				//one second has passed.
-			putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-			}
-			*/
 
 			statusOfPlayer(playerM,terminal);
 		}
