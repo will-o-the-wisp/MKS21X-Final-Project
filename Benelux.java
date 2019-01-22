@@ -277,15 +277,18 @@ public class Benelux{
 						hoard = createMonsters(ffs,depth);
 						depth+=1;
 					}
-					for (int i = 0; i < hoard.size(); i++) {
-						try	{
-							Thread.sleep(10);
+					Random help = new Random();
+					if (help.nextInt(1000) == 0) {
+						for (int i = 0; i < hoard.size(); i++) {
+							try	{
+								Thread.sleep(10);
+							}
+							catch(Exception ex){}
+								eraser(hoard.get(i).currentX(),hoard.get(i).currentY(),ffs,hoard.get(i));
+								hoard.get(i).movement(ffs);
+								drawMonster(hoard.get(i),ffs);
+							}
 						}
-						catch(Exception ex){}
-						eraser(hoard.get(i).currentX(),hoard.get(i).currentY(),ffs,hoard.get(i));
-						hoard.get(i).movement(ffs);
-						drawMonster(hoard.get(i),ffs);
-					}
 					s.putString(0,0,drawFloor(ffs),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 
