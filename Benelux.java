@@ -209,7 +209,7 @@ public class Benelux{
 	          }
 	        }
 	        if (mode.equals("Game Mode")) {
-						eraser(playerM.currentX(),playerM.currentY(),f);
+						eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	          if (key.getKind() == Key.Kind.Escape) {
 							s.stopScreen();
 	            terminal.exitPrivateMode();
@@ -249,9 +249,21 @@ public class Benelux{
 	      if(mode.equals("Game Mode")){
 
 	        //DO GAME STUFF HERE
-					eraser(mm.currentX(),mm.currentY(),f);
+					eraser(mm.currentX(),mm.currentY(),f,mm);
 					mm.movement(f);
 					drawPlayer(playerM,f);
+					if (playerM.onExit(f.getExitX(),f.getExitY())){
+						rs = new ArrayList<Room>();
+						f = new Floor(rs, 35, 20, r);
+				    f.addAllRooms();
+				    f.addEntrance();
+				    f.addExit();
+						f.addAllPaths();
+						playerM.setX(f.getEntranceX());
+						playerM.setY(f.getEntranceY());
+						playerM.changeDirection("North");
+						depth+=1;
+					}
 					drawMonster(mm,f);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
