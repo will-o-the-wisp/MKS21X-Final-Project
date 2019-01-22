@@ -69,7 +69,7 @@ public class Benelux{
 	}
 
 	public static void drawMonster(Monster m, Floor ff){
-		ff.setGridPos(m.getX().m.getY(),'!');
+		ff.setGridPos(m.getX(),m.getY(),'!');
 	}
 
 	public static void eraser(int x, int y, Floor ff){
