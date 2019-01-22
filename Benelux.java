@@ -69,8 +69,8 @@ public class Benelux{
 	}
 	*/
 
-	public static void eraser(Player p, Floor ff){
-		ff.setGridPos(p.getX(),p.getY(),'.');
+	public static void eraser(int x, int y, Floor ff){
+		ff.setGridPos(x,y,'.');
 	}
 
 	public static void drawPlayer(Player p, Floor ff ){
@@ -193,6 +193,7 @@ public class Benelux{
 	          }
 	        }
 	        if (mode.equals("Game Mode")) {
+						eraser(currentX,currentY,f);
 	          if (key.getKind() == Key.Kind.Escape) {
 							s.stopScreen();
 	            terminal.exitPrivateMode();
@@ -232,7 +233,7 @@ public class Benelux{
 	      if(mode.equals("Game Mode")){
 
 	        //DO GAME STUFF HERE
-					eraser(playerM,f);
+
 					drawPlayer(playerM,f);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
