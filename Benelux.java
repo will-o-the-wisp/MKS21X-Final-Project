@@ -130,7 +130,7 @@ public class Benelux{
 			dummy.setATK(r.nextInt(10+diff));
 			dummy.setDEF(r.nextInt(10+diff));
 			dummy.setX(ff.getExitX()+r.nextInt() % 2);
-			dummy.setY(ff.getExitY())+ r.nextInt() %2;
+			dummy.setY(ff.getExitY()+ r.nextInt() % 2);
 			mn.add(dummy);
 		}
 		return mn;
@@ -310,6 +310,7 @@ public class Benelux{
 			//DO EVEN WHEN NO KEY PRESSED:
 
 			statusOfPlayer(playerM,terminal);
+			s.refresh();
 		}
 	}
 
