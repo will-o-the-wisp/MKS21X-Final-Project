@@ -84,13 +84,11 @@ public class Benelux{
 	public static void drawPlayer(Player p, Floor ff ){
 		ff.setGridPos(p.getX(),p.getY(),'$');
 	}
-/*
-	public static void drawItem(Item i){
-		int x = i.getX();
-		int y = i.getY();
-		s.putString(x,y,terminal, " ? ");
+
+	public static void drawItem(Item i,Floor ff){
+		ff.setGridPos(i.getX(),i.getY(),'!');
 	}
-*/
+
 
 	public static void statusOfPlayer(Player p, Terminal s) {
 		String health =  "Health Points: " + p.getHP();
@@ -120,9 +118,9 @@ public class Benelux{
 		playerM.setY(f.getEntranceY());
 		playerM.changeDirection("North");
 
-		Monster mm = new Monster("dinosaur");
-		mm.setX(1);
-		mm.setY(1);
+		Monster mm = new Monster("dinosaur"); //this should be randomized
+		mm.setX(f.getExitX());
+		mm.setY(f.getExitY());
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		Screen s = new Screen(terminal);
@@ -130,43 +128,45 @@ public class Benelux{
 		s.startScreen();
 		s.setCursorPosition(null);
 
-		boolean running = true;
+		boolean running = false;
 
 		int depth=0;
-	  String mode = "Game Mode";
+	  String mode = "Start Menu";
 
 		try	{
 			Thread.sleep(1000);
 		}
 		catch(Exception ex){}
 
-		//putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
-
-	    //while(millis/1000 != lastSecond + 1){ //check for one second?
+		while (mode.equals("Start Menu") && running == false) {
+			Key key = s.readInput();
+			putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
+				if (key != null){
+					if (key.getCharacter() == '1') {
+						mode = "Game Mode";
+						terminal.clearScreen();
+						running = true;
+					}
+					if (key.getCharacter() == '2') {
+						terminal.exitPrivateMode();
+						s.stopScreen();
+						running = false;
+					}
+					if (key.getKind() == Key.Kind.Escape) {
+						terminal.exitPrivateMode();
+						s.stopScreen();
+						running = false;
+						}
+					}
+				}
 			while(running){
-				drawPlayer(playerM,f);
-				drawMonster(mm,f);
-				putString(0,0, terminal,drawFloor(f));
+
 	      Key key = s.readInput();
-				/*
-				while (mode.equals("Start Menu") && running == true) {
-		      putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
-		        if (key != null){
-		          if (key.getCharacter() == '1') {
-		            mode = "Game Mode";
-								terminal.clearScreen();
-		          }
-		          if (key.getCharacter() == '2') {
-		            terminal.exitPrivateMode();
-		            running = false;
-		          }
-							if (key.getKind() == Key.Kind.Escape) {
-								terminal.exitPrivateMode();
-								running = false;
-							}
-		        }
-		      }
-				*/
+
+
+					drawPlayer(playerM,f);
+					drawMonster(mm,f);
+					putString(0,0, terminal,drawFloor(f));
 	      if (key != null){
 	        //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
 
@@ -186,7 +186,7 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	        }
-
+					/*
 	        if (mode.equals("Inventory Mode")) {
 	          if (key.getCharacter() == 'p') {
 	            mode = "Game Mode";
@@ -208,6 +208,7 @@ public class Benelux{
 	            playerM.getInventory().get(4);
 	          }
 	        }
+					*/
 	        if (mode.equals("Game Mode")) {
 						eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	          if (key.getKind() == Key.Kind.Escape) {
@@ -274,7 +275,7 @@ public class Benelux{
 					s.refresh();
 	      }else if (mode.equals("Pause Menu")) {
 	        s.putString(1,5, "Press Escape to Close",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-	        s.putString(1,6, "1. Inventory",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+	        //s.putString(1,6, "1. Inventory",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	        s.putString(1,7, "Press P to return to the Game",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 	      }
