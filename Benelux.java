@@ -90,7 +90,7 @@ public class Benelux{
     f.addEntrance();
     f.addExit();
 		f.addAllPaths();
-		String fl = drawFloor(f);
+
 		ArrayList<Monster> mn =new ArrayList<Monster>();
 		int numbers = r.nextInt(10);
 
@@ -98,7 +98,7 @@ public class Benelux{
 		playerM.setX(f.getEntranceX());
 		playerM.setY(f.getEntranceY());
 		playerM.changeDirection("North");
-
+		drawPlayer(playerM,f);
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		Screen s = new Screen(terminal);
@@ -117,6 +117,8 @@ public class Benelux{
 		int depth=0;
 	  String mode = "Game Mode";
 	  long timer = 0;
+
+		String fl = drawFloor(f);
 
 		s.setCursorPosition(null);
 		putString(0,0, terminal,fl);
