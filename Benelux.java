@@ -37,12 +37,12 @@ public class Benelux{
       t.putCharacter('#');
     }
     for(int i=1;i<r.getHeight();i++){
-      t.moveCursor(x,y+i);
+      t.moveCursor(y,x+i);
       t.putCharacter('#');
-      t.moveCursor(x+r.getWidth()-1,y+i);
+      t.moveCursor(y+r.getWidth()-1,x+i);
       t.putCharacter('#');
     }
-    t.moveCursor(x,y+r.getHeight());
+    t.moveCursor(y,x+r.getHeight());
     for(int i=0;i<r.getWidth();i++){
       t.putCharacter('#');
     }
@@ -94,8 +94,8 @@ public class Benelux{
 		int numbers = r.nextInt(10);
 
 		Player playerM = new Player();
-		playerM.setX(f.getEntranceX());
-		playerM.setY(f.getEntranceY());
+		playerM.setY(f.getEntranceX());
+		playerM.setX(f.getEntranceY());
 
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
