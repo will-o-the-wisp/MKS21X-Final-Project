@@ -67,13 +67,10 @@ public class Benelux{
 
 		return row;
 	}
-	/*
-	public static void drawMonster(Monster m){
-		int x = m.getX();
-		int y = m.getY();
-		s.putString(x,y,terminal," ! ");
+
+	public static void drawMonster(Monster m, Floor ff){
+		ff.setGridPos(m.getX().m.getY(),'!');
 	}
-	*/
 
 	public static void eraser(int x, int y, Floor ff){
 		ff.setGridPos(x,y,'.');
@@ -116,7 +113,10 @@ public class Benelux{
 		playerM.setX(f.getEntranceX());
 		playerM.setY(f.getEntranceY());
 		playerM.changeDirection("North");
-		drawPlayer(playerM,f);
+
+		Monster mm = new Monster("dinosaur");
+		mm.setX(1);
+		mm.setY(1);
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		Screen s = new Screen(terminal);
@@ -134,6 +134,8 @@ public class Benelux{
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
+				drawPlayer(playerM,f);
+				drawMonster(mm,f);
 				putString(0,0, terminal,drawFloor(f));
 				int currentX = playerM.getX();
 				int currentY = playerM.getY();
@@ -241,6 +243,7 @@ public class Benelux{
 	        //DO GAME STUFF HERE
 
 					drawPlayer(playerM,f);
+					drawMonster(mm,f);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 
