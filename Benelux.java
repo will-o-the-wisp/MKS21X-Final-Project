@@ -261,7 +261,7 @@ public class Benelux{
 			putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
 			}
 			*/
-
+			s.refresh();
 		}
 	}
 }
