@@ -51,12 +51,13 @@ public class Benelux{
   }
 	public static String drawFloor(Floor fr){
 		String row = "";
-		for (int i = 0; i<fr.getGrid().length-1;i++){
-			for (int o =0; o<fr.getGrid()[i].length-1;o++){
+		for (int i = 0; i<fr.getGrid().length;i++){
+			for (int o =0; o<fr.getGrid()[i].length;o++){
 				row += " " + fr.getGrid()[i][o] + " ";
-				if (o == fr.getGrid()[i].length -2){
+				if (o == fr.getGrid()[i].length -1){
 					row += i + "\n";
 				}
+
 			}
 		}
 		return row;
@@ -249,12 +250,12 @@ public class Benelux{
 					s.refresh();
 	      }
 
-				putString(35,0,terminal, mode);
+				putString(0,35,terminal, mode);
 				if(key!=null){putString(35,2,terminal, ""+key.getCharacter());}
-				putString(35,3,terminal, "X " + playerM.getX() + " Y " + playerM.getY());
-				putString(35,4,terminal, "direction" + playerM.directionTest());
-				putString(35,5,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
-				putString(35,6,terminal, "" +playerM.lookInFront(f));
+				putString(0,36,terminal, "X " + playerM.getX() + " Y " + playerM.getY());
+				putString(0,37,terminal, "direction" + playerM.directionTest());
+				putString(0,38,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
+				putString(0,39,terminal, "" +playerM.lookInFront(f));
 			//DO EVEN WHEN NO KEY PRESSED:
 
 			statusOfPlayer(playerM,terminal);
