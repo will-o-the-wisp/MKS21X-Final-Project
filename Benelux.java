@@ -73,7 +73,7 @@ public class Benelux{
 	}
 
 	public static void eraser(int x, int y, Floor ff, Creature e){
-		if (e.onExit(ff.getExitX(),ff.getExitY()))) {
+		if (e.onExit(ff.getExitX(),ff.getExitY())) {
 			ff.setGridPos(x,y,'*');
 		}
 		else {
