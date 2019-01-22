@@ -309,7 +309,7 @@ public class Benelux{
 				*/
 			//DO EVEN WHEN NO KEY PRESSED:
 
-			statusOfPlayer(playerM,terminal);
+			statusOfPlayer(playerM,s);
 			s.refresh();
 		}
 	}
