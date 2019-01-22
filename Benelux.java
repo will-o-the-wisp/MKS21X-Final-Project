@@ -289,7 +289,7 @@ public class Benelux{
 				putString(0,37,terminal, "direction" + playerM.directionTest());
 				putString(0,38,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
 				putString(0,39,terminal, "" +playerM.lookInFront(f));
-				
+
 			//DO EVEN WHEN NO KEY PRESSED:
 
 			statusOfPlayer(playerM,terminal);
@@ -300,7 +300,7 @@ public class Benelux{
 		run();
 	}
 }
-
+get me out 
 //resize -s height getWidth
 
 //#!/bin/bash
