@@ -134,7 +134,7 @@ public class Benelux{
 	  String mode = "Start Menu";
 
 		try	{
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 		}
 		catch(Exception ex){}
 
