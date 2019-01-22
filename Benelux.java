@@ -240,7 +240,10 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 						if (key.getCharacter() == 'f'){
+							try {
 							playerM.meleeAttack(ffs);
+						}
+						catch (Exception zzzz){}
 						}
 	          if (key.getKind() == Key.Kind.ArrowDown) {
 
