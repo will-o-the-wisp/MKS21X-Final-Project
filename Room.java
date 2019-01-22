@@ -15,7 +15,7 @@ public class Room{
     r.printGrid();
   }
   public void addEntityList(){
-    entities = new ArrayList<Entity>;
+    ArrayList<Entity> entities = new ArrayList<Entity>;
   }
   public void addEntity(Entity e){
     entities.add(e);
