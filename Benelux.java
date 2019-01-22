@@ -53,6 +53,10 @@ public class Benelux{
 		String row = "";
 		for (int i = 0; i<fr.getGrid().length;i++){
 			for (int o =0; o<fr.getGrid()[i].length;o++){
+				if (i == 0) {
+					row += " " + fr.getGrid()[i][o] + " ";
+					row += "\n";
+				}
 				if (fr.getGrid()[i][o] == '_') {
 					row += "   ";
 				}
@@ -64,7 +68,7 @@ public class Benelux{
 				}
 			}
 		}
-		
+
 		return row;
 	}
 	/*
