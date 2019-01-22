@@ -44,21 +44,27 @@ public class Creature extends Interactive{
   public boolean meleeAttack(Floor f){
     int x=getX();
     int y=getY();
+    int a;
+    int b;
     if(direction.equals("North")){
-      int a=x;
-      int b=y+1;
+      a=x;
+      b=y+1;
     }
-    if(direction.equals("East")){
-      int a=x+1;
-      int b=y;
+    else if(direction.equals("East")){
+      a=x+1;
+      b=y;
     }
-    if(direction.equals("South")){
-      int a=x;
-      int b=y-1;
+    else if(direction.equals("South")){
+      a=x;
+      b=y-1;
     }
-    if(direction.equals("West")){
-      int a=x-1;
-      int b=y;
+    else if(direction.equals("West")){
+      a=x-1;
+      b=y;
+    }
+    else{
+      a=0;
+      b=0;
     }
     if(isEnemy(lookInFront(f))){
       Entity enemy = f.findEntity(a,b);
@@ -83,7 +89,7 @@ public class Creature extends Interactive{
     return false;
   }
 
-  public int attackCalc(Creature defender) {
+  public int attackCalc(Entity defender) {
     return this.getATK() - defender.getDEF();
   }
 
