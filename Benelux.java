@@ -151,6 +151,7 @@ public class Benelux{
 	        //pause mode
 	        if(mode.equals("Pause Menu")){
 	          if (key.getKind() == Key.Kind.Escape) {
+							s.stopScreen();
 	            terminal.exitPrivateMode();
 	            running = false;
 	          }
@@ -187,6 +188,7 @@ public class Benelux{
 	        }
 	        if (mode.equals("Game Mode")) {
 	          if (key.getKind() == Key.Kind.Escape) {
+							s.stopScreen();
 	            terminal.exitPrivateMode();
 	            running = false;
 	          }
@@ -228,17 +230,20 @@ public class Benelux{
 	        //DO GAME STUFF HERE
 					//putString(1,1, terminal, drawFloor(f));
 					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-					s.completeRefresh();
+					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					s.refresh();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.DEFAULT,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.DEFAULT,Terminal.Color.RED);
 
 	      }else if (mode.equals("Inventory Mode")) {
 	        s.putString(1,5, "Press P to return",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	        s.putString(1,7, "1. ",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					s.refresh();
 	      }else if (mode.equals("Pause Menu")) {
 	        s.putString(1,5, "Press Escape to Close",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	        s.putString(1,6, "1. Inventory",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	        s.putString(1,7, "Press P to return to the Game",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					s.refresh();
 	      }
 
 				putString(35,0,terminal, mode);
