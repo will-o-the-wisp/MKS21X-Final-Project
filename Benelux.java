@@ -280,14 +280,14 @@ public class Benelux{
 	        s.putString(1,7, "Press P to return to the Game",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 	      }
-/*
+
 				putString(0,35,terminal, mode);
 				if(key!=null){putString(0,43,terminal, ""+key.getCharacter());}
 				putString(0,36,terminal, "X " + playerM.getX() + " Y " + playerM.getY());
 				putString(0,37,terminal, "direction" + playerM.directionTest());
 				putString(0,38,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
 				putString(0,39,terminal, "" +playerM.lookInFront(f));
-				*/
+				
 			//DO EVEN WHEN NO KEY PRESSED:
 
 			statusOfPlayer(playerM,terminal);
