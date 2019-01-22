@@ -102,6 +102,7 @@ public class Benelux{
 		Screen s = new Screen(terminal);
 		terminal.enterPrivateMode();
 		s.startScreen();
+		s.setPaddingCharacter(' ', Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 
 		TerminalSize size = terminal.getTerminalSize();
 		terminal.setCursorVisible(false);
@@ -116,8 +117,8 @@ public class Benelux{
 	  long timer = 0;
 
 		s.setCursorPosition(null);
-		s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-		s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+		putString(0,0, terminal,drawFloor(f));
+		putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
