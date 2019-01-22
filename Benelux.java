@@ -250,7 +250,7 @@ public class Benelux{
 
 	      if(mode.equals("Game Mode")){
 					try	{
-						Thread.sleep(3000);
+						Thread.sleep(1000);
 					}
 					catch(Exception ex){}
 	        //DO GAME STUFF HERE
