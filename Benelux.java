@@ -279,7 +279,7 @@ public class Benelux{
 			}
 			*/
 
-			statusOfPlayer(p,s);
+			statusOfPlayer(playerM,s);
 		}
 	}
 }
