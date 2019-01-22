@@ -118,10 +118,8 @@ public class Benelux{
 	  String mode = "Game Mode";
 	  long timer = 0;
 
-		String fl = drawFloor(f);
-
 		s.setCursorPosition(null);
-		putString(0,0, terminal,fl);
+		putString(0,0, terminal,drawFloor(f));
 		//putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
@@ -237,7 +235,7 @@ public class Benelux{
 	        //DO GAME STUFF HERE
 					//s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					drawPlayer(playerM,f);
-					s.putString(0,0,fl,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.DEFAULT,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.DEFAULT,Terminal.Color.RED);
