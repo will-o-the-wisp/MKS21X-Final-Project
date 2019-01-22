@@ -25,7 +25,7 @@ import com.googlecode.lanterna.*;
 
 public class Benelux{
 
-	public static void putString(int r, int c,TerminalScreen t, String str){
+	public static void putString(int r, int c,Terminal t, String str){
 		t.moveCursor(r,c);
 		for(int i = 0; i < str.length();i++){
 			t.putCharacter(str.charAt(i));
@@ -113,7 +113,7 @@ public class Benelux{
 		drawPlayer(playerM,f);
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
-		TerminalScreen s = new TerminalScreen(terminal);
+		Screen s = new Screen(terminal);
 		terminal.enterPrivateMode();
 		s.startScreen();
 		s.setPaddingCharacter(' ', Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
@@ -280,7 +280,7 @@ public class Benelux{
 			}
 			*/
 
-			statusOfPlayer(playerM,s);
+			statusOfPlayer(playerM,terminal);
 		}
 	}
 }
