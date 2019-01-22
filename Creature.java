@@ -40,18 +40,45 @@ public class Creature extends Interactive{
     return '#';
   }
 
-  public boolean meleeAttack(Creature defender){
-    defender.setHP(defender.getHP() - attackCalc(defender));
-    this.setHP(this.getHP() - defendCalc(defender));
-    if (this.getHP() <= 0) {
-      this.setAliveStatus(false);
+  //use findEntity, use different cases for direction faced
+  public boolean meleeAttack(Floor f){
+    int x=getX();
+    int y=getY();
+    if(direction.equals("North")){
+      int a=x;
+      int b=y+1;
     }
-    if (defender.getHP() <= 0) {
-      defender.setAliveStatus(false);
+    if(direction.equals("East")){
+      int a=x+1;
+      int b=y;
     }
-    return true;
+    if(direction.equals("South")){
+      int a=x;
+      int b=y-1;
+    }
+    if(direction.equals("West")){
+      int a=x-1;
+      int b=y;
+    }
+    if(isEnemy(lookInFront(f))){
+      Entity enemy = f.findEntity(a,b);
+      enemy.setHP(enemy.getHP() - this.attackCalc(enemy));
+      if (enemy.getHP() <= 0) {
+        enemy.setAliveStatus(false);
+      }
+      return true;
+    }
+    return false;
   }
-
+  public boolean isEnemy(char c){
+    if(this instanceof Player){
+      return c=='!';
+    }
+    if(this instanceof Monster){
+      return c=='$';
+    }
+    return false;
+  }
   public boolean rangeAttack(){
     return false;
   }
