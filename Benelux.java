@@ -94,8 +94,8 @@ public class Benelux{
 		int numbers = r.nextInt(10);
 
 		Player playerM = new Player();
-		playerM.setY(f.getEntranceX());
-		playerM.setX(f.getEntranceY());
+		playerM.setX(f.getEntranceX());
+		playerM.setY(f.getEntranceY());
 
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
@@ -118,7 +118,7 @@ public class Benelux{
 
 		s.setCursorPosition(null);
 		putString(1,1, terminal,drawFloor(f));
-		putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
+		putString(playerM.getY(),playerM.getX(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
