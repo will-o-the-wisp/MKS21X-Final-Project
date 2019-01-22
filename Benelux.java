@@ -206,10 +206,7 @@ public class Benelux{
 	        }
 					*/
 	        if (mode.equals("Game Mode")) {
-						try	{
-							Thread.sleep(3000);
-						}
-						catch(Exception ex){}
+
 
 						eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	          if (key.getKind() == Key.Kind.Escape) {
@@ -249,7 +246,10 @@ public class Benelux{
 	      }
 
 	      if(mode.equals("Game Mode")){
-
+					try	{
+						Thread.sleep(3000);
+					}
+					catch(Exception ex){}
 	        //DO GAME STUFF HERE
 					eraser(mm.currentX(),mm.currentY(),f,mm);
 					mm.movement(f);
@@ -287,7 +287,7 @@ public class Benelux{
 				putString(0,37,terminal, "direction" + playerM.directionTest());
 				putString(0,38,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
 				putString(0,39,terminal, "" +playerM.lookInFront(f));
-				
+
 			//DO EVEN WHEN NO KEY PRESSED:
 
 			statusOfPlayer(playerM,terminal);
