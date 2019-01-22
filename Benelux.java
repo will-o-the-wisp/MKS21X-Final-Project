@@ -90,14 +90,14 @@ public class Benelux{
 	}
 
 
-	public static void statusOfPlayer(Player p, Terminal s) {
+	public static void statusOfPlayer(Player p, Screen s) {
 		String health =  "Health Points: " + p.getHP();
 		String offense = "Attack Points: " + p.getATK();
 		String defense = "Defense Points: " + p.getDEF();
 
-		putString(0,40,s,health);
-		putString(0,41,s,offense);
-		putString(0,42,s,defense);
+		s.putString(0,40,health,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+		s.putString(0,41,s,offense,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+		s.putString(0,42,s,defense,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	}
 
 	public static Floor createFloor(){
@@ -299,14 +299,14 @@ public class Benelux{
 	        s.putString(1,7, "Press P to return to the Game",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 	      }
-
+				/*
 				putString(0,35,terminal, mode);
 				if(key!=null){putString(0,43,terminal, ""+key.getCharacter());}
 				putString(0,36,terminal, "X " + playerM.getX() + " Y " + playerM.getY());
 				putString(0,37,terminal, "direction" + playerM.directionTest());
 				putString(0,38,terminal, "X " + ffs.getEntranceX() + " Y " + ffs.getEntranceY());
 				putString(0,39,terminal, "" +playerM.lookInFront(ffs));
-
+				*/
 			//DO EVEN WHEN NO KEY PRESSED:
 
 			statusOfPlayer(playerM,terminal);
