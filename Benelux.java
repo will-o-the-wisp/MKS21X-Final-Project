@@ -134,11 +134,6 @@ public class Benelux{
 		int depth=0;
 	  String mode = "Start Menu";
 
-		try	{
-			Thread.sleep(3000);
-		}
-		catch(Exception ex){}
-
 		while (mode.equals("Start Menu") && running == false) {
 			Key key = s.readInput();
 			putString(1,3,terminal, "Start Menu \n Press the Corresponding Number \n -------- \n 1.Start Game \n 2. Exit Game");
@@ -211,6 +206,11 @@ public class Benelux{
 	        }
 					*/
 	        if (mode.equals("Game Mode")) {
+						try	{
+							Thread.sleep(3000);
+						}
+						catch(Exception ex){}
+
 						eraser(playerM.currentX(),playerM.currentY(),f,playerM);
 	          if (key.getKind() == Key.Kind.Escape) {
 							s.stopScreen();
