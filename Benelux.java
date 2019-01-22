@@ -112,7 +112,7 @@ public class Benelux{
 		drawPlayer(playerM,f);
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
-		Screen s = new Screen(terminal);
+		TerminalScreen s = new TerminalScreen(terminal);
 		terminal.enterPrivateMode();
 		s.startScreen();
 		s.setPaddingCharacter(' ', Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
