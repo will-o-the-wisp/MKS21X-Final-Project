@@ -129,8 +129,8 @@ public class Benelux{
 			dummy.setHP(r.nextInt(20+diff));
 			dummy.setATK(r.nextInt(10+diff));
 			dummy.setDEF(r.nextInt(10+diff));
-			dummy.setX(ff.getExitX());
-			dummy.setY(ff.getExitY());
+			dummy.setX(ff.getExitX()+r.nextInt() % 2);
+			dummy.setY(ff.getExitY())+ r.nextInt() %2;
 			mn.add(dummy);
 		}
 		return mn;
