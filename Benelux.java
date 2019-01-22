@@ -233,7 +233,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-					eraser(currentY, currentX,s);
+					eraser(currentX, currentY,s);
 					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.putString(0,0,fl,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 
