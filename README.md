@@ -13,7 +13,6 @@ Features:
   -Random paths
   -Monsters
   -Player
-  -Items
   -Progression
 
 ## Setting up the Game
@@ -43,6 +42,7 @@ Arrow Keys are used for cardinal direction movement <br/>
 Insert Button Here used for attack                  <br/>
 P is used for Pause                                 <br/>
 Escape can be used at any point to leave the game   <br/>
+F is for melee attacks                              <br/>
 Other buttons are shown in the menus
 
 --------------------------------------------------------------------------------

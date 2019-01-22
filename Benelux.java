@@ -287,6 +287,7 @@ public class Benelux{
 								Thread.sleep(10);
 							}
 							catch(Exception ex){}
+								try {
 								if (hoard.get(i).lookInFront(ffs) == '$'){
 									hoard.get(i).meleeAttack(ffs);
 								}
@@ -295,6 +296,8 @@ public class Benelux{
 									hoard.get(i).movement(ffs);
 									drawMonster(hoard.get(i),ffs);
 								}
+							}
+							catch (Exception zz){}
 							}
 						}
 					s.putString(0,0,drawFloor(ffs),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
