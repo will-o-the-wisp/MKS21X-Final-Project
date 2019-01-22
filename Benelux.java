@@ -20,11 +20,12 @@ import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 import com.googlecode.lanterna.screen.*;
+import com.googlecode.lanterna.*;
 
 
 public class Benelux{
 
-	public static void putString(int r, int c,Terminal t, String str){
+	public static void putString(int r, int c,TerminalScreen t, String str){
 		t.moveCursor(r,c);
 		for(int i = 0; i < str.length();i++){
 			t.putCharacter(str.charAt(i));
