@@ -121,6 +121,7 @@ public class Benelux{
 		Monster mm = new Monster("dinosaur"); //this should be randomized
 		mm.setX(f.getExitX());
 		mm.setY(f.getExitY());
+		f.getRooms().get(1).addEntityList();
 		f.getRooms().get(1).getEntities().add(mm);
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
