@@ -118,14 +118,14 @@ public class Benelux{
 
 		s.setCursorPosition(null);
 		putString(0,0, terminal,drawFloor(f));
-		putString(playerM.getY(),playerM.getX(), terminal,drawPlayer(playerM));
+		putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
 				long lastTime =  System.currentTimeMillis();
 		    long currentTime = lastTime;
-				int currentX = playerM.getX();
-				int currentY = playerM.getY();
+				int currentX = playerM.getY();
+				int currentY = playerM.getX();
 				long tEnd = System.currentTimeMillis();
 				long millis = tEnd - tStart;
 	      Key key = s.readInput();
@@ -200,25 +200,25 @@ public class Benelux{
 							terminal.clearScreen();
 	          }
 	          if (key.getKind() == Key.Kind.ArrowDown) {
-	            eraser(currentX, currentY,s);
+	            eraser(currentY, currentX,s);
 	            playerM.changeDirection("South");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
-							eraser(currentX,currentY,s);
+							eraser(currentY,currentX,s);
 	            playerM.changeDirection("West");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
-	            eraser(currentX,currentY,s);
+	            eraser(currentY,currentX,s);
 	            playerM.changeDirection("North");
 	            playerM.moveForward(f);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
-	            eraser(currentX,currentY,s);
+	            eraser(currentY,currentX,s);
 	            playerM.changeDirection("East");
 	            playerM.moveForward(f);
 
@@ -232,7 +232,7 @@ public class Benelux{
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
 
-					s.putString(playerM.getY(),playerM.getX(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 
 					s.refresh();
