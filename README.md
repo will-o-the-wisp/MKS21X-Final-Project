@@ -16,8 +16,8 @@ Features:
   -Items
   -Progression
 
-## Setting up the GAME
-#### Assuming it's a Linux machine:
+## Setting up the Game
+#### Linux and Macs:
 
 Pull or download the repository.
 
@@ -37,11 +37,8 @@ Enjoy?
 
 Essentially the same as Linux, except that lanterna.jar;. needs to be in quotes
 
-#### Macs
 
-I have no idea what this machine is.
-
-## Playing the GAME
+## Playing the Game
 Arrow Keys are used for cardinal direction movement <br/>
 Insert Button Here used for attack                  <br/>
 P is used for Pause                                 <br/>
@@ -93,6 +90,10 @@ Kenson Li
 
 1/10/19
 
+Kenson Li
+
+  continued with randomization of Floors and Rooms, putting entrances and exits within bounds
+
 BC
 
   various touch ups to entity classes such as making items not have "alive" boolean, adding txt files to be read from, atk + def calcs
@@ -105,11 +106,19 @@ BC
 
 1/13/19
 
+Kenson Li
+
+  restructured randomization of layout by adding rooms and paths separately
+
 BC
 
   inputs for terminal layout, need touch ups to various modes, movement and placement of an entity is okay
 
 1/14/19
+
+Kenson Li
+
+  work on adding paths
 
 BC
 
@@ -123,6 +132,10 @@ BC
 
 1/16/19
 
+Kenson Li
+
+  initial work on melee attack
+
 BC
 
   More attempts at fixing Screen but failed.
@@ -134,6 +147,10 @@ BC
   Tried making the screen only write one string for floor where the array is one string, still failed to produce anything meaningful.
 
 1/18/19
+
+Kenson Li
+
+  more work on melee attack, dependent on monster code and enemy detection code
 
 BC
 
