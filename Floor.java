@@ -86,6 +86,9 @@ public class Floor{
   public char[][] getGrid(){
     return grid;
   }
+  public void setGridPos(int x, int y, char e){
+    grid[y][x] = e;
+  }
   public boolean addRoom(Room r, int x, int y){
     int w = r.getWidth();
     int h = r.getHeight();
