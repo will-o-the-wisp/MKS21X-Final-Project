@@ -66,11 +66,11 @@ public class Benelux{
 		s.putString(x,y,terminal," ! ");
 	}
 	*/
-	/*
+	
 	public static void eraser(int x, int y, Terminal t){
 		putString(x,y, t,".");
 	}
-	*/
+
 	public static String drawPlayer(Player p){
 		return " $ ";
 	}
