@@ -54,7 +54,7 @@ public class Benelux{
 		for (int i = 0; i<fr.getGrid().length-1;i++){
 			for (int o =0; o<fr.getGrid()[i].length-1;o++){
 				row += " " + fr.getGrid()[i][o] + " ";
-				if (o == fr.getGrid()[i].length -2){
+				if (o == fr.getGrid()[i].length -1){
 					row += "\n";
 				}
 			}
