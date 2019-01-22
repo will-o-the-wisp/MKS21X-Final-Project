@@ -31,4 +31,8 @@ public class Monster extends Creature{
     this.changeDirection(getRandomDirection());
     this.moveForward(f);
   }
+
+  public void setSpecies(String sp) {
+    species = sp;
+  }
 }

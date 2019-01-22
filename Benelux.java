@@ -100,8 +100,7 @@ public class Benelux{
 		putString(0,42,s,defense);
 	}
 
-	public static void run() throws FileNotFoundException{
-
+	public static Floor createFloor(){
 		ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
     Floor f = new Floor(rs, 35, 20, r);
@@ -109,18 +108,37 @@ public class Benelux{
     f.addEntrance();
     f.addExit();
 		f.addAllPaths();
+		return f;
+	}
 
-		ArrayList<Monster> mn =new ArrayList<Monster>();
-		int numbers = r.nextInt(10);
-
+	public static Player createPlayer(Floor ff){
 		Player playerM = new Player();
-		playerM.setX(f.getEntranceX());
-		playerM.setY(f.getEntranceY());
+		playerM.setX(ff.getEntranceX());
+		playerM.setY(ff.getEntranceY());
 		playerM.changeDirection("North");
+		return playerM;
+	}
 
-		Monster mm = new Monster("dinosaur"); //this should be randomized
-		mm.setX(f.getExitX());
-		mm.setY(f.getExitY());
+	public static ArrayList<Monster> createMonsters(Floor ff, int diff){
+		ArrayList<Monster> mn =new ArrayList<Monster>();
+		Random r = new Random();
+		int counter = r.nextInt(10+diff);
+		Monster dummy = new Monster("");
+		for (int i = 0; i < counter; i++) {
+			dummy.setSpecies("giraffe");
+			dummy.setHP(r.nextInt(20+diff));
+			dummy.setATK(r.nextInt(10+diff));
+			dummy.setDEF(r.nextInt(10+diff));
+			dummy.setX(ff.getExitX());
+			dummy.setY(ff.getExitY());
+			mn.add(dummy);
+		}
+	}
+	public static void run() throws FileNotFoundException{
+		int depth=0;
+		Floor ffs = createFloor();
+		Player playerM = createPlayer(ffs);
+		ArrayList<Monster> hoard = createMonsters(ffs,depth);
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		Screen s = new Screen(terminal);
@@ -131,7 +149,7 @@ public class Benelux{
 
 		boolean running = false;
 
-		int depth=0;
+
 	  String mode = "Start Menu";
 
 		while (mode.equals("Start Menu") && running == false) {
@@ -160,9 +178,11 @@ public class Benelux{
 	      Key key = s.readInput();
 
 
-					drawPlayer(playerM,f);
-					drawMonster(mm,f);
-					putString(0,0, terminal,drawFloor(f));
+					drawPlayer(playerM,ffs);
+					for (int i = 0; i < hoard.size(); i++) {
+						drawMonster(hoard.get(i),ffs);
+					}
+					putString(0,0, terminal,drawFloor(ffs));
 	      if (key != null){
 	        //YOU CAN PUT DIFFERENT SETS OF BUTTONS FOR DIFFERENT MODES!!!
 
@@ -208,7 +228,7 @@ public class Benelux{
 	        if (mode.equals("Game Mode")) {
 
 
-						eraser(playerM.currentX(),playerM.currentY(),f,playerM);
+						eraser(playerM.currentX(),playerM.currentY(),ffs,playerM);
 	          if (key.getKind() == Key.Kind.Escape) {
 							s.stopScreen();
 	            terminal.exitPrivateMode();
@@ -221,25 +241,25 @@ public class Benelux{
 	          if (key.getKind() == Key.Kind.ArrowDown) {
 
 	            playerM.changeDirection("South");
-	            playerM.moveForward(f);
+	            playerM.moveForward(ffs);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowLeft) {
 
 	            playerM.changeDirection("West");
-	            playerM.moveForward(f);
+	            playerM.moveForward(ffs);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowUp) {
 
 	            playerM.changeDirection("North");
-	            playerM.moveForward(f);
+	            playerM.moveForward(ffs);
 
 	          }
 	          else if (key.getKind() == Key.Kind.ArrowRight) {
 
 	            playerM.changeDirection("East");
-	            playerM.moveForward(f);
+	            playerM.moveForward(ffs);
 
 	          }
 	        }
@@ -247,27 +267,24 @@ public class Benelux{
 
 	      if(mode.equals("Game Mode")){
 					try	{
-						Thread.sleep(3000);
+						Thread.sleep(1000);
 					}
 					catch(Exception ex){}
 	        //DO GAME STUFF HERE
-					eraser(mm.currentX(),mm.currentY(),f,mm);
-					mm.movement(f);
-					drawPlayer(playerM,f);
-					if (playerM.onExit(f.getExitX(),f.getExitY())){
-						rs = new ArrayList<Room>();
-						f = new Floor(rs, 35, 20, r);
-				    f.addAllRooms();
-				    f.addEntrance();
-				    f.addExit();
-						f.addAllPaths();
-						playerM.setX(f.getEntranceX());
-						playerM.setY(f.getEntranceY());
-						playerM.changeDirection("North");
+
+					drawPlayer(playerM,ffs);
+					if (playerM.onExit(ffs.getExitX(),ffs.getExitY())){
+						ffs = createFloor();
+						playerM = createPlayer(ffs);
+						hoard = createMonsters(ffs,depth);
 						depth+=1;
 					}
-					drawMonster(mm,f);
-					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					for (int i = 0; i < hoard.size(); i++) {
+						eraser(hoard.get(i).currentX(),hoard.get(i).currentY(),ffs,hoard.get(i));
+						hoard.get(i).movement(ffs);
+						drawMonster(hoard.get(i),ffs);
+					}
+					s.putString(0,0,drawFloor(ffs),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 
 	      }else if (mode.equals("Inventory Mode")) {
@@ -285,8 +302,8 @@ public class Benelux{
 				if(key!=null){putString(0,43,terminal, ""+key.getCharacter());}
 				putString(0,36,terminal, "X " + playerM.getX() + " Y " + playerM.getY());
 				putString(0,37,terminal, "direction" + playerM.directionTest());
-				putString(0,38,terminal, "X " + f.getEntranceX() + " Y " + f.getEntranceY());
-				putString(0,39,terminal, "" +playerM.lookInFront(f));
+				putString(0,38,terminal, "X " + ffs.getEntranceX() + " Y " + ffs.getEntranceY());
+				putString(0,39,terminal, "" +playerM.lookInFront(ffs));
 
 			//DO EVEN WHEN NO KEY PRESSED:
 
