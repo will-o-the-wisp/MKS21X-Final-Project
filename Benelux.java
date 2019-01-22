@@ -133,6 +133,7 @@ public class Benelux{
 			dummy.setY(ff.getExitY());
 			mn.add(dummy);
 		}
+		return mn;
 	}
 	public static void run() throws FileNotFoundException{
 		int depth=0;
