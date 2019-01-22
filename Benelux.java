@@ -267,12 +267,7 @@ public class Benelux{
 	      }
 
 	      if(mode.equals("Game Mode")){
-					/*
-					try	{
-						Thread.sleep(1000);
-					}
-					catch(Exception ex){}
-					*/
+
 	        //DO GAME STUFF HERE
 
 					drawPlayer(playerM,ffs);
@@ -283,6 +278,10 @@ public class Benelux{
 						depth+=1;
 					}
 					for (int i = 0; i < hoard.size(); i++) {
+						try	{
+							Thread.sleep(1000);
+						}
+						catch(Exception ex){}
 						eraser(hoard.get(i).currentX(),hoard.get(i).currentY(),ffs,hoard.get(i));
 						hoard.get(i).movement(ffs);
 						drawMonster(hoard.get(i),ffs);
