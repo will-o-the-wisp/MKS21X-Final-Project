@@ -102,6 +102,9 @@ public class Room{
   public int getHeight(){
     return height;
   }
+  public ArrayList<Entity> getEntities(){
+    return entities;
+  }
   public void setTLCX(int x){
     topLeftCornerX=x;
   }

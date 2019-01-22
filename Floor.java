@@ -27,6 +27,13 @@ public class Floor{
     /*
     use indexOfRoom, set up list of entities in Room.java
     */
+    int r=indexOfRoom(x,y);
+    for(int i=0;i<rooms.get(r).size();i++){
+      if(rooms.get(r).getEntities().get(i).getX()==x&&
+        rooms.get(r).getEntities().get(i).getY()==y){
+          return rooms.get(r).getEntities.get(i);
+        }
+    }
     return null;
   }
   public static void main(String[] args){
