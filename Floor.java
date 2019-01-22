@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class Floor{
   private ArrayList<Room> rooms;
   //private List<Path> paths;
@@ -12,6 +13,7 @@ public class Floor{
   private char[][] grid;
   private Random rng; //move to Benelux later (?)
 
+  //main for testing
   public static void main (String[] args){
     ArrayList<Room> rs = new ArrayList<Room>();
     Random r = new Random();
@@ -25,6 +27,7 @@ public class Floor{
     f.printFloor();
   }
   //move randFlip to Benelux later(?)
+  //a method that randomly returns 1 or -1 with equal probability
   public static int randFlip(Random r){
     if(r.nextInt(2)==0){
       return 1;
@@ -33,6 +36,8 @@ public class Floor{
       return -1;
     }
   }
+
+  //constructor
   Floor(ArrayList<Room> _rooms, int width, int height, Random _rng){
     rooms = _rooms;
     rng = _rng;
@@ -51,9 +56,8 @@ public class Floor{
       }
     }
   }
-  Floor(int depth){
 
-  }
+  //prints floor for testing
   public void printFloor(){
     String ans="";
     for(int i=0;i<grid.length;i++){
@@ -70,7 +74,7 @@ public class Floor{
     }
     System.out.println(ans);
   }
-  //get methods
+  //get and set methods
   public int getEntranceX(){
     return entranceX;
   }
@@ -89,6 +93,7 @@ public class Floor{
   public void setGridPos(int x, int y, char e){
     grid[y][x] = e;
   }
+  //randomly generates and adds a room to the grid
   public boolean addRoom(Room r, int x, int y){
     int w = r.getWidth();
     int h = r.getHeight();
@@ -109,6 +114,7 @@ public class Floor{
     }
     return true;
   }
+  //randomly generates and adds a path to the grid
   public boolean addPath(int x, int y, int w, int h, int xi, int yi){
     if(x+w*xi>grid[0].length-1||
       x+w*xi<0||
@@ -137,6 +143,7 @@ public class Floor{
     }
     return true;
   }
+  //attempts to add a sufficient number of paths to the grid
   public void addAllPaths(){
     int tries=0;
     int fails=0;
@@ -232,16 +239,19 @@ public class Floor{
           fails++;
       }
   }
+  //adds the entrance to the grid
   public void addEntrance(){
     entranceX = rooms.get(0).getTLCX()+rng.nextInt(rooms.get(0).getWidth()-2)+1;
     entranceY = rooms.get(0).getTLCY()+rng.nextInt(rooms.get(0).getHeight()-2)+1;
     grid[entranceY][entranceX]='~';
   }
+  //adds the exit to the grid
   public void addExit(){
     exitX = rooms.get(1).getTLCX()+rng.nextInt(rooms.get(1).getWidth()-2)+1;
     exitY = rooms.get(1).getTLCY()+rng.nextInt(rooms.get(1).getHeight()-2)+1;
     grid[exitY][exitX]='*';
   }
+  //fills the grid with rooms
   public void addAllRooms(){
     int tries=0;
     int fails=0;
