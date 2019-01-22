@@ -1,4 +1,33 @@
 # MKS21X-FinalProject
+--------------------------------------------------------------------------------
+## Some sort of rogue-like game
+
+An attempt to make a rogue-like using java and terminal. <br/>
+Supposed model: https://en.wikipedia.org/wiki/NetHack   <br/>
+
+Bare Bones? Random array generator that has wall detection
+
+Features:
+  -Movement
+  -Random generation of rooms and Floors
+  -Random paths
+  -Monsters
+  -Player
+  -Items
+  -Progression
+
+## Setting up the GAME
+Assuming it's a Linux machine:
+
+In the terminal, navigate to the git repository of this project.
+
+Run:
+chmod +x help.sh  <br/>
+./help.sh  <br/>
+
+Compile using javac -cp lanterna.jar:. Benelux.java
+
+
 
 --------------------------------------------------------------------------------
 Development Diary Entries-
@@ -55,3 +84,38 @@ BC
 
 BC
   fix for wall detection, player starts at entrance, no longer flickers due to floor being drawn once, still lags for some reason probably need better screen work, also added get methods for exit and entrance
+
+1/15/19
+
+BC
+  Failed to find a reasonable fix for Screen
+
+1/16/19
+
+BC
+  More attempts at fixing Screen but failed.
+
+1/17/19
+
+BC
+  Tried making the screen only write one string for floor where the array is one string, still Failed
+
+1/18/19
+
+BC
+  Reverts and fails, no progress and frustration
+
+1/19/19
+
+BC
+  Out all day
+
+1/20/19
+
+BC
+  Fever day, woozy after effects
+
+1/21/19
+
+BC
+  Screen works, except that the 2nd row of the array gets duplicated. Barely basic functionality, so not sure how the game is going to be.
