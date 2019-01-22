@@ -14,8 +14,11 @@ public class Room{
     Room r = new Room(1,1,7,5);
     r.printGrid();
   }
-  public void addEntities(){
-    
+  public void addEntityList(){
+    entities = new ArrayList<Entity>;
+  }
+  public void addEntity(Entity e){
+    entities.add(e);
   }
   public Room(int tlcX, int tlcY, int _width, int _height){
     topLeftCornerX=tlcX;
