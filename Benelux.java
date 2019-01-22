@@ -71,8 +71,8 @@ public class Benelux{
 		st.putString(x,y," . ", Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 	}
 
-	public static String drawPlayer(Player p){
-		return " $ ";
+	public static String drawPlayer(Player p, Floor ff ){
+		ff.setGridPos(p.getX(),p.getY()," $ ");
 	}
 /*
 	public static void drawItem(Item i){
@@ -120,7 +120,7 @@ public class Benelux{
 
 		s.setCursorPosition(null);
 		putString(0,0, terminal,fl);
-		putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
+		//putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
@@ -233,8 +233,7 @@ public class Benelux{
 	        currentTime = System.currentTimeMillis();
 	        timer += (currentTime -lastTime);//add the amount of time since the last frame.
 	        //DO GAME STUFF HERE
-					eraser(currentX, currentY,s);
-					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					//s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.putString(0,0,fl,Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 
 					s.refresh();
