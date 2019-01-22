@@ -117,8 +117,8 @@ public class Benelux{
 	  long timer = 0;
 
 		s.setCursorPosition(null);
-		putString(1,1, terminal,drawFloor(f));
-		putString(playerM.getY(),playerM.getX(), terminal,drawPlayer(playerM));
+		putString(0,0, terminal,drawFloor(f));
+		putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
@@ -233,7 +233,7 @@ public class Benelux{
 	        //DO GAME STUFF HERE
 
 					s.putString(playerM.getX(),playerM.getY(), drawPlayer(playerM),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-					s.putString(1,1,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
+					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
 					s.refresh();
 	        //putString(1,3,terminal, "Game here...",Terminal.Color.DEFAULT,Terminal.Color.RED);
 	        //putString(3,5,terminal, "Time: "+timer,Terminal.Color.DEFAULT,Terminal.Color.RED);
