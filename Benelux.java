@@ -72,7 +72,7 @@ public class Benelux{
 	}
 
 	public static String drawPlayer(Player p, Floor ff ){
-		ff.setGridPos(p.getX(),p.getY()," $ ");
+		ff.setGridPos(p.getX(),p.getY(),'$');
 	}
 /*
 	public static void drawItem(Item i){
