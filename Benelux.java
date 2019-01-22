@@ -123,11 +123,12 @@ public class Benelux{
 		int depth=0;
 	  String mode = "Game Mode";
 
-		putString(0,0, terminal,drawFloor(f));
+
 		//putString(playerM.getX(),playerM.getY(), terminal,drawPlayer(playerM));
 
 	    //while(millis/1000 != lastSecond + 1){ //check for one second?
 			while(running){
+				putString(0,0, terminal,drawFloor(f));
 				int currentX = playerM.getX();
 				int currentY = playerM.getY();
 	      Key key = s.readInput();
@@ -233,7 +234,7 @@ public class Benelux{
 	        //DO GAME STUFF HERE
 					drawPlayer(playerM,f);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
-					s.refresh(Screen.RefreshType.DELTA);
+					s.refresh();
 
 	      }else if (mode.equals("Inventory Mode")) {
 	        s.putString(1,5, "Press P to return",Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);
