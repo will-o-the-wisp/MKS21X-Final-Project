@@ -14,6 +14,7 @@ public class Room{
     Room r = new Room(1,1,7,5);
     r.printGrid();
   }
+  //constructors
   public Room(int tlcX, int tlcY, int _width, int _height){
     topLeftCornerX=tlcX;
     topLeftCornerY=tlcY;
@@ -68,6 +69,7 @@ public class Room{
     grid[0][width-1]='@';
     grid[height-1][width-1]='@';
   }
+  //prints grid for testing
   public void printGrid(){
     String ans="";
     for(int i=0;i<height;i++){
@@ -78,12 +80,10 @@ public class Room{
     }
     System.out.println(ans);
   }
+  //get and set methods
   public char[][] getGrid(){
     return grid;
   }
-  //public Room(int depth, int difficulty){
-
-  //}
   public int getTLCX(){
     return topLeftCornerX;
   }
