@@ -242,6 +242,7 @@ public class Benelux{
 
 	        //DO GAME STUFF HERE
 
+					mm.movement(f);
 					drawPlayer(playerM,f);
 					drawMonster(mm,f);
 					s.putString(0,0,drawFloor(f),Terminal.Color.DEFAULT,Terminal.Color.DEFAULT);

@@ -27,5 +27,8 @@ public class Monster extends Creature{
 
   }
 
-  
+  public void movement(Floor f){
+    this.changeDirection(getRandomDirection());
+    this.moveForward(f);
+  }
 }
